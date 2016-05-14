@@ -9,6 +9,9 @@ $.fn.extend({
 
 $(function () {
     var isTapped = false;
+    var scroll = 0;
+    var bodyHeight = $('body').height();
+    var visbleWindowHeight = $(window).height();
     $('.option-item').transition({ y: '-2000' }, 500);
 
     $('.enter-button').hammer().bind("tap", function () {
@@ -17,12 +20,18 @@ $(function () {
         $('.selection').fadeIn('400');
     });
     $('.option-item').hammer().bind("tap", function () {
+        var wrapperLi = $(this).parents('.option-title');
         var img = $(this).find('img');
-        if(img.css("display") === 'none'){
-            img.fadeIn('fast');
+        if(wrapperLi.hasClass('mutiple')){
+            if(img.css("display") === 'none'){
+                img.fadeIn('fast');
+            }else{
+                img.fadeOut('fast');
+            }
         }else{
-            img.fadeOut('fast');
-        }
+            wrapperLi.find('img').hide();
+            img.fadeIn('fast');
+        }        
     });
     $('.option-list-title').hammer().bind("tap", function () {
         if(!$(this).hasClass('active')){
@@ -34,6 +43,8 @@ $(function () {
         var temp = $(this);
         var wrapperLi = $(this).parents('.option-title');
         if(isTapped){
+            scroll = $('body').scrollTop();
+
             $('.survey-question').addClass('full');
                              
             wrapperLi.nextAll().transition({ y: '2000' }, 666)
@@ -47,12 +58,15 @@ $(function () {
                 }, index * 100);
             });
         }else{
+
             $('.survey-question').removeClass('full');
             
             temp.transition({ height: '260' }, 666, function () {
                 wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666)
                     .nextAll().transition({ y: '0' }, 666)
                     .end().prevAll().transition({ y: '0' }, 666);
+
+                $('body').scrollTop(index * 260);
             });
             temp.nextAll('.option-item').each(function(index, el) {
                 setTimeout(function () {
@@ -64,7 +78,13 @@ $(function () {
                 var liSelect = $('.option-ul .check-icon:not(":hidden")');
                 if(liSelect.length > 0){
                     wrapperLi.next().find('.option-list-title').addClass('active');
-                }
+                };
+                if($('body').height() - visbleWindowHeight > scroll){
+                    $('body').stop().animate({
+                        scrollTop: (index + 1) * 260
+                    }, 666);
+                }               
+                
             }, 1500);
             
         }
