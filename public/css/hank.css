@@ -1,9 +1,12 @@
+@font-face { font-family: survey1; src: url('../font/TradeGothicforNike365-Roman.ttf'); } 
+
 html,body{
     margin:0;
     padding:0;
     background:#fff;
     overflow:auto;
     font-size:40px;
+    font-family: survey1;
 }
 ul,li{
     margin:0;
@@ -81,6 +84,8 @@ section{
     width: 55px;
 }
 
+
+
 /* funciton */
 .main-wrapper{
     overflow:visible;
@@ -105,6 +110,7 @@ section{
 }
 .selection{
     display:none;
+    color:#b3b3b3;
 }
 .end-temp{
     text-align:center;
@@ -118,10 +124,14 @@ section{
 .option-title{
     position:relative;
     height:260px;
+    box-shadow:  0 5px 2px #bbb inset;
 }
 .option-title.full{
     position:absolute;
     height:auto;
+}
+.option-ul.full{
+    top:4px;
 }
 .option-list-title{
     position:relative;
@@ -131,13 +141,19 @@ section{
     -webkit-transition: background 555ms cubic-bezier(0.4, 0, 0.22, 1);
     transition: background 555ms cubic-bezier(0.4, 0, 0.22, 1);
 }
+.option-list-title.active{
+    background:#FCB3B9;
+    color:#fff;
+}
 .option-list-title.tapped{
     height:24%;
 }
 .option-item{
     position:relative;
     height:200px;
-    box-shadow:0 6px 12px #aaa inset;;
+    padding: 0 16%;
+    box-shadow:0 6px 12px #aaa inset;
+    color:#fff;
 }
 .option-title:nth-child(odd) .option-list-title{
     background:#e6e6e6;
@@ -186,7 +202,7 @@ section{
     float:left;
     height: 15.18%;
     width:34%;
-    padding-left:16%;
+    padding: 0 0 0 16%;
 }
 .option-list2>li:nth-child(1){
     background:#FCA5AC;
@@ -226,7 +242,7 @@ section{
     float:left;
     height: 15.18%;
     width:34%;
-    padding-left:16%;
+    padding: 0 0 0 16%;
 }
 .option-list3>li:nth-child(1){
     background:#FCA5AC;
@@ -260,6 +276,22 @@ section{
 }
 
 
+
+
+
+
+.selection .option-list-title.active{
+    background:#FCB3B9;
+}
+.option-list5 .option-item{
+    float:left;
+    height: 15.18%;
+    width:34%;
+    padding: 0 0 0 16%;
+}
+.option-item{
+    background:#FCA5AC;
+}
 
 
 

@@ -12,7 +12,7 @@ $(function () {
     var scroll = 0;
     var bodyHeight = $('body').height();
     var visbleWindowHeight = $(window).height();
-    $('.option-item').transition({ y: '-2000' }, 500);
+    $('.option-item').transition({ y: '-4000' }, 500);
 
     $('.enter-button').hammer().bind("tap", function () {
         $(this).hide();
@@ -53,9 +53,15 @@ $(function () {
             temp.transition({ height: '24%' }, 666);
 
             temp.nextAll('.option-item').each(function(index, el) {
-                setTimeout(function () {
-                    $(el).transition({ y: '0' }, 777);
-                }, index * 100);
+                if(wrapperLi.hasClass('twoInOne')){
+                    setTimeout(function () {
+                        $(el).transition({ y: 0 }, 777);
+                    }, Math.floor(index/2) * 100);
+                }else{
+                    setTimeout(function () {
+                        $(el).transition({ y: 0 }, 777);
+                    }, index * 100);
+                }
             });
         }else{
 
@@ -69,21 +75,42 @@ $(function () {
                 $('body').scrollTop(index * 260);
             });
             temp.nextAll('.option-item').each(function(index, el) {
-                setTimeout(function () {
-                    $(el).transition({ y: '-2000' }, 777);
-                }, index * 100);
+                if(wrapperLi.hasClass('twoInOne')){
+                    setTimeout(function () {
+                        $(el).transition({ y: '-2000' }, 777);
+                    }, Math.floor(index/2) * 100);
+                }else{
+                    setTimeout(function () {
+                        $(el).transition({ y: '-2000' }, 777);
+                    }, index * 100);
+                }                
             });
             // next question
             setTimeout(function () {                        
-                var liSelect = $('.option-ul .check-icon:not(":hidden")');
+                var liSelect = wrapperLi.find('.check-icon:not(":hidden")');
                 if(liSelect.length > 0){
-                    wrapperLi.next().find('.option-list-title').addClass('active');
-                };
-                if($('body').height() - visbleWindowHeight > scroll){
-                    $('body').stop().animate({
-                        scrollTop: (index + 1) * 260
-                    }, 666);
-                }               
+                    var nextActive = wrapperLi.next();
+                    while(nextActive && nextActive.hasClass('omit')){
+                        nextActive = nextActive.next();
+                    }
+                    nextActive.find('.option-list-title').addClass('active');
+
+                    if(wrapperLi.hasClass('question1')){
+                        if(liSelect.siblings('.omit89').length > 0){
+                            $('.question6').transition({height:0}).addClass('omit');
+                            $('.question7').transition({height:0}).addClass('omit');
+                        }else{
+                            $('.question6').transition({height:260}).removeClass('omit');
+                            $('.question7').transition({height:260}).removeClass('omit');
+                        }
+                    }                    
+
+                    if($('body').height() - visbleWindowHeight > scroll){
+                        $('body').stop().animate({
+                            scrollTop: (index + 1) * 260
+                        }, 666);
+                    }
+                };                           
                 
             }, 1500);
             
