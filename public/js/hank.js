@@ -67,14 +67,11 @@ $(function () {
 
             $('.survey-question').removeClass('full');
 
-            if($('body').height() - visbleWindowHeight > scroll){
-                    $('body').scrollTop(index * 260);
-                };
-            
             temp.transition({ height: '260' }, 666, function () {
                 wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666)
                     .nextAll().transition({ y: '0' }, 666)
                     .end().prevAll().transition({ y: '0' }, 666);
+                $('body').scrollTop(scroll);
             });
             temp.nextAll('.option-item').each(function(index, el) {
                 if(wrapperLi.hasClass('twoInOne')){
