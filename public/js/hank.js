@@ -106,9 +106,10 @@ $(function () {
                     }                    
 
                     if($('body').height() - visbleWindowHeight > scroll){
-                        $('body').stop().animate({
-                            scrollTop: (index + 1) * 260
-                        }, 666);
+                        // $('body').stop().animate({
+                        //     scrollTop: (index + 1) * 260
+                        // }, 666);
+                        $('body').scrollTop(scroll);
                     }
                 };                           
                 
