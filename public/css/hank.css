@@ -93,9 +93,33 @@ section{
 .welcome{
     height:100%;
     width:100%;
+    animation-name: example;
+    animation-duration: 4s;
     background-image:url('../imgs/index.png');
     background-size:cover;
+    background: linear-gradient(324deg, #f0b715, #e57c99, #d88cf0, #8e4ce0, #4572c5, #6cdc9f, #dcd36c);
+    background-size: 1400% 1400%;
+
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
 }
+@-webkit-keyframes AnimationName {
+    0%{background-position:18% 0%}
+    50%{background-position:83% 100%}
+    100%{background-position:18% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:18% 0%}
+    50%{background-position:83% 100%}
+    100%{background-position:18% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:18% 0%}
+    50%{background-position:83% 100%}
+    100%{background-position:18% 0%}
+}
+
 .enter-button{
     position:absolute;
     bottom:25%;
