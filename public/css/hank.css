@@ -93,12 +93,12 @@ section{
 .welcome{
     height:100%;
     width:100%;
-    background: linear-gradient(127deg, #f81578, #d2fa3b);
+    /* background: linear-gradient(127deg, #f81578, #d2fa3b);
     background-size: 400% 400%;
     -webkit-animation: AnimationName 12s ease infinite;
-    animation: AnimationName 12s ease infinite;
+    animation: AnimationName 12s ease infinite; */
 }
-@-webkit-keyframes AnimationName {
+/* @-webkit-keyframes AnimationName {
     0%{background-position:0% 20%};
     50%{background-position:100% 81%};
     100%{background-position:0% 20%};
@@ -107,7 +107,7 @@ section{
     0%{background-position:0% 20%};
     50%{background-position:100% 81%};
     100%{background-position:0% 20%};
-}
+} */
 
 .enter-button{
     position:absolute;
