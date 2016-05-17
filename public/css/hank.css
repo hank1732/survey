@@ -104,10 +104,13 @@ section{
     margin-left: -60px;
 }
 .logo-text{    
+    position: absolute;
     text-align: center;
     font-size: 80px;
     color: #fff;
-    margin-top: 50%;
+    top: 35%;
+    left: 0;
+    right: 0;
 }
 
 
