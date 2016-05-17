@@ -93,31 +93,27 @@ section{
 .welcome{
     height:100%;
     width:100%;
-    animation-name: example;
-    animation-duration: 4s;
-    background-image:url('../imgs/index.png');
-    background-size:cover;
-    background: linear-gradient(324deg, #f0b715, #e57c99, #d88cf0, #8e4ce0, #4572c5, #6cdc9f, #dcd36c);
-    background-size: 1400% 1400%;
+    background: linear-gradient(127deg, #f81578, #d2fa3b);
+    background-size: 400% 400%;
 
-    -webkit-animation: AnimationName 40s ease infinite;
-    -moz-animation: AnimationName 40s ease infinite;
-    animation: AnimationName 40s ease infinite;
+    -webkit-animation: AnimationName 12s ease infinite;
+    -moz-animation: AnimationName 12s ease infinite;
+    animation: AnimationName 12s ease infinite;
 }
 @-webkit-keyframes AnimationName {
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
+    0%{background-position:0% 20%};
+    50%{background-position:100% 81%};
+    100%{background-position:0% 20%};
 }
 @-moz-keyframes AnimationName {
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
+    0%{background-position:0% 20%};
+    50%{background-position:100% 81%};
+    100%{background-position:0% 20%};
 }
 @keyframes AnimationName { 
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
+    0%{background-position:0% 20%};
+    50%{background-position:100% 81%};
+    100%{background-position:0% 20%};
 }
 
 .enter-button{
@@ -188,7 +184,7 @@ section{
 
 /* each option */
 .option-list1 .option-item{
-    padding: 0 16%;
+    /* padding: 0 16%; */
     height: 12.68%;
 }
 /* .option-title .option-list1>li:nth-child(1){
@@ -223,10 +219,10 @@ section{
     background:#FCB3B9;
 }
 .option-list2 .option-item{
-    float:left;
+    /* float:left; */
     height: 15.18%;
-    width:34%;
-    padding: 0 0 0 16%;
+    /* width:34%; */
+    /* padding: 0 0 0 16%; */
 }
 .option-list2>li:nth-child(1){
     background:#FCA5AC;
@@ -315,6 +311,7 @@ section{
 }
 .option-item{
     background:#FCA5AC;
+    text-align:center;
 }
 
 .logo{
