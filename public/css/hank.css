@@ -99,14 +99,14 @@ section{
     animation: AOG 12s ease infinite;
 }
 @-webkit-keyframes AOG {
-    0%{background-position:0% 20%};
-    50%{background-position:100% 81%};
-    100%{background-position:0% 20%};
+    0%{background-position:0% 20%;}
+    50%{background-position:100% 81%;}
+    100%{background-position:0% 20%;}
 }
 @keyframes AOG { 
-    0%{background-position:0% 20%};
-    50%{background-position:100% 81%};
-    100%{background-position:0% 20%};
+    0%{background-position:0% 20%;}
+    50%{background-position:100% 81%;}
+    100%{background-position:0% 20%;}
 }
 
 .enter-button{
