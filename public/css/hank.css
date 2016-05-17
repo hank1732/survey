@@ -93,8 +93,8 @@ section{
 .welcome{
     height:100%;
     width:100%;
-    /* background: linear-gradient(127deg, #f81578, #d2fa3b);
-    background-size: 400% 400%;
+    background: linear-gradient(127deg, #f81578, #d2fa3b);
+    /* background-size: 400% 400%;
     -webkit-animation: AnimationName 12s ease infinite;
     animation: AnimationName 12s ease infinite; */
 }
