@@ -46,6 +46,8 @@ $(function () {
             scroll = $('body').scrollTop();
 
             $('.survey-question').addClass('full');
+            wrapperLi.find('.option-ul').addClass('flex');
+            $(this).addClass('center');
                              
             wrapperLi.nextAll().transition({ y: '2000' }, 666)
                 .end().prevAll().transition({ y: '-2000' }, 666);
@@ -66,12 +68,14 @@ $(function () {
         }else{
 
             $('.survey-question').removeClass('full');
+            $(this).removeClass('center');
 
             temp.transition({ height: '260' }, 666, function () {
                 wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666)
                     .nextAll().transition({ y: '0' }, 666)
                     .end().prevAll().transition({ y: '0' }, 666);
                 $('body').scrollTop(scroll);
+                wrapperLi.find('.option-ul').removeClass('flex'); 
             });
             temp.nextAll('.option-item').each(function(index, el) {
                 if(wrapperLi.hasClass('twoInOne')){
@@ -82,7 +86,7 @@ $(function () {
                     setTimeout(function () {
                         $(el).transition({ y: '-2000' }, 777);
                     }, index * 100);
-                }                
+                }
             });
             // next question
             setTimeout(function () {                        
@@ -110,7 +114,7 @@ $(function () {
                         }, 666);
                         // $('body').scrollTop(scroll);
                     }
-                };                           
+                };            
                 
             }, 1500);
             

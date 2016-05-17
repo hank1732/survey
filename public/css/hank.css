@@ -70,20 +70,45 @@ section{
     z-index:10000;
 }
 .text-vcenter{
-    position: relative;
+    position: absolute;
     top: 50%;
+    padding: 0 16%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%); 
+}
+.option-item .text-vcenter,.center .text-vcenter{
+    /* width:100%; */
+    left: 0;
+    right: 0;
+    text-align:center;
+}
+.text-vcenter.full{
+    position: absolute;
+    background:transparent; 
+    padding: 0 16%;
 }
 .check-icon{
     display:none;
     position: absolute;
     left: 7%;
-    top: 35%;
+    top: 45%;
     width: 55px;
 }
 
+.logo{
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -60px;
+}
+.logo-text{    
+    text-align: center;
+    font-size: 80px;
+    color: #fff;
+    margin-top: 60%;
+}
 
 
 /* funciton */
@@ -105,32 +130,33 @@ section{
     animation: AnimationName 40s ease infinite;
 }
 @-webkit-keyframes AnimationName {
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
+    0%{background-position:18% 0%};
+    50%{background-position:83% 100%};
+    100%{background-position:18% 0%};
 }
 @-moz-keyframes AnimationName {
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
+    0%{background-position:18% 0%};
+    50%{background-position:83% 100%};
+    100%{background-position:18% 0%};
 }
 @keyframes AnimationName { 
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
+    0%{background-position:18% 0%};
+    50%{background-position:83% 100%};
+    100%{background-position:18% 0%};
 }
 
 .enter-button{
-    position:absolute;
-    bottom:25%;
-    left:50%;
-    margin-left: -75px;
-    width:150px;
-    height:70px;
-    border:solid 3px #fff;
-    text-align:center;
-    line-height:70px;
-    color:#fff;
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    height: 70px;
+    border: solid 3px #fff;
+    text-align: center;
+    line-height: 70px;
+    color: #fff;
+    font-size: 50px;
 }
 .selection{
     display:none;
@@ -157,10 +183,14 @@ section{
 .option-ul.full{
     top:4px;
 }
+.option-ul.flex{
+    display: flex;
+    flex-direction: column;
+}
 .option-list-title{
     position:relative;
     height:260px;
-    padding:0 16%;
+    /* padding:0 16%; */
     text-align:center;
     -webkit-transition: background 555ms cubic-bezier(0.4, 0, 0.22, 1);
     transition: background 555ms cubic-bezier(0.4, 0, 0.22, 1);
@@ -174,10 +204,11 @@ section{
 }
 .option-item{
     position:relative;
-    height:200px;
-    padding: 0 16%;
+    /* height:200px; */
+    /* padding: 0 16%; */
     box-shadow:0 6px 12px #aaa inset;
     color:#fff;
+    flex:1;
 }
 .option-title:nth-child(odd) .option-list-title{
     background:#e6e6e6;
@@ -188,8 +219,7 @@ section{
 
 /* each option */
 .option-list1 .option-item{
-    padding: 0 16%;
-    height: 12.68%;
+    /* padding: 0 16%; */
 }
 /* .option-title .option-list1>li:nth-child(1){
     background:#F81578;
@@ -224,8 +254,7 @@ section{
 }
 .option-list2 .option-item{
     float:left;
-    height: 15.18%;
-    width:34%;
+    /* width:34%; */
     padding: 0 0 0 16%;
 }
 .option-list2>li:nth-child(1){
@@ -264,8 +293,7 @@ section{
 }
 .option-list3 .option-item{
     float:left;
-    height: 15.18%;
-    width:34%;
+    /* width:34%; */
     padding: 0 0 0 16%;
 }
 .option-list3>li:nth-child(1){
@@ -310,7 +338,7 @@ section{
 .option-list5 .option-item{
     float:left;
     height: 15.18%;
-    width:34%;
+    /* width:34%; */
     padding: 0 0 0 16%;
 }
 .option-item{
