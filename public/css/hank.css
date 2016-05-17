@@ -150,7 +150,8 @@ section{
 
 .enter-button{
     position: absolute;
-    bottom: 25%;
+        /* bottom: 25%; */
+    top: 75%;
     left: 50%;
     margin-left: -100px;
     width: 200px;
