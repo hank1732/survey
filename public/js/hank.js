@@ -33,43 +33,51 @@ $(function () {
             img.fadeIn('fast');
         }        
     });
-    $('.option-list-title').hammer().bind("tap", function () {
+    $('.option-list-title').hammer().bind("tap", unfold);
+    $('.js-single').hammer().bind("tap", fold);
+    function unfold() {
         if(!$(this).hasClass('active')){
             return false;
         }
-        // $(this).addClass('tapped');
-        isTapped = !isTapped;
         var index = $('.option-title').index($(this).parents('.option-title'));
         var temp = $(this);
         var wrapperLi = $(this).parents('.option-title');
-        if(isTapped){
-            scroll = $('body').scrollTop();
 
-            $('.survey-question').addClass('full');
-            wrapperLi.find('.option-ul').addClass('flex');
-            $(this).addClass('center');
-                             
-            wrapperLi.nextAll().transition({ y: '2000' }, 666)
-                .end().prevAll().transition({ y: '-2000' }, 666);
-            wrapperLi.addClass('full').transition({ height: 'atuo' }, 666);
-            temp.transition({ height: '24%' }, 666);
+        scroll = $('body').scrollTop();
+        // answer poll
+        wrapperLi.addClass('js-answered');
 
-            temp.nextAll('.option-item').each(function(index, el) {
-                if(wrapperLi.hasClass('twoInOne')){
-                    setTimeout(function () {
-                        $(el).transition({ y: 0 }, 777);
-                    }, Math.floor(index/2) * 100);
-                }else{
-                    setTimeout(function () {
-                        $(el).transition({ y: 0 }, 777);
-                    }, index * 100);
-                }
-            });
-        }else{
+        $('.survey-question').addClass('full');
+        wrapperLi.find('.option-ul').addClass('flex');
+        $(this).addClass('center');
+                         
+        wrapperLi.nextAll().transition({ y: '2000' }, 666)
+            .end().prevAll().transition({ y: '-2000' }, 666);
+        wrapperLi.addClass('full').transition({ height: 'atuo' }, 666);
+        temp.transition({ height: '24%' }, 666);
 
-            $('.survey-question').removeClass('full');
-            $(this).removeClass('center');
+        temp.nextAll('.option-item').each(function(index, el) {
+            if(wrapperLi.hasClass('twoInOne')){
+                setTimeout(function () {
+                    $(el).transition({ y: 0 }, 777);
+                }, Math.floor(index/2) * 100);
+            }else{
+                setTimeout(function () {
+                    $(el).transition({ y: 0 }, 777);
+                }, index * 100);
+            }
+        });
+        $('.option-list-title').hammer().unbind("tap", unfold);
+        $('.back-entery').hammer().bind("tap", fold);
+    };
+    function fold() {
+        var index = $('.option-title').index($(this).parents('.option-title'));
+        var temp = $(this).hasClass('option-item') ? $(this).siblings('.option-list-title') : $(this);
+        var wrapperLi = $(this).parents('.option-title');
 
+        $('.survey-question').removeClass('full');
+        $(this).removeClass('center');
+        setTimeout(function () {
             temp.transition({ height: '260' }, 666, function () {
                 wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666)
                     .nextAll().transition({ y: '0' }, 666)
@@ -88,38 +96,40 @@ $(function () {
                     }, index * 100);
                 }
             });
-            // next question
-            setTimeout(function () {                        
-                var liSelect = wrapperLi.find('.check-icon:not(":hidden")');
-                if(liSelect.length > 0){
-                    var nextActive = wrapperLi.next();
-                    while(nextActive && nextActive.hasClass('omit')){
-                        nextActive = nextActive.next();
-                    }
-                    nextActive.find('.option-list-title').addClass('active');
+        }, 444);
+        // next question
+        setTimeout(function () {
+            // var liSelect = wrapperLi.find('.check-icon:not(":hidden")');
+            // if(liSelect.length > 0){
+            if(wrapperLi.hasClass('js-answered')){
+                var nextActive = wrapperLi.next();
+                while(nextActive && nextActive.hasClass('omit')){
+                    nextActive = nextActive.next();
+                }
+                nextActive.find('.option-list-title').addClass('active');
 
-                    if(wrapperLi.hasClass('question1')){
-                        if(liSelect.siblings('.omit89').length > 0){
-                            $('.question6').transition({height:0}).addClass('omit');
-                            $('.question7').transition({height:0}).addClass('omit');
-                        }else{
-                            $('.question6').transition({height:260}).removeClass('omit');
-                            $('.question7').transition({height:260}).removeClass('omit');
-                        }
-                    }                    
-
-                    if($('body').height() - visbleWindowHeight > scroll){
-                        $('body').stop().animate({
-                            scrollTop: (index + 1) * 260
-                        }, 666);
-                        // $('body').scrollTop(scroll);
+                if(wrapperLi.hasClass('question1')){
+                    if(wrapperLi.find('.omit89').length > 0){
+                        $('.question6').transition({height:0}).addClass('omit');
+                        $('.question7').transition({height:0}).addClass('omit');
+                    }else{
+                        $('.question6').transition({height:260}).removeClass('omit');
+                        $('.question7').transition({height:260}).removeClass('omit');
                     }
-                };            
-                
-            }, 1500);
-            
-        }
-    });
+                }                    
+
+                if($('body').height() - visbleWindowHeight > scroll){
+                    $('body').stop().animate({
+                        scrollTop: (index + 1) * 260
+                    }, 666);
+                    // $('body').scrollTop(scroll);
+                }
+            };
+
+            $('.back-entery').hammer().unbind("tap", fold);
+            $('.option-list-title').hammer().bind("tap", unfold);
+        }, 2000);
+    }
     // $('.next-icon').hammer().bind("tap", function () {
     //     var li = $(this).parents('.option-list-li');
     //     li.transition({ x: '-1000px' }, 500);
