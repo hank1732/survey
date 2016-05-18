@@ -76,12 +76,15 @@ section{
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%); 
-}
-.option-item .text-vcenter{
-    /* width:100%; */
     left: 0;
     right: 0;
     text-align:center;
+}
+.option-item .text-vcenter{
+    /* width:100%; */
+    /* left: 0;
+    right: 0;
+    text-align:center; */
 }
 .text-vcenter.full{
     position: absolute;
