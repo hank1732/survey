@@ -39,13 +39,13 @@ $(function () {
         if(!$(this).hasClass('active')){
             return false;
         }
-        var index = $('.option-title').index($(this).parents('.option-title'));
-        var temp = $(this);
+
         var wrapperLi = $(this).parents('.option-title');
 
+        var index = $('.option-title').index($(this).parents('.option-title'));
+        var temp = $(this);
+
         scroll = $('body').scrollTop();
-        // answer poll
-        wrapperLi.addClass('js-answered');
 
         $('.survey-question').addClass('full');
         wrapperLi.find('.option-ul').addClass('flex');
@@ -74,6 +74,15 @@ $(function () {
         var index = $('.option-title').index($(this).parents('.option-title'));
         var temp = $(this).hasClass('option-item') ? $(this).siblings('.option-list-title') : $(this);
         var wrapperLi = $(this).parents('.option-title');
+        var inputsFields = wrapperLi.find('input');
+        var isInputEmpty = inputsFields.filter(function(index, el) {
+            return $(el).val() === '' ;
+        });
+
+        if(inputsFields.length === 0 || isInputEmpty.length === 0){
+            // answer poll
+            wrapperLi.addClass('js-answered');
+        };
 
         $('.survey-question').removeClass('full');
         $(this).removeClass('center');
@@ -105,8 +114,11 @@ $(function () {
                 var nextActive = wrapperLi.next();
                 while(nextActive && nextActive.hasClass('omit')){
                     nextActive = nextActive.next();
-                }
-                nextActive.find('.option-list-title').addClass('active');
+                };
+
+                wrapperLi.find('.text-vcenter').removeClass('underline');
+                nextActive.find('.option-list-title').addClass('active')
+                    .find('.text-vcenter').addClass('underline');
 
                 if(wrapperLi.hasClass('question1')){
                     if(wrapperLi.find('.omit89').length > 0){
@@ -118,12 +130,12 @@ $(function () {
                     }
                 }                    
 
-                if($('body').height() - visbleWindowHeight > scroll){
-                    $('body').stop().animate({
-                        scrollTop: (index + 1) * 260
-                    }, 666);
-                    // $('body').scrollTop(scroll);
-                }
+                // if($('body').height() - visbleWindowHeight > scroll){
+                //     $('body').stop().animate({
+                //         scrollTop: (index + 1) * 260
+                //     }, 666);
+                //     // $('body').scrollTop(scroll);
+                // }
             };
 
             $('.back-entery').hammer().unbind("tap", fold);

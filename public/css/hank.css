@@ -91,6 +91,27 @@ section{
     background:transparent; 
     padding: 0 16%;
 }
+.text-vcenter span{
+    line-height: 1.7;
+}
+.text-vcenter.underline span{
+    border-bottom: solid 5px #fff;
+    padding: 0 20px 10px;
+}
+.text-vcenter.div-user-name{
+    top:20%;
+}
+.text-vcenter.div-user-account{
+    top:55%;
+}
+.text-vcenter.sign{
+    top:70%;
+}
+.sign span{
+    border: 4px solid #fff;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
 .check-icon{
     display:none;
     position: absolute;
@@ -98,6 +119,24 @@ section{
     top: 0;
     width: 55px;
 }
+input{
+    width: 45%;
+    height: 80px;
+    font-size: 48px;
+    margin-top: 10%;
+    background: transparent;
+    border: 0 solid;
+    border-bottom:2px solid;
+    color: #fff;
+    text-align: center;
+}
+input:focus{
+    border: 0 solid;
+    border-bottom:2px solid;
+    outline: none;
+}
+
+
 
 .logo{
     display: block;
