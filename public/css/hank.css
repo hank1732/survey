@@ -86,7 +86,7 @@ section{
     right: 0;
     text-align:center; */
 }
-/* .text-vcenter.full{
+.text-vcenter.full{
     position: absolute;
     background:transparent; 
     padding: 0 16%;
@@ -103,7 +103,7 @@ section{
 }
 .text-vcenter.div-user-account{
     top:55%;
-} */
+}
 .text-vcenter.sign{
     top:70%;
 }
