@@ -20,7 +20,7 @@ $(function () {
         $('.welcome').fadeOut('slow');
         $('.selection').fadeIn('400');
     });
-    // $('.text-vcenter').first().addClass('underline');
+    $('.text-vcenter').first().addClass('underline');
 
     $('.option-item').hammer().bind("tap", function () {
         var wrapperLi = $(this).parents('.option-title');
