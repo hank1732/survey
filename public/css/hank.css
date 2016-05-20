@@ -119,7 +119,7 @@ section{
     top: 0;
     width: 55px;
 }
-input{
+/* input{
     width: 45%;
     height: 80px;
     font-size: 48px;
@@ -129,7 +129,7 @@ input{
     border-bottom:2px solid;
     color: #fff;
     text-align: center;
-}
+} */
 /* input:focus{
     border: transparent solid;
     border-bottom:2px solid;
