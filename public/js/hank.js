@@ -73,18 +73,12 @@ $(function () {
         temp.transition({ height: '24%' }, 666);
 
         temp.nextAll('.option-item').each(function(index, el) {
-            if(wrapperLi.hasClass('twoInOne')){
-                setTimeout(function () {
-                    $(el).transition({ y: 0 }, 777);
-                }, Math.floor(index/2) * 100);
-            }else{
-                setTimeout(function () {
-                    $(el).transition({ y: 0 }, 777);
-                }, index * 100);
-            }
+            setTimeout(function () {
+                $(el).transition({ y: 0 }, 777);
+            }, index * 100);
         });
-        // $('.option-list-title').hammer().unbind("tap", unfold);
-        // $('.back-entery').hammer().bind("tap", fold);
+        $('.option-list-title').hammer().unbind("tap", unfold);
+        $('.back-entery').hammer().bind("tap", fold);
     };
     function fold() {
         var index = $('.option-title').index($(this).parents('.option-title'));
@@ -155,8 +149,8 @@ $(function () {
                 }                    
             };
 
-            // $('.back-entery').hammer().unbind("tap", fold);
-            // $('.option-list-title').hammer().bind("tap", unfold);
+            $('.back-entery').hammer().unbind("tap", fold);
+            $('.option-list-title').hammer().bind("tap", unfold);
         }, 2000);
     }
 });
