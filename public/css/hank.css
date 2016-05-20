@@ -137,7 +137,7 @@ input:focus{
 }
 span.back-tip{
     display:none;
-    border:solid 0;
+    /* border:solid 0; */
 }
 
 .lineTop, .lineBottom{
