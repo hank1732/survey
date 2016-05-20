@@ -51,7 +51,7 @@ $(function () {
         //     }
         // }     
     // });
-    // $('.option-list-title').hammer().bind("tap", unfold);
+    $('.option-list-title').hammer().bind("tap", unfold);
     // $('.js-single').hammer().bind("tap", fold);
     function unfold() {
         if(!$(this).hasClass('active')){
