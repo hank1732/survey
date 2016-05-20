@@ -65,7 +65,7 @@ $(function () {
 
         $('.survey-question').addClass('full');
         wrapperLi.find('.option-ul').addClass('flex');
-        $(this).addClass('center');
+        // $(this).addClass('center');
                          
         wrapperLi.nextAll().transition({ y: '2000' }, 666)
             .end().prevAll().transition({ y: '-2000' }, 666);
@@ -140,8 +140,8 @@ $(function () {
                 };
 
                 wrapperLi.find('.text-vcenter').removeClass('underline');
-                nextActive.find('.option-list-title').addClass('active')
-                    .find('.text-vcenter').addClass('underline');
+                nextActive.find('.option-list-title').addClass('active')；
+                    // .find('.text-vcenter').addClass('underline');
 
                 if(wrapperLi.hasClass('question1')){
                     if(wrapperLi.find('.omit89').length > 0){
