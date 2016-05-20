@@ -20,7 +20,7 @@ $(function () {
         $('.welcome').fadeOut('slow');
         $('.selection').fadeIn('400');
     });
-    $('.text-vcenter').first().addClass('underline');
+    // $('.text-vcenter').first().addClass('underline');
 
     $('.option-item').hammer().bind("tap", function () {
         var wrapperLi = $(this).parents('.option-title');
@@ -29,27 +29,27 @@ $(function () {
             wrapperLi.find('img').hide();
             img.fadeIn('fast');
         }
-        if($(this).hasClass('js-mutiple')){
-            if(img.css("display") === 'none'){
-                img.fadeIn('fast');
-            }else{
-                img.fadeOut('fast');
-            }
-        }
-        if($(this).hasClass('js-mutiple2')){
-            if(wrapperLi.attr('data-tapCount') === undefined ){
-                wrapperLi.attr('data-tapCount', 0);
-            }
-            if(img.css("display") === 'none'){
-                if(wrapperLi.attr('data-tapCount') < 2){
-                    img.fadeIn('fast');
-                    wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
-                }                
-            }else{
-                img.fadeOut('fast');
-                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
-            }
-        }     
+        // if($(this).hasClass('js-mutiple')){
+        //     if(img.css("display") === 'none'){
+        //         img.fadeIn('fast');
+        //     }else{
+        //         img.fadeOut('fast');
+        //     }
+        // }
+        // if($(this).hasClass('js-mutiple2')){
+        //     if(wrapperLi.attr('data-tapCount') === undefined ){
+        //         wrapperLi.attr('data-tapCount', 0);
+        //     }
+        //     if(img.css("display") === 'none'){
+        //         if(wrapperLi.attr('data-tapCount') < 2){
+        //             img.fadeIn('fast');
+        //             wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
+        //         }                
+        //     }else{
+        //         img.fadeOut('fast');
+        //         wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
+        //     }
+        // }     
     });
     $('.option-list-title').hammer().bind("tap", unfold);
     $('.js-single').hammer().bind("tap", fold);
