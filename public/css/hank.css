@@ -119,7 +119,7 @@ section{
     top: 0;
     width: 55px;
 }
-input{
+/* input{
     width: 45%;
     height: 80px;
     font-size: 48px;
@@ -138,9 +138,9 @@ input:focus{
 span.back-tip{
     display:none;
     border:solid 0 !important;
-}
+} */
 
-.lineTop, .lineBottom{
+/* .lineTop, .lineBottom{
     position:absolute;
     width:100%;
     height:4px;
@@ -155,7 +155,7 @@ span.back-tip{
     bottom:0;
     background:#000;
     opacity:0.3;
-}
+} */
 
 .logo{
     display: block;
