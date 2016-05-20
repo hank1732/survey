@@ -119,7 +119,7 @@ section{
     top: 0;
     width: 55px;
 }
-input{
+/* input{
     width: 45%;
     height: 80px;
     font-size: 48px;
@@ -134,13 +134,13 @@ input:focus{
     border: 0 solid;
     border-bottom:2px solid;
     outline: none;
-}
+} */
 /* span.back-tip{
     display:none;
     border:solid 0;
 }
  */
-.lineTop, .lineBottom{
+/* .lineTop, .lineBottom{
     position:absolute;
     width:100%;
     height:4px;
@@ -155,7 +155,7 @@ input:focus{
     bottom:0;
     background:#000;
     opacity:0.3;
-}
+} */
 
 .logo{
     display: block;
