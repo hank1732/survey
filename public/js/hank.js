@@ -17,12 +17,13 @@ $(function () {
     $('.option-item').transition({ y: '-4000' }, 500);
     $('li:not(.option-title)').prepend('<div class="lineTop"></div>')
         .append('<div class="lineBottom"></div>');
-
     $('.enter-button').hammer().bind("tap", function () {
         $(this).hide();
         $('.welcome').fadeOut('slow');
         $('.selection').fadeIn('400');
     });
+    $('.text-vcenter').first().addClass('underline');
+
     $('.option-item').hammer().bind("tap", function () {
         var wrapperLi = $(this).parents('.option-title');
         var img = $(this).find('img');
