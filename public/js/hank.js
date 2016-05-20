@@ -83,8 +83,8 @@ $(function () {
                 }, index * 100);
             }
         });
-        $('.option-list-title').hammer().unbind("tap", unfold);
-        $('.back-entery').hammer().bind("tap", fold);
+        // $('.option-list-title').hammer().unbind("tap", unfold);
+        // $('.back-entery').hammer().bind("tap", fold);
     };
     function fold() {
         var index = $('.option-title').index($(this).parents('.option-title'));
@@ -109,7 +109,6 @@ $(function () {
         };
 
         $('.survey-question').removeClass('full');
-        $(this).removeClass('center');
         $('.back-tip').fadeOut('fast');
 
         setTimeout(function () {
@@ -155,8 +154,8 @@ $(function () {
                 }                    
             };
 
-            $('.back-entery').hammer().unbind("tap", fold);
-            $('.option-list-title').hammer().bind("tap", unfold);
+            // $('.back-entery').hammer().unbind("tap", fold);
+            // $('.option-list-title').hammer().bind("tap", unfold);
         }, 2000);
     }
 });
