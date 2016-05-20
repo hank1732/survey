@@ -135,7 +135,10 @@ input:focus{
     border-bottom:2px solid;
     outline: none;
 }
-
+span.back-tip{
+    display:none;
+    border:solid 0 !important;
+}
 
 
 .logo{

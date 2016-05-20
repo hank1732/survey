@@ -12,6 +12,8 @@ $(function () {
     var scroll = 0;
     var bodyHeight = $('body').height();
     var visbleWindowHeight = $(window).height();
+    var tapSelectCount = 0;
+
     $('.option-item').transition({ y: '-4000' }, 500);
 
     $('.enter-button').hammer().bind("tap", function () {
@@ -22,16 +24,31 @@ $(function () {
     $('.option-item').hammer().bind("tap", function () {
         var wrapperLi = $(this).parents('.option-title');
         var img = $(this).find('img');
-        if(wrapperLi.hasClass('mutiple')){
+        if($(this).hasClass('js-single')){
+            wrapperLi.find('img').hide();
+            img.fadeIn('fast');
+        }
+        if($(this).hasClass('js-mutiple')){
             if(img.css("display") === 'none'){
                 img.fadeIn('fast');
             }else{
                 img.fadeOut('fast');
             }
-        }else{
-            wrapperLi.find('img').hide();
-            img.fadeIn('fast');
-        }        
+        }
+        if($(this).hasClass('js-mutiple2')){
+            if(wrapperLi.attr('data-tapCount') === undefined ){
+                wrapperLi.attr('data-tapCount', 0);
+            }
+            if(img.css("display") === 'none'){
+                if(wrapperLi.attr('data-tapCount') < 2){
+                    img.fadeIn('fast');
+                    wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
+                }                
+            }else{
+                img.fadeOut('fast');
+                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
+            }
+        }     
     });
     $('.option-list-title').hammer().bind("tap", unfold);
     $('.js-single').hammer().bind("tap", fold);
@@ -39,13 +56,12 @@ $(function () {
         if(!$(this).hasClass('active')){
             return false;
         }
-
         var wrapperLi = $(this).parents('.option-title');
-
-        var index = $('.option-title').index($(this).parents('.option-title'));
+        // var index = $('.option-title').index($(this).parents('.option-title'));
         var temp = $(this);
 
         scroll = $('body').scrollTop();
+        $('.back-tip').fadeIn('fast');
 
         $('.survey-question').addClass('full');
         wrapperLi.find('.option-ul').addClass('flex');
@@ -79,13 +95,23 @@ $(function () {
             return $(el).val() === '' ;
         });
 
+        // no field left empty
         if(inputsFields.length === 0 || isInputEmpty.length === 0){
             // answer poll
-            wrapperLi.addClass('js-answered');
+            var liSelect = wrapperLi.find('.check-icon');
+            if(liSelect.length === 0){
+                wrapperLi.addClass('js-answered');
+            }else{
+                if(liSelect.filter(':visible').length > 0){
+                    wrapperLi.addClass('js-answered');
+                }
+            }
         };
 
         $('.survey-question').removeClass('full');
         $(this).removeClass('center');
+        $('.back-tip').fadeOut('fast');
+
         setTimeout(function () {
             temp.transition({ height: '260' }, 666, function () {
                 wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666)
