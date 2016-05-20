@@ -140,6 +140,24 @@ span.back-tip{
     border:solid 0 !important;
 }
 
+.lineTop, .lineBottom{
+    position:absolute;
+    width:100%;
+    height:4px;
+    z-index:15000;
+}
+.lineTop{
+    top:0;
+    background:#fff;
+    opacity:0.4;
+}
+.lineBottom{
+    bottom:0;
+    background:#000;
+    opacity:0.3;
+}
+
+
 
 .logo{
     display: block;
@@ -212,14 +230,16 @@ span.back-tip{
 .option-title{
     position:relative;
     height:260px;
-    box-shadow:  0 5px 2px #bbb inset;
+    /* box-shadow:  0 5px 2px #bbb inset; */
+    /* border-top:1px solid rgba(255,255,255,0.8); */
+    /* border-bottom:1px solid rgba(0,0,0,0.8); */
 }
 .option-title.full{
     position:absolute;
     height:auto;
 }
 .option-ul.full{
-    top:4px;
+    /* top:4px; */
 }
 .option-ul.flex{
     display: flex;
@@ -244,7 +264,7 @@ span.back-tip{
     position:relative;
     /* height:200px; */
     /* padding: 0 16%; */
-    box-shadow:0 6px 12px #aaa inset;
+    /* box-shadow:0 6px 12px #aaa inset; */
     color:#fff;
     flex:1;
 }

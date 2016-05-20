@@ -15,6 +15,8 @@ $(function () {
     var tapSelectCount = 0;
 
     $('.option-item').transition({ y: '-4000' }, 500);
+    $('li:not(.option-title)').prepend('<div class="lineTop"></div>')
+        .append('<div class="lineBottom"></div>');
 
     $('.enter-button').hammer().bind("tap", function () {
         $(this).hide();
