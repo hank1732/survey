@@ -130,7 +130,7 @@ input{
     color: #fff;
     text-align: center;
 }
-input:focus{
+/* input:focus{
     border: transparent solid;
     border-bottom:2px solid;
     outline: none;
@@ -138,7 +138,7 @@ input:focus{
 span.back-tip{
     display:none;
     border:solid transparent;
-}
+} */
 
 .lineTop, .lineBottom{
     position:absolute;
