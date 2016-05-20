@@ -83,7 +83,7 @@ $(function () {
                 }, index * 100);
             }
         });
-        // $('.option-list-title').hammer().unbind("tap", unfold);
+        $('.option-list-title').hammer().unbind("tap", unfold);
         $('.back-entery').hammer().bind("tap", fold);
     };
     function fold() {
@@ -155,7 +155,7 @@ $(function () {
             };
 
             $('.back-entery').hammer().unbind("tap", fold);
-            // $('.option-list-title').hammer().bind("tap", unfold);
+            $('.option-list-title').hammer().bind("tap", unfold);
         }, 2000);
     }
 });
