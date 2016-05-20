@@ -140,7 +140,7 @@ span.back-tip{
     border:solid 0 !important;
 } */
 
-/* .lineTop, .lineBottom{
+.lineTop, .lineBottom{
     position:absolute;
     width:100%;
     height:4px;
@@ -155,7 +155,7 @@ span.back-tip{
     bottom:0;
     background:#000;
     opacity:0.3;
-} */
+}
 
 .logo{
     display: block;
