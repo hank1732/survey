@@ -20,7 +20,10 @@ $(function () {
         $('.welcome').fadeOut('slow');
         $('.selection').fadeIn('400');
     });
-    // $('.text-vcenter').first().addClass('underline');
+    $('.text-vcenter').first().addClass('underline');
+
+    $('.option-ul li').prepend('<div class="lineTop"></div>')
+        .append('<div class="lineBottom"></div>');
 
     $('.option-item').hammer().bind("tap", function () {
         var wrapperLi = $(this).parents('.option-title');
@@ -63,8 +66,8 @@ $(function () {
         scroll = $('body').scrollTop();
         $('.back-tip').fadeIn('fast');
 
-        $('.survey-question').addClass('full');
         wrapperLi.find('.option-ul').addClass('flex');
+        $('.survey-question').addClass('full');
         // $(this).addClass('center');
                          
         wrapperLi.nextAll().transition({ y: '2000' }, 666)
