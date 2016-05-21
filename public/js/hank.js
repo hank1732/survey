@@ -127,15 +127,9 @@ $(function () {
                 wrapperLi.find('.option-ul').removeClass('flex'); 
             });
             temp.nextAll('.option-item').each(function(index, el) {
-                if(wrapperLi.hasClass('twoInOne')){
-                    setTimeout(function () {
-                        $(el).transition({ y: '-2000' }, 444);
-                    }, Math.floor(index/2) * 50);
-                }else{
-                    setTimeout(function () {
-                        $(el).transition({ y: '-2000' }, 444);
-                    }, index * 50);
-                }
+                setTimeout(function () {
+                    $(el).transition({ y: '-2000' }, 444);
+                }, index * 50);
             });
             $('.back-tip').hide();
         }, 444);
@@ -164,7 +158,7 @@ $(function () {
 
             $('.back-entery').hammer().unbind("tap", fold);
             $('.option-list-title').hammer().bind("tap", unfold);
-        }, 2000);
+        }, 1000);
     }
 
     $(window).keyup(function(event) {
