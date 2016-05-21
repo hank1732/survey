@@ -85,15 +85,9 @@ $(function () {
 
         // option list
         temp.nextAll('.option-item').each(function(index, el) {
-            if(wrapperLi.hasClass('twoInOne')){
-                setTimeout(function () {
-                    $(el).transition({ y: 0 }, 777);
-                }, Math.floor(index/2) * 100);
-            }else{
-                setTimeout(function () {
-                    $(el).transition({ y: 0 }, 777);
-                }, index * 100);
-            }
+            setTimeout(function () {
+                $(el).transition({ y: 0 }, 444);
+            }, index * 50);
         });
         $('.option-list-title').hammer().unbind("tap", unfold);
         $('.back-entery').hammer().bind("tap", fold);
@@ -125,22 +119,22 @@ $(function () {
 
         // this question
         setTimeout(function () {
-            temp.transition({ height: '260' }, 666, function () {
-                wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666)
-                    .nextAll().transition({ y: '0' }, 666)
-                    .end().prevAll().transition({ y: '0' }, 666);
+            temp.transition({ height: '260' }, 333, function () {
+                wrapperLi.removeClass('full').transition({ height: 'atuo' }, 333)
+                    .nextAll().transition({ y: '0' }, 333)
+                    .end().prevAll().transition({ y: '0' }, 333);
                 $('body').scrollTop(scroll);
                 wrapperLi.find('.option-ul').removeClass('flex'); 
             });
             temp.nextAll('.option-item').each(function(index, el) {
                 if(wrapperLi.hasClass('twoInOne')){
                     setTimeout(function () {
-                        $(el).transition({ y: '-2000' }, 777);
-                    }, Math.floor(index/2) * 100);
+                        $(el).transition({ y: '-2000' }, 444);
+                    }, Math.floor(index/2) * 50);
                 }else{
                     setTimeout(function () {
-                        $(el).transition({ y: '-2000' }, 777);
-                    }, index * 100);
+                        $(el).transition({ y: '-2000' }, 444);
+                    }, index * 50);
                 }
             });
             $('.back-tip').hide();
