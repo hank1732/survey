@@ -24,8 +24,8 @@
             <ul class="survey-question z9">
                 <li class="option-title question1">
                     <ul class="option-ul full">
-                        <li class="option-list-title center">                            
-                            <div class="text-vcenter"><span>您所在的地区</span></div>                            
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><span>您所在的地区</span></div>
                         </li>
                         <li class="option-item js-single">
                             <div class="text-vcenter omit89"><img src="imgs/check-tick.svg" class="check-icon">A.中国大陆</div>
@@ -40,19 +40,28 @@
                 </li>
                 <li class="option-title question2">
                     <ul class="option-ul full">
-                        <li class="option-list-title back-entery">
-                            <div class="text-vcenter"><span>个人信息</span><!-- <span class="back-tip"><br>(点击题目返回)</span> --></div>
+                        <li class="option-list-title">
+                            <div class="text-vcenter">
+                                <span>个人信息</span>
+                            </div>
                         </li>
                         <li class="option-item">
                             <div class="text-vcenter div-user-name omit89"> 您的姓名
                                 <br>
-                                <input type="text" class="user-name">
+                                <span class="input-frame-left">[</span>
+                                <input type="text" class="user-name"><span class="input-frame-right">]</span>
                             </div>
                             <div class="text-vcenter div-user-account"> 您的Nike+账号
                                 <br>
-                                <input type="text" class="user-account">
+                                <span class="input-frame-left">[</span>
+                                <input type="text" class="user-account"><span class="input-frame-right">]</span>
                             </div>
-                            <div class="text-vcenter sign"><span>注册</span> </div>
+                            <div class="text-vcenter sign">
+                                <span>注册</span>
+                            </div>
+                            <div class="text-vcenter back-tip-wrap">
+                                <span class="back-tip disable user-name-confirm">确定</span>
+                            </div>
                         </li>
                     </ul>
                 </li>
@@ -119,7 +128,7 @@
                         </li>
                     </ul>
                 </li>
-                <!--     <li class="option-title question6">
+                <li class="option-title question6">
                     <ul class="option-ul full">
                         <li class="option-list-title">
                             <div class="text-vcenter"><span>您的运动鞋尺码是什么？</span></div>
@@ -198,11 +207,16 @@
                             <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">E． 其它_______</div>
                         </li>
                     </ul>
-                </li> -->
+                </li>
                 <li class="option-title question11">
                     <ul class="option-ul full">
                         <li class="option-list-title">
-                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon"><span>您对Nike哪类运动产品最感兴趣？（最多可选择两项）</span><!-- <span class="back-tip"><br>(点击题目返回)</span> --></div>
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>您对Nike哪类运动产品最感兴趣？（最多可选择两项）</span>
+                                <div class="text-vcenter back-tip-wrap">
+                                    <span class="back-tip disable user-interest-confirm">确定</span>
+                                </div>
+                            </div>
                         </li>
                         <li class="option-item js-mutiple2">
                             <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. 跑步</div>
@@ -270,25 +284,254 @@
                 <li class="option-title question13">
                     <ul class="option-ul full">
                         <li class="option-list-title">
-                            <div class="text-vcenter"><span>您平时最喜欢怎样的穿衣造型风格？</span></div>
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>您平时最喜欢怎样的穿衣造型风格？</span>
+                            </div>
                         </li>
-                        <li class="option-item">
-                            <div class="text-vcenter">A. 简约风</div>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. 简约风</div>
                         </li>
-                        <li class="option-item">
-                            <div class="text-vcenter">B. 运动风</div>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B. 运动风</div>
                         </li>
-                        <li class="option-item">
-                            <div class="text-vcenter">C. 潮流前卫风</div>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C. 潮流前卫风</div>
                         </li>
-                        <li class="option-item">
-                            <div class="text-vcenter">D. 高阶时装风</div>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">D. 高阶时装风</div>
                         </li>
-                        <li class="option-item">
-                            <div class="text-vcenter">E. 中性风</div>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">E. 中性风</div>
                         </li>
-                        <li class="option-item">
-                            <div class="text-vcenter">F. 其它_______</div>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">F. 其它_______</div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="option-title question14">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>您最喜爱的NSW鞋款类型是什么？</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A.  Air Max系列</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B.  复古跑鞋（如Montreal, Internationalist, Talaria等）</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C.  篮球灵感系列鞋款（如Air Force 1, Dunk, Blazer等）</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">D.  简洁设计鞋款（如Roshe, All Court, Tennis Classic等）</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">E.  创新设计鞋款（如Rift, Presto等）</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">F.  签名球鞋的lifestyle版本</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">G.  特别喜欢的鞋型请指出_______</div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 15. 您平时喜欢参与的运动项目是？
+                A.  跑步
+                B.  健身
+                C.  篮球
+                D.  足球 -->
+                <li class="option-title question15">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>您平时喜欢参与的运动项目是？</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A.  跑步</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B.  健身</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C. 篮球</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">D. 足球</div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 16. 在以下几种训练中，您平常更喜欢参与哪种跑步训练？ 
+                    A.  耐力训练
+                    B.  速度训练
+                    C.  力量训练 -->
+                <li class="option-title question16">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>在以下几种训练中，您平常更喜欢参与哪种跑步训练？</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. 耐力训练</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B. 速度训练</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C. 力量训练</div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 17. 日常跑步锻炼之外，您还会参加马拉松比赛吗？
+A．  参加过
+B．  从未参加，希望以后参加
+C．  从未参加，以后也不会参加 -->
+                <li class="option-title question17">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>日常跑步锻炼之外，您还会参加马拉松比赛吗？</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. 参加过</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B. 从未参加，希望以后参加</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C. 从未参加，以后也不会参加</div>
+                        </li>
+                    </ul>
+                </li>
+               <!--  18. 您在未来一年内有什么跑步目标么？
+A. 刷新马拉松的个人最佳成绩  ____（填写马拉松名字)
+B. 完成第一次马拉松  _____(填写马拉松名字)
+C. 日常训练达到锻炼目的
+D. 其它____ -->
+                <li class="option-title question18">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>您在未来一年内有什么跑步目标么？</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. 刷新马拉松的个人最佳成绩  ____（填写马拉松名字)</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B. 完成第一次马拉松  _____(填写马拉松名字)</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C. 日常训练达到锻炼目的</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">D. 其它____</div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 19. 您平均每公里所用时间为?
+A.  5分钟以内
+B.  5分钟—5分钟30秒
+C.  5分30秒—6分00秒
+D.  6分钟—6分30秒
+E.  6分30秒—7分钟
+F.  7分钟以上 -->
+                <li class="option-title question19">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>您平均每公里所用时间为?</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. 5分钟以内</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B. 5分钟—5分钟30秒</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C. 5分30秒—6分00秒</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">D. 6分钟—6分30秒</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">E. 6分30秒—7分钟</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">F. 7分钟以上</div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 20. 是否有过受伤的历史？
+A.  有
+（点击A后，会有下拉菜单，选项为：a. 膝部 b. 脚踝 c. 脚趾 d. 其它 )
+B.  没有 -->
+                <li class="option-title question20">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>是否有过受伤的历史？</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. 有</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B.  没有</div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 21. 您在跑步时希望跑鞋能带给您怎样的体验？
+A.  轻松畅跑。旨在帮助跑者跑得更远。强调柔软、支撑性与舒适感。
+B.  疾速快跑。旨在帮助跑者跑得更快。强调轻质、响应与锁定性。
+C.  自然奔跑。旨在为跑者带来最自然的步伐，让他们变得更强壮。强调自如、灵活性与舒适性。 -->
+                <li class="option-title question21">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>您在跑步时希望跑鞋能带给您怎样的体验？</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. 轻松畅跑。旨在帮助跑者跑得更远。强调柔软、支撑性与舒适感。</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B. 疾速快跑。旨在帮助跑者跑得更快。强调轻质、响应与锁定性。</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C. 自然奔跑。旨在为跑者带来最自然的步伐，让他们变得更强壮。强调自如、灵活性与舒适性。</div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 22. 在轻松畅跑系列的跑鞋中，您最喜欢哪款跑鞋？
+A.  LunarEpic
+B.  LunarGlide
+C.  Vomero
+D.  Air Max 2016 -->
+                <li class="option-title question22">
+                    <ul class="option-ul full">
+                        <li class="option-list-title">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
+                                <span>在轻松畅跑系列的跑鞋中，您最喜欢哪款跑鞋？</span>
+                            </div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">A. LunarEpic</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">B. LunarGlide</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">C. Vomero</div>
+                        </li>
+                        <li class="option-item  js-single">
+                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">D. Air Max 2016</div>
                         </li>
                     </ul>
                 </li>

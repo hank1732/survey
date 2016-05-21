@@ -14,18 +14,21 @@ $(function () {
     var visbleWindowHeight = $(window).height();
     var tapSelectCount = 0;
 
-    $('.option-item').transition({ y: '-4000' }, 500);
+
     $('.enter-button').hammer().bind("tap", function () {
         $(this).hide();
         $('.welcome').fadeOut('slow');
         $('.selection').fadeIn('400');
     });
+
+    // dom prepare
+    $('.option-item').transition({ y: '-4000' }, 500);
     $('.text-vcenter').first().addClass('underline');
     $('.option-ul').first().find('.option-list-title').addClass('active');
-
     $('.option-ul li').prepend('<div class="lineTop"></div>')
         .append('<div class="lineBottom"></div>');
 
+    // tap option and show tick
     $('.option-item').hammer().bind("tap", function () {
         var wrapperLi = $(this).parents('.option-title');
         var img = $(this).find('img');
@@ -48,13 +51,18 @@ $(function () {
                 if(wrapperLi.attr('data-tapCount') < 2){
                     img.fadeIn('fast');
                     wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
-                }                
+                    if(wrapperLi.attr('data-tapCount') == 2 ){
+                        fold.apply(this);
+                    }
+                }
             }else{
                 img.fadeOut('fast');
                 wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
             }
         }     
     });
+
+    // question tap
     $('.option-list-title').hammer().bind("tap", unfold);
     $('.js-single').hammer().bind("tap", fold);
     function unfold() {
@@ -65,17 +73,17 @@ $(function () {
         var temp = $(this);
 
         scroll = $('body').scrollTop();
-        $('.back-tip').fadeIn('fast');
-
+        $('.back-tip').show();
         wrapperLi.find('.option-ul').addClass('flex');
         $('.survey-question').addClass('full');
-        // $(this).addClass('center');
-                         
+
+        // question title list
         wrapperLi.nextAll().transition({ y: '2000' }, 666)
             .end().prevAll().transition({ y: '-2000' }, 666);
         wrapperLi.addClass('full').transition({ height: 'atuo' }, 666);
         temp.transition({ height: '24%' }, 666);
 
+        // option list
         temp.nextAll('.option-item').each(function(index, el) {
             if(wrapperLi.hasClass('twoInOne')){
                 setTimeout(function () {
@@ -90,9 +98,10 @@ $(function () {
         $('.option-list-title').hammer().unbind("tap", unfold);
         $('.back-entery').hammer().bind("tap", fold);
     };
-    function fold() {
+    function fold(whichLi) {
         var index = $('.option-title').index($(this).parents('.option-title'));
-        var temp = $(this).hasClass('option-item') ? $(this).siblings('.option-list-title') : $(this);
+        var temp = $(this).closest('.option-list-title').length ? $(this).closest('.option-list-title') : 
+                        $(this).siblings('.option-list-title').length ? $(this).siblings('.option-list-title') : $(this).closest('.option-item').siblings('.option-list-title');
         var wrapperLi = $(this).parents('.option-title');
         var inputsFields = wrapperLi.find('input');
         var isInputEmpty = inputsFields.filter(function(index, el) {
@@ -113,8 +122,8 @@ $(function () {
         };
 
         $('.survey-question').removeClass('full');
-        $('.back-tip').fadeOut('fast');
 
+        // this question
         setTimeout(function () {
             temp.transition({ height: '260' }, 666, function () {
                 wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666)
@@ -134,6 +143,7 @@ $(function () {
                     }, index * 100);
                 }
             });
+             $('.back-tip').hide();
         }, 444);
         // next question
         setTimeout(function () {
@@ -162,5 +172,16 @@ $(function () {
             $('.option-list-title').hammer().bind("tap", unfold);
         }, 2000);
     }
+
+    $(window).keyup(function(event) {
+       if($('.user-name').val() !== '' && $('.user-account').val() !== ''){
+            $('.user-name-confirm').removeClass('disable');
+            $('.user-name-confirm').hammer().bind("tap", fold);
+       }
+    });
+    $('.question11 .option-item').hammer().bind("tap", function () {
+        $('.user-interest-confirm').removeClass('disable');
+        $('.user-interest-confirm').hammer().bind("tap", fold);
+    });
 });
 
