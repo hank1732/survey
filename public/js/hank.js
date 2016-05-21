@@ -21,6 +21,7 @@ $(function () {
         $('.selection').fadeIn('400');
     });
     $('.text-vcenter').first().addClass('underline');
+    $('.option-ul').first().find('.option-list-title').addClass('active');
 
     $('.option-ul li').prepend('<div class="lineTop"></div>')
         .append('<div class="lineBottom"></div>');
