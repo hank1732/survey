@@ -78,10 +78,10 @@ $(function () {
         $('.survey-question').addClass('full');
 
         // question title list
-        wrapperLi.nextAll().transition({ y: '2000' }, 666)
-            .end().prevAll().transition({ y: '-2000' }, 666);
-        wrapperLi.addClass('full').transition({ height: 'atuo' }, 666);
-        temp.transition({ height: '24%' }, 666);
+        wrapperLi.nextAll().transition({ y: '2000' }, 333)
+            .end().prevAll().transition({ y: '-2000' }, 333);
+        wrapperLi.addClass('full').transition({ height: 'atuo' }, 333);
+        temp.transition({ height: '24%' }, 333);
 
         // option list
         temp.nextAll('.option-item').each(function(index, el) {
@@ -143,7 +143,7 @@ $(function () {
                     }, index * 100);
                 }
             });
-             $('.back-tip').hide();
+            $('.back-tip').hide();
         }, 444);
         // next question
         setTimeout(function () {
