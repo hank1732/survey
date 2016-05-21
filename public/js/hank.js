@@ -78,15 +78,15 @@ $(function () {
         $('.survey-question').addClass('full');
 
         // question title list
-        wrapperLi.nextAll().transition({ y: '2000' }, 333)
-            .end().prevAll().transition({ y: '-2000' }, 333);
-        wrapperLi.addClass('full').transition({ height: 'atuo' }, 333);
-        temp.transition({ height: '24%' }, 333);
+        wrapperLi.nextAll().transition({ y: '2000' }, 600)
+            .end().prevAll().transition({ y: '-2000' }, 600);
+        wrapperLi.addClass('full').transition({ height: 'atuo' }, 600);
+        temp.transition({ height: '24%' }, 600);
 
         // option list
         temp.nextAll('.option-item').each(function(index, el) {
             setTimeout(function () {
-                $(el).transition({ y: 0 }, 444);
+                $(el).transition({ y: 0 }, 666);
             }, index * 50);
         });
         $('.option-list-title').hammer().unbind("tap", unfold);
@@ -119,16 +119,16 @@ $(function () {
 
         // this question
         setTimeout(function () {
-            temp.transition({ height: '260' }, 333, function () {
-                wrapperLi.removeClass('full').transition({ height: 'atuo' }, 333)
-                    .nextAll().transition({ y: '0' }, 333)
-                    .end().prevAll().transition({ y: '0' }, 333);
+            temp.transition({ height: '260' }, 600, function () {
+                wrapperLi.removeClass('full').transition({ height: 'atuo' }, 600)
+                    .nextAll().transition({ y: '0' }, 600)
+                    .end().prevAll().transition({ y: '0' }, 600);
                 $('body').scrollTop(scroll);
                 wrapperLi.find('.option-ul').removeClass('flex'); 
             });
             temp.nextAll('.option-item').each(function(index, el) {
                 setTimeout(function () {
-                    $(el).transition({ y: '-2000' }, 444);
+                    $(el).transition({ y: '-2000' }, 666);
                 }, index * 50);
             });
             $('.back-tip').hide();
@@ -158,7 +158,7 @@ $(function () {
 
             $('.back-entery').hammer().unbind("tap", fold);
             $('.option-list-title').hammer().bind("tap", unfold);
-        }, 1000);
+        }, 2000);
     }
 
     $(window).keyup(function(event) {
