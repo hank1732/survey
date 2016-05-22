@@ -85,7 +85,8 @@ $(function () {
         wrapperLi.nextAll().hide()
             .end().prevAll().hide();
         wrapperLi.addClass('full').transition({ height: 'atuo' }, 666);
-        temp.transition({ height: '24%' }, 666);
+        // temp.transition({ height: '24%' }, 666);
+        temp.height('24%');
 
         // option list
         temp.nextAll('.option-item').each(function(index, el) {
