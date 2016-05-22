@@ -41,6 +41,9 @@ section{
     background:#fff;
     overflow:hidden;
 }
+.z12{
+    z-index:12000;
+}
 .z9{
     z-index:9000;
 }
@@ -246,6 +249,9 @@ input:focus{
     display:none;
     color:#b3b3b3;
 }
+.selection.full{
+    position:relative;
+}
 .end-temp{
     text-align:center;
     top: 50%;
@@ -253,7 +259,9 @@ input:focus{
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-
+.option-panel{
+    display:none;
+}
 
 .option-title{
     position:relative;
