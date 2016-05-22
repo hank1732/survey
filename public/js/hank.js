@@ -22,7 +22,8 @@ $(function () {
     });
 
     // dom prepare
-    $('.option-item').transition({ y: '-4000' }, 500);
+    // $('.option-item').transition({ y: '-1800' }, 500).hide();
+     $('.option-item').transition({ y: '-1800' }, 500);
     $('.text-vcenter').first().addClass('underline');
     $('.option-ul').first().find('.option-list-title').addClass('active');
     $('.option-ul li').prepend('<div class="lineTop"></div>')
@@ -78,15 +79,15 @@ $(function () {
         $('.survey-question').addClass('full');
 
         // question title list
-        wrapperLi.nextAll().transition({ y: '2000' }, 600)
-            .end().prevAll().transition({ y: '-2000' }, 600);
-        wrapperLi.addClass('full').transition({ height: 'atuo' }, 600);
-        temp.transition({ height: '24%' }, 600);
+        wrapperLi.nextAll().transition({ y: '2000' }, 666)
+            .end().prevAll().transition({ y: '-2000' }, 666);
+        wrapperLi.addClass('full').transition({ height: 'atuo' }, 666);
+        temp.transition({ height: '24%' }, 666);
 
         // option list
         temp.nextAll('.option-item').each(function(index, el) {
             setTimeout(function () {
-                $(el).transition({ y: 0 }, 666);
+                $(el).show().transition({ y: 0 }, 888, 'ease');
             }, index * 50);
         });
         $('.option-list-title').hammer().unbind("tap", unfold);
@@ -119,16 +120,16 @@ $(function () {
 
         // this question
         setTimeout(function () {
-            temp.transition({ height: '260' }, 600, function () {
-                wrapperLi.removeClass('full').transition({ height: 'atuo' }, 600)
-                    .nextAll().transition({ y: '0' }, 600)
-                    .end().prevAll().transition({ y: '0' }, 600);
+            temp.transition({ height: '260' }, 666, function () {
+                wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666)
+                    .nextAll().transition({ y: '0' }, 666)
+                    .end().prevAll().transition({ y: '0' }, 666);
                 $('body').scrollTop(scroll);
                 wrapperLi.find('.option-ul').removeClass('flex'); 
             });
             temp.nextAll('.option-item').each(function(index, el) {
                 setTimeout(function () {
-                    $(el).transition({ y: '-2000' }, 666);
+                    $(el).transition({ y: '-1800' }, 888, 'ease');
                 }, index * 50);
             });
             $('.back-tip').hide();
@@ -158,6 +159,8 @@ $(function () {
 
             $('.back-entery').hammer().unbind("tap", fold);
             $('.option-list-title').hammer().bind("tap", unfold);
+
+            temp.nextAll('.option-item').hide();
         }, 2000);
     }
 

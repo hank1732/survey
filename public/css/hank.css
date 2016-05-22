@@ -119,6 +119,9 @@ section{
     top: 0;
     width: 55px;
 }
+.check-icon.wide{
+    left:10%;
+}
 input{
     width: 40%;
     height: 80px;
