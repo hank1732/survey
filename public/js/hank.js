@@ -23,7 +23,7 @@ $(function () {
 
     // dom prepare
     // $('.option-item').transition({ y: '-1800' }, 500).hide();
-     $('.option-item').transition({ y: '-1800' }, 500);
+    $('.option-item').transition({ y: '-1800' }, 500);
     $('.text-vcenter').first().addClass('underline');
     $('.option-ul').first().find('.option-list-title').addClass('active');
     $('.option-ul li').prepend('<div class="lineTop"></div>')
@@ -60,7 +60,11 @@ $(function () {
                 img.fadeOut('fast');
                 wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
             }
-        }     
+        }
+        //  reset selected
+        var selectedLi = wrapperLi.nextAll('.option-title');
+        selectedLi.find('img').hide()
+            .end().find('.option-list-title').removeClass('active');
     });
 
     // question tap
@@ -82,8 +86,8 @@ $(function () {
         // wrapperLi.nextAll().transition({ y: '2000' }, 666)
         //     .end().prevAll().transition({ y: '-2000' }, 666);
         //     
-        wrapperLi.nextAll().hide()
-            .end().prevAll().hide();
+        wrapperLi.nextAll(':not(.omit)').hide()
+            .end().prevAll(':not(.omit)').hide();
         wrapperLi.addClass('full').transition({ height: 'atuo' }, 666);
         temp.transition({ height: '24%' }, 666);
         // temp.height('24%');
@@ -97,7 +101,8 @@ $(function () {
         $('.option-list-title').hammer().unbind("tap", unfold);
         $('.back-entery').hammer().bind("tap", fold);
     };
-    function fold(whichLi) {
+    function fold() {
+        var self = this;
         var index = $('.option-title').index($(this).parents('.option-title'));
         var temp = $(this).closest('.option-list-title').length ? $(this).closest('.option-list-title') : 
                         $(this).siblings('.option-list-title').length ? $(this).siblings('.option-list-title') : $(this).closest('.option-item').siblings('.option-list-title');
@@ -130,10 +135,10 @@ $(function () {
                 // wrapperLi.nextAll().transition({ y: '0' }, 666)
                 //     .end().prevAll().transition({ y: '0' }, 666);
                 //     
-                wrapperLi.nextAll().show()
-                    .end().prevAll().show();
+                wrapperLi.nextAll(':not(.omit)').show()
+                    .end().prevAll(':not(.omit)').show();
                 $('body').scrollTop(scroll);
-                wrapperLi.find('.option-ul').removeClass('flex'); 
+                wrapperLi.find('.option-ul').removeClass('flex');
             });
             temp.nextAll('.option-item').each(function(index, el) {
                 setTimeout(function () {
@@ -142,9 +147,38 @@ $(function () {
             });
             $('.back-tip').hide();
         }, 444);
+
+        
         // next question
         setTimeout(function () {
             if(wrapperLi.hasClass('js-answered')){
+                if(wrapperLi.hasClass('question15')){
+                    $('.Q15').hide().addClass('omit');
+                    $('.Q21').hide().addClass('omit');
+                    if($(self).hasClass('OP15A')){
+                        $('.Q15A').not('.Q21').show().removeClass('omit');
+                    }
+                    if($(self).hasClass('OP15B')){
+                        $('.Q15B').show().removeClass('omit');
+                    }
+                    if($(self).hasClass('OP15C')){
+                        $('.Q15C').show().removeClass('omit');
+                    }
+                    if($(self).hasClass('OP15D')){
+                        $('.Q15D').show().removeClass('omit');
+                    }
+                }
+                if(wrapperLi.hasClass('question21')){
+                    if($(self).hasClass('OP21A')){
+                        $('.Q21A').show().removeClass('omit');
+                    }
+                    if($(self).hasClass('OP21B')){
+                        $('.Q21B').show().removeClass('omit');
+                    }
+                    if($(self).hasClass('OP21C')){
+                        $('.Q21C').show().removeClass('omit');
+                    }
+                }
                 var nextActive = wrapperLi.next();
                 while(nextActive && nextActive.hasClass('omit')){
                     nextActive = nextActive.next();
@@ -156,13 +190,17 @@ $(function () {
 
                 if(wrapperLi.hasClass('question1')){
                     if(wrapperLi.find('.omit89').length > 0){
-                        $('.question6').transition({height:0}).addClass('omit');
-                        $('.question7').transition({height:0}).addClass('omit');
+                        // $('.question6').transition({height:0}).addClass('omit');
+                        // $('.question7').transition({height:0}).addClass('omit');
+                        $('.question6').hide();
+                        $('.question7').hide();
                     }else{
-                        $('.question6').transition({height:260}).removeClass('omit');
-                        $('.question7').transition({height:260}).removeClass('omit');
+                        // $('.question6').transition({height:260}).removeClass('omit');
+                        // $('.question7').transition({height:260}).removeClass('omit');
+                        $('.question6').show();
+                        $('.question7').show();
                     }
-                }                    
+                }
             };
 
             $('.back-entery').hammer().unbind("tap", fold);

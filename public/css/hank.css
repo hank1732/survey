@@ -438,7 +438,9 @@ input:focus{
 .option-item{
     background:#FCA5AC;
 }
-
+.Q15A, .Q15B, .Q15C{
+    display:none;
+}
 
 
 
