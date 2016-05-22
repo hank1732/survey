@@ -169,7 +169,7 @@ input:focus{
     opacity:0.4;
 }
 .back-tip-wrap{
-    top:150%;
+    top:145%;
 }
 
 
@@ -251,6 +251,9 @@ input:focus{
 }
 .selection.full{
     position:relative;
+}
+.end{
+    display:none;
 }
 .end-temp{
     text-align:center;
@@ -444,10 +447,16 @@ input:focus{
 .complete, .complete li{
     height:390px;
 }
+.complete.active li{
+    background:#FCB3B9;
+    color:#fff;
+}
 .question17 .back-tip-wrap{
     top:200%;
 }
-
+.question2 .back-tip-wrap{
+    top:80%;
+}
 
 
 

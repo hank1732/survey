@@ -97,7 +97,7 @@ $(function () {
         var selectedLi = wrapperLi.nextAll('.option-title');
         selectedLi.find('img').hide()
             .end().find('.option-list-title').removeClass('active')
-            .end().removeClass('underline');
+            .end().find('.text-vcenter').removeClass('underline');
     });
 
     // question tap
@@ -144,6 +144,10 @@ $(function () {
         var isInputEmpty = inputsFields.filter(function(index, el) {
             return $(el).val() === '' ;
         });
+        var tickStaytime = 444;
+        if ($(this).hasClass('user-confirm')) {
+            tickStaytime = 10;
+        }
 
         // no field left empty
         if(inputsFields.length === 0 || isInputEmpty.length === 0){
@@ -162,7 +166,7 @@ $(function () {
         // $('.user-confirm').hammer().unbind("tap", fold);
 
         // this question
-        // setTimeout(function () {
+        setTimeout(function () {
             $('.back-tip').hide();
             temp.transition({ height: '260' }, 666, function () {
                 wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666);
@@ -180,7 +184,7 @@ $(function () {
                     $(el).transition({ y: '-1800' }, 1000, 'ease');
                 }, index * 50);
             });            
-        // }, 444);
+        }, tickStaytime);
 
         
         // next question
@@ -222,6 +226,11 @@ $(function () {
                 nextActive.find('.option-list-title').addClass('active')
                     .find('.text-vcenter').addClass('underline');
 
+                if(nextActive.hasClass('complete')){
+                    nextActive.addClass('active')
+                        .find('.text-vcenter').addClass('underline');
+                }
+
                 if(wrapperLi.hasClass('question1')){
                     if(wrapperLi.find('.omit89').length > 0){
                         // $('.question6').transition({height:0}).addClass('omit');
@@ -239,7 +248,7 @@ $(function () {
 
             // $('.back-entery').hammer().unbind("tap", fold);
             wrapperLi.find('.option-list-title').hammer().bind("tap", unfold);
-            wrapperLi.find('.option-item').hammer().unbind("tap", fold);
+            // wrapperLi.find('.option-item').hammer().unbind("tap", fold);
             temp.nextAll('.option-item').hide();
         }, 1000);
     }
@@ -247,25 +256,16 @@ $(function () {
     $(window).keyup(function(event) {
        if($('.user-name').val() !== '' && $('.user-account').val() !== ''){
             $('.user-name-confirm').removeClass('disable');
-            $('.user-name-confirm').hammer().bind("tap", fold);
+            $('.user-name-confirm').hammer().unbind('tap').bind("tap", fold);
        }
     });
-    // function confirmButton(element) {
-    //     $(element).find('.option-item').hammer().bind("tap", fold);
-    //     $(element).find('.user-confirm').removeClass('disable');
-    // }
-    // confirmButton('.question18.Q15.Q15C');
-    // $('.question11 .option-item').hammer().bind("tap", function () {
-    //     $('.question11.user-interest-confirm').removeClass('disable');
-    //     $('.user-interest-confirm').hammer().bind("tap", fold);
-    // });
-    // $('.question17 .option-item').hammer().bind("tap", function () {
-    //     $('.user-question17-confirm').removeClass('disable');
-    //     $('.user-question17-confirm').hammer().bind("tap", fold);
-    // });
-    // $('.question18 .option-item').hammer().bind("tap", function () {
-    //     $('.user-question18-confirm').removeClass('disable');
-    //     $('.user-question18-confirm').hammer().bind("tap", fold);
-    // });
+
+    $('.complete').hammer().bind('tap', function(event) {
+        if(!$(this).hasClass('active')){
+            return false;
+        }
+        $('.selection').fadeOut('slow');
+        $('.end').fadeIn('fast');
+    });
 });
 
