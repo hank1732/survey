@@ -10,10 +10,6 @@ $.fn.extend({
 $(function () {
     var isTapped = false;
     var scroll = 0;
-    var bodyHeight = $('body').height();
-    var visbleWindowHeight = $(window).height();
-    var tapSelectCount = 0;
-
 
     $('.enter-button').hammer().bind("tap", function () {
         $(this).hide();
@@ -25,7 +21,7 @@ $(function () {
     // $('.option-item').transition({ y: '-1800' }, 500).hide();
     $('.option-item').transition({ y: '-1800' }, 500);
     $('.text-vcenter').first().addClass('underline');
-    $('.option-ul').first().find('.option-list-title').addClass('active');
+    $('.option-list-title').first().addClass('active');
     $('.option-ul li').prepend('<div class="lineTop"></div>')
         .append('<div class="lineBottom"></div>');
 
@@ -37,6 +33,7 @@ $(function () {
         if($(this).hasClass('js-single')){
             wrapperLi.find('img').hide();
             img.fadeIn('fast');
+            fold.apply(this);
         }
         if($(this).hasClass('js-mutiple')){
             if(wrapperLi.attr('data-tapCount') === undefined ){
@@ -70,8 +67,6 @@ $(function () {
         if($(this).hasClass('js-mutiple3')){
             if(wrapperLi.attr('data-tapCount') === undefined ){
                 wrapperLi.attr('data-tapCount', 0);
-                userConfirm.hammer().bind("tap", fold);
-                userConfirm.removeClass('disable');
             }
             if(img.css("display") === 'none'){
                 if(wrapperLi.attr('data-tapCount') < 3){
@@ -87,7 +82,7 @@ $(function () {
             }
         }
         if(wrapperLi.attr('data-tapCount') == 0){
-            userConfirm.hammer().unbind("tap", fold);
+            userConfirm.hammer().unbind("tap");
             wrapperLi.find('.user-confirm').addClass('disable');
         }else{          
             userConfirm.hammer().unbind('tap').bind("tap", fold);
@@ -95,14 +90,14 @@ $(function () {
         }
         //  reset selected
         var selectedLi = wrapperLi.nextAll('.option-title');
-        selectedLi.find('img').hide()
-            .end().find('.option-list-title').removeClass('active')
-            .end().find('.text-vcenter').removeClass('underline');
+        selectedLi.find('img').hide().end()
+            .find('.option-list-title').removeClass('active')
+            .find('.text-vcenter').removeClass('underline');
     });
 
     // question tap
     $('.option-list-title').hammer().bind("tap", unfold);
-    $('.js-single').hammer().bind("tap", fold);
+    // $('.js-single').hammer().bind("tap", fold);
     function unfold() {
         if(!$(this).hasClass('active')){
             return false;
