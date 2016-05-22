@@ -61,10 +61,28 @@ $(function () {
                 wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
             }
         }
+        if($(this).hasClass('js-mutiple3')){
+            if(wrapperLi.attr('data-tapCount') === undefined ){
+                wrapperLi.attr('data-tapCount', 0);
+            }
+            if(img.css("display") === 'none'){
+                if(wrapperLi.attr('data-tapCount') < 3){
+                    img.fadeIn('fast');
+                    wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
+                    if(wrapperLi.attr('data-tapCount') == 3 ){
+                        fold.apply(this);
+                    }
+                }
+            }else{
+                img.fadeOut('fast');
+                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
+            }
+        }
         //  reset selected
         var selectedLi = wrapperLi.nextAll('.option-title');
         selectedLi.find('img').hide()
-            .end().find('.option-list-title').removeClass('active');
+            .end().find('.option-list-title').removeClass('active')
+            .end().removeClass('underline');
     });
 
     // question tap
@@ -216,9 +234,31 @@ $(function () {
             $('.user-name-confirm').hammer().bind("tap", fold);
        }
     });
-    $('.question11 .option-item').hammer().bind("tap", function () {
-        $('.user-interest-confirm').removeClass('disable');
-        $('.user-interest-confirm').hammer().bind("tap", fold);
-    });
+    function confirmButton(element) {
+        $(element).find('.option-item').hammer().bind("tap", function () {
+            $(element).find('.user-confirm').removeClass('disable');
+            $(element).find('.user-confirm').hammer().bind("tap", fold);
+        });
+    }
+    confirmButton('.question11');
+    confirmButton('.question17.Q15.Q15B');
+    confirmButton('.question18.Q15.Q15B');
+    confirmButton('.question16.Q15.Q15C');
+    confirmButton('.question17.Q15.Q15C');
+    confirmButton('.question18.Q15.Q15C');
+    confirmButton('.question19.Q15.Q15D');
+    // confirmButton('.question18.Q15.Q15C');
+    // $('.question11 .option-item').hammer().bind("tap", function () {
+    //     $('.question11.user-interest-confirm').removeClass('disable');
+    //     $('.user-interest-confirm').hammer().bind("tap", fold);
+    // });
+    // $('.question17 .option-item').hammer().bind("tap", function () {
+    //     $('.user-question17-confirm').removeClass('disable');
+    //     $('.user-question17-confirm').hammer().bind("tap", fold);
+    // });
+    // $('.question18 .option-item').hammer().bind("tap", function () {
+    //     $('.user-question18-confirm').removeClass('disable');
+    //     $('.user-question18-confirm').hammer().bind("tap", fold);
+    // });
 });
 

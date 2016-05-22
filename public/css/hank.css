@@ -168,7 +168,7 @@ input:focus{
 .back-tip-wrap span.back-tip.disable{
     opacity:0.4;
 }
-.question11 .back-tip-wrap{
+.back-tip-wrap{
     top:150%;
 }
 
@@ -439,10 +439,14 @@ input:focus{
     background:#FCA5AC;
 }
 .Q15A, .Q15B, .Q15C{
-    display:none;
+    /* display:none; */
 }
-
-
+.complete, .complete li{
+    height:390px;
+}
+.question17 .back-tip-wrap{
+    top:200%;
+}
 
 
 
