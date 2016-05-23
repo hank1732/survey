@@ -58,6 +58,8 @@ $(function () {
     $('.option-list-title').first().addClass('active');
     $('.option-ul li').prepend('<div class="lineTop"></div>')
         .append('<div class="lineBottom"></div>');
+    // question tap
+    $('.option-list-title').hammer().bind("tap", unfold);
 
     // tap option and show tick
     $('.option-item').hammer().bind("tap", function () {
@@ -122,15 +124,13 @@ $(function () {
             userConfirm.hammer().unbind('tap').bind("tap", fold);
             userConfirm.removeClass('disable');
         }
-        //  reset selected
+        //  reset all following selected questions
         var selectedLi = wrapperLi.nextAll('.option-title');
         selectedLi.find('img').hide().end()
             .find('.option-list-title').removeClass('active')
             .find('.text-vcenter').removeClass('underline');
     });
 
-    // question tap
-    $('.option-list-title').hammer().bind("tap", unfold);
     // $('.js-single').hammer().bind("tap", fold);
     function unfold() {
         if(!$(this).hasClass('active')){
@@ -140,32 +140,27 @@ $(function () {
         var temp = $(this);
 
         scroll = $('body').scrollTop();
-        $('.back-tip').show();
-        wrapperLi.find('.option-ul').addClass('flex');
+
         $('.survey-question').addClass('full');
 
-        // question title list
-        // wrapperLi.nextAll().transition({ y: '2000' }, 666)
-        //     .end().prevAll().transition({ y: '-2000' }, 666);
-        //     
-        wrapperLi.nextAll(':not(.omit)').hide()
-            .end().prevAll(':not(.omit)').hide();
-        wrapperLi.addClass('full').transition({ height: 'atuo' }, 666);
-        temp.transition({ height: '24%' }, 666);
-        // temp.height('24%');
+        wrapperLi.addClass('full').height('atuo')
+            .find('.option-ul').addClass('flex')
+            .find('.back-tip').show();          
 
-        // option list
-        temp.nextAll('.option-item').each(function(index, el) {
-            setTimeout(function () {
-                $(el).show().transition({ y: 0 }, 888, 'ease');
-            }, index * 50);
-        });
-        wrapperLi.find('.option-list-title').hammer().unbind("tap", unfold);
-        // $('.back-entery').hammer().bind("tap", fold);
+         wrapperLi.nextAll().hide()
+            .end().prevAll().hide();
+
+        temp.hammer().unbind("tap", unfold)
+            .transition({ height: '24%' }, 666)
+            .nextAll('.option-item').each(function(index, el) {
+                setTimeout(function () {
+                    $(el).show().transition({ y: 0 }, 888, 'ease');
+                }, index * 50);
+            });
     };
     function fold() {
         var self = this;
-        var index = $('.option-title').index($(this).parents('.option-title'));
+        // var index = $('.option-title').index($(this).parents('.option-title'));
         var temp = $(this).closest('.option-list-title').length ? $(this).closest('.option-list-title') : 
                         $(this).siblings('.option-list-title').length ? $(this).siblings('.option-list-title') : $(this).closest('.option-item').siblings('.option-list-title');
         var wrapperLi = $(this).parents('.option-title');
@@ -192,21 +187,18 @@ $(function () {
         };
 
         $('.survey-question').removeClass('full');
-        // $('.user-confirm').hammer().unbind("tap", fold);
 
         // this question
         setTimeout(function () {
-            $('.back-tip').hide();
+            wrapperLi.find('.back-tip').hide();
             temp.transition({ height: '260' }, 666, function () {
-                wrapperLi.removeClass('full').transition({ height: 'atuo' }, 666);
-                // $('body').animate({scrollTop: scroll}, 100);
-                // wrapperLi.nextAll().transition({ y: '0' }, 666)
-                //     .end().prevAll().transition({ y: '0' }, 666);
-                //     
+                wrapperLi.removeClass('full').height('atuo')
+                    .find('.option-ul').removeClass('flex');
+
                 wrapperLi.nextAll(':not(.omit)').show()
                     .end().prevAll(':not(.omit)').show();
+
                 $('body').scrollTop(scroll);
-                wrapperLi.find('.option-ul').removeClass('flex');
             });
             temp.nextAll('.option-item').each(function(index, el) {
                 setTimeout(function () {
@@ -219,6 +211,16 @@ $(function () {
         // next question
         setTimeout(function () {
             if(wrapperLi.hasClass('js-answered')){
+                // question branch
+                if(wrapperLi.hasClass('question1')){
+                    if(wrapperLi.find('.omit89').length > 0){
+                        $('.question6').hide();
+                        $('.question7').hide();
+                    }else{
+                        $('.question6').show();
+                        $('.question7').show();
+                    }
+                }
                 if(wrapperLi.hasClass('question15')){
                     $('.Q15').hide().addClass('omit');
                     $('.Q21').hide().addClass('omit');
@@ -246,40 +248,24 @@ $(function () {
                         $('.Q21C').show().removeClass('omit');
                     }
                 }
+                // next question
                 var nextActive = wrapperLi.next();
                 while(nextActive && nextActive.hasClass('omit')){
                     nextActive = nextActive.next();
                 };
-
                 wrapperLi.find('.text-vcenter').removeClass('underline');
                 nextActive.find('.option-list-title').addClass('active')
                     .find('.text-vcenter').addClass('underline');
 
+                // complete button
                 if(nextActive.hasClass('complete')){
                     nextActive.addClass('active')
                         .find('.text-vcenter').addClass('underline');
                 }
-
-                if(wrapperLi.hasClass('question1')){
-                    if(wrapperLi.find('.omit89').length > 0){
-                        // $('.question6').transition({height:0}).addClass('omit');
-                        // $('.question7').transition({height:0}).addClass('omit');
-                        $('.question6').hide();
-                        $('.question7').hide();
-                    }else{
-                        // $('.question6').transition({height:260}).removeClass('omit');
-                        // $('.question7').transition({height:260}).removeClass('omit');
-                        $('.question6').show();
-                        $('.question7').show();
-                    }
-                }
             };
 
-            // $('.back-entery').hammer().unbind("tap", fold);
-            wrapperLi.find('.option-list-title').hammer().bind("tap", unfold);
-            // wrapperLi.find('.option-item').hammer().unbind("tap", fold);
-            temp.nextAll('.option-item').hide();
-        }, 1000);
+            wrapperLi.find('.option-list-title').hammer().unbind("tap").bind("tap", unfold);
+        }, 1500);
     }
 
     $(window).keyup(function(event) {
