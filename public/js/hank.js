@@ -49,20 +49,22 @@ $(function () {
         $(this).hide();
         $('.welcome').fadeOut('slow');
         $('.selection').fadeIn('400');
+        // $('.option-item').transition({ y: '-1800' });
     });
 
     // dom prepare
     // $('.option-item').transition({ y: '-1800' }, 500).hide();
-    $('.option-item').transition({ y: '-1800' }, 500);
+    // $('.option-item').transition({ y: '-1800' }, 500);
     $('.text-vcenter').first().addClass('underline');
     $('.option-list-title').first().addClass('active');
     $('.option-ul li').prepend('<div class="lineTop"></div>')
         .append('<div class="lineBottom"></div>');
     // question tap
-    $('.option-list-title').hammer().bind("tap", unfold);
+    $('.active').hammer().bind("tap", unfold);
 
     // tap option and show tick
-    $('.option-item').hammer().bind("tap", function () {
+    // $('.option-item').hammer().bind("tap", function () {
+    function optionTap() {
         var wrapperLi = $(this).parents('.option-title');
         var img = $(this).find('img');
         var userConfirm = wrapperLi.find('.user-confirm');
@@ -129,7 +131,7 @@ $(function () {
         selectedLi.find('img').hide().end()
             .find('.option-list-title').removeClass('active')
             .find('.text-vcenter').removeClass('underline');
-    });
+    };
 
     // $('.js-single').hammer().bind("tap", fold);
     function unfold() {
@@ -145,7 +147,8 @@ $(function () {
 
         wrapperLi.addClass('full').height('atuo')
             .find('.option-ul').addClass('flex')
-            .find('.back-tip').show();          
+            .find('.back-tip').show()
+            .end().find('.option-item').hammer().bind("tap", optionTap);          
 
          wrapperLi.nextAll().hide()
             .end().prevAll().hide();
@@ -157,6 +160,7 @@ $(function () {
                     $(el).show().transition({ y: 0 }, 888, 'ease');
                 }, index * 50);
             });
+
     };
     function fold() {
         var self = this;
