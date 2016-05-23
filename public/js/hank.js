@@ -42,20 +42,29 @@ $.fn.extend({
 });
 
 $(function () {
-    var isTapped = false;
-    var scroll = 0;
-
     $('.enter-button').hammer().bind("tap", function () {
         $(this).hide();
         $('.welcome').fadeOut('slow');
-        $('.selection').fadeIn('400');
-        // $('.option-item').transition({ y: '-1800' });
+        $('.person-inform').fadeIn('400');
+        afterFirstTap();
     });
+});
 
+$(window).keyup(function(event) {
+   if($('.user-name').val() !== '' && $('.user-account').val() !== ''){
+        $('.user-name-confirm span').removeClass('disable');
+        $('.user-name-confirm span').hammer().unbind('tap').bind("tap", function () {
+            $('.person-inform').fadeOut('slow');
+            $('.selection').fadeIn('400');
+        });
+   }
+});
+
+function afterFirstTap() {
+    var isTapped = false;
+    var scroll = 0;
     // dom prepare
-    // $('.option-item').transition({ y: '-1800' }, 500).hide();
-    // $('.option-item').transition({ y: '-1800' }, 500);
-    $('.text-vcenter').first().addClass('underline');
+    $('.selection .text-vcenter').first().addClass('underline');
     $('.option-list-title').first().addClass('active');
     $('.option-ul li').prepend('<div class="lineTop"></div>')
         .append('<div class="lineBottom"></div>');
@@ -142,6 +151,10 @@ $(function () {
         var temp = $(this);
 
         scroll = $('body').scrollTop();
+
+        wrapperLi.find('.option-item').each(function(index, el) {
+            $(el).css('background', '#' + color[wrapperLi.attr('id')][index + 1] );
+        });
 
         $('.survey-question').addClass('full');
 
@@ -259,7 +272,9 @@ $(function () {
                 };
                 wrapperLi.find('.text-vcenter').removeClass('underline');
                 nextActive.find('.option-list-title').addClass('active')
-                    .find('.text-vcenter').addClass('underline');
+                    .css('background', '#' + color[nextActive.attr('id')][0])
+                    .find('.text-vcenter').addClass('underline')
+                    .end().hammer().unbind("tap").bind("tap", unfold);
 
                 // complete button
                 if(nextActive.hasClass('complete')){
@@ -272,13 +287,6 @@ $(function () {
         }, 1500);
     }
 
-    $(window).keyup(function(event) {
-       if($('.user-name').val() !== '' && $('.user-account').val() !== ''){
-            $('.user-name-confirm').removeClass('disable');
-            $('.user-name-confirm').hammer().unbind('tap').bind("tap", fold);
-       }
-    });
-
     $('.complete').hammer().bind('tap', function(event) {
         if(!$(this).hasClass('active')){
             return false;
@@ -286,5 +294,33 @@ $(function () {
         $('.selection').fadeOut('slow');
         $('.end').fadeIn('fast');
     });
-});
+};
+
+
+var color = {
+    question3:['fb5f9d','fdbfd8','fd9fc4'],
+    question4:['ca2d63','eaabc0','e7a0b9','e496b1','df81a1','da6c92','d55782'],
+    question5:['fa81a1','fdccd9','fdc6d5','fcc0d0','fcb3c7','fca7bd','fb9ab4'],
+    question6:['f3455e','fab4be','faabb6','f9a2ae','f88f9e','f77d8e','f66a7e'],
+    question7:['fa6474','fdc1c7','fcb1b9','fca2ac'],
+    question8:['d9303c','f0acb1','ec979d','e8838a','e56e77'],
+    question9:['de4d3d','f2b8b1','eb948b'],
+    question10:['ec7048','f7c6b6','f5b7a3','f4a991','f29b7f','f08d6d'],
+    question11:['f2906a','fad2c3','f9cdbc','f8c2ad','f8c2ad','f7bca6','f7b79e','f6b197','f5a688'],
+    question12:['e66c11','f5c4a0','f4bd94','f2b588','f4b78a','f0a770','efa064','ee9859','ec914d','eb8a41','ea8235'],
+    question13:['e9823e','f6cdb2','f5c7a8','f4c09e','f2b48b','f0a878','ee9b65'],
+    question14:['e49e32','f4d8ad','f3d3a3','f1ce98','f0ca8e','efc584','ecbb70','eab25b'],
+    question15:['d59316','eed4a2','eac98a','e6be73','e2b45c'],
+    question16:['e1b427','f3e1a8','f0d993','edd27d','eacb68','e7c352'],
+    question17:['ddcc1b','f1eaa4','f0e898','eee58d','ece382','ebe076','e9de6b','e7db60','e4d649'],
+    question18:['c5be2c','e8e5aa','e5e2a0','e2de95','dfdb8b','dcd880','d9d576','d7d26b','d1cb56'],
+    question19:['d9e50d','f0f49e','eef392','ecf286','eaf17a','e8ef6e','e6ee62','e5ed56','e1ea3e'],
+    question20:['c4da0e','dce96e','d6e556','d0e23e'],
+    question21:['d7f904','ebfc81','e7fb68','e3fb4f','dffa36'],
+    question22:['a9e535','d4f29a','cbef86','c3ed72','baea5e']
+}
+
+
+
+
 
