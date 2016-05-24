@@ -20,8 +20,7 @@ section{
 .clearfix{*+height:1%;}
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */    /* Konqueror */
     -moz-user-select: none;      /* Firefox */
     -ms-user-select: none;       /* IE/Edge */
     user-select: none;           /* non-prefixed version, currently
@@ -77,7 +76,6 @@ section{
     top: 50%;
     padding: 0 16%;
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
     transform: translateY(-50%); 
     left: 0;
     right: 0;
@@ -203,7 +201,8 @@ span.disable{
     top: 26%;
     left: 0;
     right: 0;
-    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
 }
 
 
@@ -214,6 +213,7 @@ span.disable{
 .welcome{
     height:100%;
     width:100%;
+    background: -webkit-linear-gradient(323deg, #f81578, #d2fa3b);
     background: linear-gradient(127deg, #f81578, #d2fa3b);
     background-size: 400% 400%;
     -webkit-animation: AnimationName 12s ease infinite;
@@ -266,7 +266,6 @@ span.disable{
     text-align:center;
     top: 50%;
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 .option-panel{
@@ -288,8 +287,15 @@ span.disable{
     /* top:4px; */
 }
 .option-ul.flex{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 .option-list-title{
     position:relative;
@@ -310,8 +316,12 @@ span.disable{
     position:relative;
     color:#fff;
     /* padding: 0 0 0 16%; */
-    flex:1;
-    transform: translateY(-1800px);
+    -webkit-box-flex:1;
+    -webkit-flex:1;
+        -ms-flex:1;
+            flex:1;
+    -webkit-transform: translateY(-1800px);
+            transform: translateY(-1800px);
 }
 .option-title:nth-child(odd) .option-list-title{
     background:#e6e6e6;
