@@ -4,10 +4,15 @@ var util = require('util');
 
 var http = require("http");
 var fs = require("fs");
+var bodyParser = require('body-parser');
 
 var port = process.argv[2]?process.argv[2]:8000;
 
+
+var jsonParser = bodyParser.json();
+
 app.use(express.static('public'));
+// app.use(bodyParser);
 
 var server = app.listen(port, function() {
     var host = server.address().address;
@@ -58,6 +63,21 @@ app.all('/gitpull', function(req, res, next) {
         }
         res.end();
     });
+});
+
+app.all('/write', jsonParser, function(req, res, next) {
+    console.log(req.body);
+    var message = '';
+    for(var name in req.body){
+        message += req.body[name] + '\n';
+    }
+    message += '\n\n';
+    console.log(JSON.stringify(req.body));
+    fs.appendFile('data.txt', JSON.stringify(req.body), function (err) {
+      if (err) return console.log(err);
+      console.log('Hello World > helloworld.txt');
+    });
+    res.send('date received');
 });
 
 

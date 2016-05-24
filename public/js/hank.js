@@ -291,8 +291,32 @@ function afterFirstTap() {
         if(!$(this).hasClass('active')){
             return false;
         }
-        $('.selection').fadeOut('slow');
-        $('.end').fadeIn('fast');
+        var poll = {};
+        poll['user-name'] = $('.user-name').val();
+        poll['user-account'] = $('.user-account').val();
+        $('.option-ul').each(function(index, el) {
+            var key = []
+            key.push($(el).find('.option-list-title span').text());
+            $(el).find('.option-item').each(function(index, el) {
+                if($(el).find('img').css("display") !== 'none'){
+                    key.push($(el).find('.text-vcenter').text());
+                }
+                if($(el).find('input').val() !== '' && $(el).find('input').val() !== undefined){
+                    key.push($(el).find('input').val());
+                }               
+            });
+            poll[index] = key;
+        });
+        console.log(poll);
+        $.ajax({
+            url: '/write', 
+            type: 'POST', 
+            contentType: 'application/json', 
+            data: JSON.stringify(poll)}
+        ).success(function () {
+            $('.selection').fadeOut('slow');
+            $('.end').fadeIn('fast');
+        });
     });
 };
 
@@ -317,7 +341,8 @@ var color = {
     question19:['d9e50d','f0f49e','eef392','ecf286','eaf17a','e8ef6e','e6ee62','e5ed56','e1ea3e'],
     question20:['c4da0e','dce96e','d6e556','d0e23e'],
     question21:['d7f904','ebfc81','e7fb68','e3fb4f','dffa36'],
-    question22:['a9e535','d4f29a','cbef86','c3ed72','baea5e']
+    question22:['a9e535','d4f29a','cbef86','c3ed72','baea5e'],
+    com:['0cf']
 }
 
 
