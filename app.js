@@ -80,6 +80,17 @@ app.all('/write', jsonParser, function(req, res, next) {
     res.send('date received');
 });
 
+app.all('/db', function(req, res, next) {
+    var dbname = 'data.txt';
+    var stat = fs.statSync(dbname);
+    res.writeHeader(200, {
+        "Content-Length": stat.size,
+        'Content-disposition': 'attachment; filename=' + dbname
+    });
+    var fReadStream = fs.createReadStream(dbname);
+    fReadStream.pipe(res);
+});
+
 
 
 
