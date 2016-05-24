@@ -139,6 +139,7 @@ function afterFirstTap() {
         var selectedLi = wrapperLi.nextAll('.option-title');
         selectedLi.find('img').hide().end()
             .find('.option-list-title').removeClass('active')
+                .css('background', '')
             .find('.text-vcenter').removeClass('underline');
     };
 
@@ -161,7 +162,7 @@ function afterFirstTap() {
         wrapperLi.addClass('full').height('atuo')
             .find('.option-ul').addClass('flex')
             .find('.back-tip').show()
-            .end().find('.option-item').hammer().bind("tap", optionTap);          
+            .end().find('.option-item').hammer().unbind('tap').bind("tap", optionTap);          
 
          wrapperLi.nextAll().hide()
             .end().prevAll().hide();
@@ -229,13 +230,13 @@ function afterFirstTap() {
         setTimeout(function () {
             if(wrapperLi.hasClass('js-answered')){
                 // question branch
-                if(wrapperLi.hasClass('question1')){
-                    if(wrapperLi.find('.omit89').length > 0){
-                        $('.question6').hide();
-                        $('.question7').hide();
+                if(wrapperLi.hasClass('question3')){
+                    if($(self).find('.omit89').length > 0){
+                        $('.question8').addClass('omit').hide();
+                        $('.question9').addClass('omit').hide();
                     }else{
-                        $('.question6').show();
-                        $('.question7').show();
+                        $('.question8').removeClass('omit').show();
+                        $('.question9').removeClass('omit').show();
                     }
                 }
                 if(wrapperLi.hasClass('question15')){
@@ -267,7 +268,7 @@ function afterFirstTap() {
                 }
                 // next question
                 var nextActive = wrapperLi.next();
-                while(nextActive && nextActive.hasClass('omit')){
+                while(nextActive && nextActive.css("display") === 'none'){
                     nextActive = nextActive.next();
                 };
                 wrapperLi.find('.text-vcenter').removeClass('underline');
@@ -292,20 +293,22 @@ function afterFirstTap() {
             return false;
         }
         var poll = {};
-        poll['user-name'] = $('.user-name').val();
-        poll['user-account'] = $('.user-account').val();
+        poll['user-name'] = ['姓名',$('.user-name').val()];
+        poll['user-account'] = ['Nike账号',$('.user-account').val()];
         $('.option-ul').each(function(index, el) {
-            var key = []
-            key.push($(el).find('.option-list-title span').text());
-            $(el).find('.option-item').each(function(index, el) {
-                if($(el).find('img').css("display") !== 'none'){
-                    key.push($(el).find('.text-vcenter').text());
-                }
-                if($(el).find('input').val() !== '' && $(el).find('input').val() !== undefined){
-                    key.push($(el).find('input').val());
-                }               
-            });
-            poll[index] = key;
+            if(!$(el).closest('.option-title').hasClass('omit')){
+                var key = []
+                key.push($(el).find('.option-list-title span').text());
+                $(el).find('.option-item').each(function(index, el) {
+                    if($(el).find('img').css("display") !== 'none'){
+                        key.push($(el).find('.text-vcenter').text());
+                    }
+                    if($(el).find('input').val() !== '' && $(el).find('input').val() !== undefined){
+                        key.push($(el).find('input').val());
+                    }               
+                });
+                poll[index] = key;
+            }            
         });
         console.log(poll);
         $.ajax({

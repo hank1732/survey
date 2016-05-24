@@ -71,13 +71,12 @@ app.all('/write', jsonParser, function(req, res, next) {
     for(var name in req.body){
         message += req.body[name] + '\n';
     }
-    message += '\n\n';
-    console.log(JSON.stringify(req.body));
-    fs.appendFile('data.txt', JSON.stringify(req.body), function (err) {
-      if (err) return console.log(err);
-      console.log('Hello World > helloworld.txt');
+    message = '\n' + new Date() + message + '\n';
+    console.log('message', message);
+    fs.appendFile('data.txt', message, function (err) {
+        if (err) return console.log(err);
+        res.send('date received');
     });
-    res.send('date received');
 });
 
 app.all('/db', function(req, res, next) {
