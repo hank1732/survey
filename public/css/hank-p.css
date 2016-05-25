@@ -265,7 +265,7 @@ span.disable{
     position:relative;
 }
 .end{
-    /* display:none; */
+    display:none;
     background:linear-gradient(#fb5f9d 5%, #fb5f9d 10%, #ca2d63 10%, #ca2d63 15%,
         #fa81a1 15%, #fa81a1 20%, #f3455e 20%, #f3455e 25%,
         #fa6474 25%, #fa6474 30%, #d9303c 30%, #d9303c 35%,
@@ -286,25 +286,8 @@ span.disable{
     height: 100%;
     font-size: 60px;
 }
-.end p{
-    margin: 20px;
-    letter-spacing: 5px;
-    color: #fff;
-}
-.end-tick,.end-logo{
-    position: absolute;
-    width: 70px;
-    top: -20%;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-.end-logo{
-    width: 70px;
-    top:50%;
-}
-.end-tip{
-    font-size:40px;
+.end img{
+   transform: scale(1.75);
 }
 
 .option-panel{
