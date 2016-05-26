@@ -6,7 +6,7 @@ var http = require("http");
 var fs = require("fs");
 var bodyParser = require('body-parser');
 
-var port = process.argv[2]?process.argv[2]:8000;
+var port = process.argv[2]?process.argv[2]:8088;
 
 
 var jsonParser = bodyParser.json();

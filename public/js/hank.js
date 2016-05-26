@@ -146,10 +146,16 @@ function afterFirstTap() {
                     wrapperLi.addClass('js-answered');
             }
         }
+        if($(this).hasClass('js-hurt')){
+            $(this).find('.hurt-mask').hide();
+            $(this).find('.hurt-ul').css('visibility', 'visible');
+            $(this).hammer().unbind('tap');
+        }
         if(wrapperLi.attr('data-tapCount') == 0){
             userConfirm.hammer().unbind("tap");
             wrapperLi.find('.user-confirm').addClass('disable');
-        }else{          
+        }
+        if(wrapperLi.attr('data-tapCount') > 0){
             userConfirm.hammer().unbind('tap').bind("tap", fold);
             userConfirm.removeClass('disable');
         }
@@ -209,8 +215,19 @@ function afterFirstTap() {
     function fold() {
         var self = this;
         // var index = $('.option-title').index($(this).parents('.option-title'));
-        var temp = $(this).closest('.option-list-title').length ? $(this).closest('.option-list-title') : 
-                        $(this).siblings('.option-list-title').length ? $(this).siblings('.option-list-title') : $(this).closest('.option-item').siblings('.option-list-title');
+        var temp = [];
+        var count = 0;
+        while(temp.length == 0 && count < 6){
+            switch(count){
+                case 0:temp = $(this).closest('.option-list-title');break;
+                case 1:temp = $(this).siblings('.option-list-title');break;
+                case 2:temp = $(this).closest('.option-item').siblings('.option-list-title');break;
+                case 3:temp = $(this).closest('.option-hurt').siblings('.option-list-title');break;
+            }
+            count++;
+        };
+        // $(this).closest('.option-list-title').length ?  : 
+        //                 $(this).siblings('.option-list-title').length ? $(this).siblings('.option-list-title') : $(this).closest('.option-item').siblings('.option-list-title');
         var wrapperLi = $(this).parents('.option-title');
         var inputsFields = wrapperLi.find('input');
         var isInputEmpty = inputsFields.filter(function(index, el) {
@@ -248,7 +265,7 @@ function afterFirstTap() {
 
                 $('body').scrollTop(scroll);
             });
-            temp.nextAll('.option-item').each(function(index, el) {
+            temp.nextAll('.option-item:not(.hurt)').each(function(index, el) {
                 setTimeout(function () {
                     $(el).transition({ y: '-1800' }, 1000, 'ease');
                 }, index * 50);
