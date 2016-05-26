@@ -517,10 +517,20 @@ C．  从未参加，以后也不会参加 -->
                         <li class="option-list-title">
                             <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
                                 <span>是否有过受伤的历史?</span>
+                                <div class="text-vcenter back-tip-wrap hurt-back">
+                                    <span class="back-tip disable user-other-confirm">确定</span>
+                                </div>
                             </div>
                         </li>
-                        <li class="option-item js-single">
-                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">有</div>
+                        <li class="option-item js-hurt option-hurt">
+                        <!-- a. 膝部 b. 脚踝 c. 脚趾 d. 其它  -->
+                            <div class="text-vcenter hurt-mask">有</div>
+                            <ul class="flex full hurt-ul z9">
+                                <li class="option-item js-single hurt"><div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">膝部</div></li>
+                                <li class="option-item js-single hurt"><div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">脚踝</div></li>
+                                <li class="option-item js-single hurt"><div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">脚趾</div></li>
+                                <li class="option-item js-other hurt"><div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">其它<input type="text" class="other-input"></div></li>
+                            </ul>
                         </li>
                         <li class="option-item js-single">
                             <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">没有</div>
@@ -952,13 +962,20 @@ B．我习惯训练后喝果汁、或者蛋白粉
                         <li class="option-list-title">
                             <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">
                                 <span>是否有过受伤的历史?</span>
-                                <div class="text-vcenter back-tip-wrap">
-                                    <span class="back-tip disable user-confirm">确定</span>
+                                <div class="text-vcenter back-tip-wrap hurt-back">
+                                    <span class="back-tip disable user-other-confirm">确定</span>
                                 </div>
                             </div>
                         </li>
-                        <li class="option-item js-single">
-                            <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">有</div>
+                        <li class="option-item js-hurt option-hurt">
+                        <!-- a. 膝部 b. 脚踝 c. 脚趾 d. 其它  -->
+                            <div class="text-vcenter hurt-mask">有</div>
+                            <ul class="flex full hurt-ul z9">
+                                <li class="option-item js-single hurt"><div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">膝部</div></li>
+                                <li class="option-item js-single hurt"><div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">脚踝</div></li>
+                                <li class="option-item js-single hurt"><div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">脚趾</div></li>
+                                <li class="option-item js-other hurt"><div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">其它<input type="text" class="other-input"></div></li>
+                            </ul>
                         </li>
                         <li class="option-item js-single">
                             <div class="text-vcenter"><img src="imgs/check-tick.svg" class="check-icon">没有</div>
