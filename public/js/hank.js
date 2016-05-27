@@ -56,9 +56,14 @@ $('.person-inform').keyup(function(event) {
         $('.user-name-confirm span').hammer().unbind('tap').bind("tap", function () {
             $('.person-inform').fadeOut('slow');
             $('.selection').fadeIn('400');
+            localStorage.setItem('name', $('.user-name').val());
+            localStorage.setItem('account', $('.user-account').val());
         });
     }
 });
+
+$('.user-name').val(localStorage.getItem('name'));
+$('.user-account').val(localStorage.getItem('account'));
 
 function afterFirstTap() {
     var isTapped = false;
@@ -146,6 +151,25 @@ function afterFirstTap() {
                     wrapperLi.addClass('js-answered');
             }
         }
+        if($(this).hasClass('js-other-mutiple')){
+            if(img.css("display") === 'none'){
+                img.fadeIn('fast');
+            }else{
+                img.fadeOut('fast');
+            }
+            var otherInput = $(this).find('.other-input');
+            var confirmButton = wrapperLi.find('.user-other-confirm');
+            otherInput.focus();
+            if(otherInput.val() === ''){
+                confirmButton.addClass('disable')
+                    .hammer().unbind('tap');
+                wrapperLi.removeClass('js-answered');
+            }else{
+                confirmButton.removeClass('disable')
+                        .hammer().unbind('tap').bind("tap", fold);
+                    wrapperLi.addClass('js-answered');
+            }
+        }
         if($(this).hasClass('js-hurt')){
             $(this).find('.hurt-mask').hide();
             $(this).find('.hurt-ul').css('visibility', 'visible');
@@ -177,7 +201,7 @@ function afterFirstTap() {
 
         scroll = $('body').scrollTop();
 
-        wrapperLi.find('.option-item').each(function(index, el) {
+        wrapperLi.find('.option-ul').children('.option-item').each(function(index, el) {
             $(el).css('background', '#' + color[wrapperLi.attr('id')][index + 1] );
         });
 
@@ -208,6 +232,10 @@ function afterFirstTap() {
                     confirmButton.removeClass('disable')
                         .hammer().unbind('tap').bind("tap", fold);
                     wrapperLi.addClass('js-answered');
+                }else{
+                    confirmButton.addClass('disable')
+                        .hammer().unbind('tap');
+                    wrapperLi.removeClass('js-answered');
                 }
             });
         }
@@ -229,7 +257,9 @@ function afterFirstTap() {
         // $(this).closest('.option-list-title').length ?  : 
         //                 $(this).siblings('.option-list-title').length ? $(this).siblings('.option-list-title') : $(this).closest('.option-item').siblings('.option-list-title');
         var wrapperLi = $(this).parents('.option-title');
-        var inputsFields = wrapperLi.find('input');
+        var inputsFields = wrapperLi.find('.option-item').filter(function(index, el) {
+                        return $(el).find('img').css("display") !== 'none';
+                    }).find('input');
         var isInputEmpty = inputsFields.filter(function(index, el) {
             return $(el).val() === '' ;
         });
@@ -389,13 +419,17 @@ var color = {
     question14:['e49e32','f4d8ad','f3d3a3','f1ce98','f0ca8e','efc584','ecbb70','eab25b'],
     question15:['d59316','eed4a2','eac98a','e6be73','e2b45c'],
     question16:['e1b427','f3e1a8','f0d993','edd27d','eacb68','e7c352'],
-    question17:['ddcc1b','f1eaa4','f0e898','eee58d','ece382','ebe076','e9de6b','e7db60','e4d649','e3d43e','e1d233'],
+    // question17:['ddcc1b','f1eaa4','f0e898','eee58d','ece382','ebe076','e9de6b','e7db60','e4d649','e3d43e','e1d233'],
+    question17: ['d2bb15','e4d673','e2d367','e0d05b','ddcc50','dbc944','d9c638','d7c22d','d5bf21','d2bb15','d2bb15'],
     question18:['c5be2c','e8e5aa','e5e2a0','e2de95','dfdb8b','dcd880','d9d576','d7d26b','d1cb56'],
-    question19:['d9e50d','f0f49e','eef392','ecf286','eaf17a','e8ef6e','e6ee62','e5ed56','e1ea3e'],
-    question20:['c4da0e','dce96e','d6e556','d0e23e'],
-    question21:['d7f904','ebfc81','e7fb68','e3fb4f','dffa36'],
-    question22:['a9e535','d4f29a','cbef86','c3ed72','baea5e'],
-    com:['0cf']
+    // question19:['d9e50d','f0f49e','eef392','ecf286','eaf17a','e8ef6e','e6ee62','e5ed56','e1ea3e'],
+    question19:['abae2b','cdce80','c9ca75','c4c66b','c0c260','bcbe56','b8ba4b','b4b641','abae2b'],
+    // question20:['c4da0e','dce96e','d6e556','d0e23e'],
+    question20:['b9c517','ced75d','c7d146','c0cb2f'],
+    // question21:['d7f904','ebfc81','e7fb68','e3fb4f','dffa36'],
+    question21:['cbdc21','d6e34e','d1e038','cede2d','cbdc21'],
+    // question22:['a9e535','d4f29a','cbef86','c3ed72','baea5e'],
+    question22:['b4cd1f','cedf6e','cbdc62','c3d74c','bcd236 ']
 }
  
 
