@@ -80,7 +80,7 @@ function afterFirstTap() {
     // tap option and show tick
     // $('.option-item').hammer().bind("tap", function () {
     function optionTap() {
-        var wrapperLi = $(this).parents('.option-title');
+        var wrapperLi = $(this).parents('.wrapper-li');
         var img = $(this).find('img');
         var userConfirm = wrapperLi.find('.user-confirm');
         if($(this).hasClass('js-single')){
@@ -184,12 +184,15 @@ function afterFirstTap() {
             userConfirm.hammer().unbind('tap').bind("tap", fold);
             userConfirm.removeClass('disable');
         }
-        //  reset all following selected questions
-        var selectedLi = wrapperLi.nextAll('.option-title');
-        selectedLi.find('img').hide().end()
-            .find('.option-list-title').removeClass('active')
-                .css('background', '')
-            .find('.text-vcenter').removeClass('underline');
+        if(wrapperLi.hasClass('question3') || wrapperLi.hasClass('question15') || wrapperLi.hasClass('question21')){
+            //  reset all following selected questions
+            var selectedLi = wrapperLi.nextAll('.wrapper-li');
+            selectedLi.find('img').hide().end()
+                .find('.option-list-title').removeClass('active')
+                    .css('background', '')
+                .find('.text-vcenter').removeClass('underline');
+        }
+        
     };
 
     // $('.js-single').hammer().bind("tap", fold);
@@ -197,13 +200,13 @@ function afterFirstTap() {
         if(!$(this).hasClass('active')){
             return false;
         }
-        var wrapperLi = $(this).parents('.option-title');
+        var wrapperLi = $(this).parents('.wrapper-li');
         var temp = $(this);
 
         scroll = $('body').scrollTop();
 
         wrapperLi.find('.option-ul').children('.option-item').each(function(index, el) {
-            $(el).css('background', '#' + color[wrapperLi.attr('id')][index + 1] );
+            $(el).css('background', '#' + color[wrapperLi.attr('data-id')][index + 1] );
         });
 
         $('.survey-question').addClass('full');
@@ -243,7 +246,7 @@ function afterFirstTap() {
     };
     function fold() {
         var self = this;
-        // var index = $('.option-title').index($(this).parents('.option-title'));
+        // var index = $('.wrapper-li').index($(this).parents('.wrapper-li'));
         var temp = [];
         var count = 0;
         while(temp.length == 0 && count < 6){
@@ -257,7 +260,7 @@ function afterFirstTap() {
         };
         // $(this).closest('.option-list-title').length ?  : 
         //                 $(this).siblings('.option-list-title').length ? $(this).siblings('.option-list-title') : $(this).closest('.option-item').siblings('.option-list-title');
-        var wrapperLi = $(this).parents('.option-title');
+        var wrapperLi = $(this).parents('.wrapper-li');
         var inputsFields = wrapperLi.find('.option-item').filter(function(index, el) {
                         return $(el).find('img').css("display") !== 'none';
                     }).find('input');
@@ -346,12 +349,12 @@ function afterFirstTap() {
                 }
                 // next question
                 var nextActive = wrapperLi.next();
-                while(nextActive && nextActive.hasClass('omit')){
+                while((nextActive && nextActive.hasClass('omit')) || nextActive.hasClass('js-answered')){
                     nextActive = nextActive.next();
                 };
                 wrapperLi.find('.text-vcenter').removeClass('underline');
                 nextActive.find('.option-list-title').addClass('active')
-                    .css('background', '#' + color[nextActive.attr('id')][0])
+                    .css('background', '#' + color[nextActive.attr('data-id')][0])
                     .find('.text-vcenter').addClass('underline')
                     .end().hammer().unbind("tap").bind("tap", unfold);
 
@@ -375,7 +378,7 @@ function afterFirstTap() {
         poll['user-account'] = ['Nike账号',$('.user-account').val()];
         $('.option-ul').each(function(index, el) {
             // all not omit questions
-            if(!$(el).closest('.option-title').hasClass('omit')){
+            if(!$(el).closest('.wrapper-li').hasClass('omit')){
                 var key = [];
                 // question content
                 key.push($(el).find('.option-list-title span').text());
