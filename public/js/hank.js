@@ -48,22 +48,23 @@ $(function () {
         $('.person-inform').fadeIn('400');
         afterFirstTap();
     });
+    $('.user-name').val(localStorage.getItem('name'));
+    $('.user-account').val(localStorage.getItem('account'));
+    userInfoConfirm();
+    $('.person-inform').keyup(userInfoConfirm);
+    function userInfoConfirm(event) {
+        if($('.user-name').val() !== '' && $('.user-account').val() !== ''){
+            $('.user-name-confirm span').removeClass('disable');
+            $('.user-name-confirm span').hammer().unbind('tap').bind("tap", function () {
+                $('.person-inform').fadeOut('slow');
+                $('.selection').fadeIn('400');
+                localStorage.setItem('name', $('.user-name').val());
+                localStorage.setItem('account', $('.user-account').val());
+            });
+        }
+    }    
 });
 
-$('.person-inform').keyup(function(event) {
-    if($('.user-name').val() !== '' && $('.user-account').val() !== ''){
-        $('.user-name-confirm span').removeClass('disable');
-        $('.user-name-confirm span').hammer().unbind('tap').bind("tap", function () {
-            $('.person-inform').fadeOut('slow');
-            $('.selection').fadeIn('400');
-            localStorage.setItem('name', $('.user-name').val());
-            localStorage.setItem('account', $('.user-account').val());
-        });
-    }
-});
-
-$('.user-name').val(localStorage.getItem('name'));
-$('.user-account').val(localStorage.getItem('account'));
 
 function afterFirstTap() {
     var isTapped = false;
