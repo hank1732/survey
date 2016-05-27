@@ -50,9 +50,9 @@ $(function () {
     });
     $('.user-name').val(localStorage.getItem('name'));
     $('.user-account').val(localStorage.getItem('account'));
-    userInfoConfirm();
+     userInfoConfirm();
     $('.person-inform').keyup(userInfoConfirm);
-    function userInfoConfirm(event) {
+    function userInfoConfirm() {
         if($('.user-name').val() !== '' && $('.user-account').val() !== ''){
             $('.user-name-confirm span').removeClass('disable');
             $('.user-name-confirm span').hammer().unbind('tap').bind("tap", function () {
@@ -62,7 +62,7 @@ $(function () {
                 localStorage.setItem('account', $('.user-account').val());
             });
         }
-    }    
+    }      
 });
 
 
