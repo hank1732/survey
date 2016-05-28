@@ -376,7 +376,7 @@ function afterFirstTap() {
 
             wrapperLi.find('.option-list-title').hammer().unbind("tap").bind("tap", unfold);
 
-            if(questionNum%4 === 3){
+            if(questionNum > 2 && scroll < 150){
                 $('body').stop().animate({scrollTop: 3 * 260 + scroll}, '500', 'swing');
             }
             questionNum++;
