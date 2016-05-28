@@ -439,7 +439,8 @@ var color = {
     // question21:['d7f904','ebfc81','e7fb68','e3fb4f','dffa36'],
     question21:['cbdc21','d6e34e','d1e038','cede2d','cbdc21'],
     // question22:['a9e535','d4f29a','cbef86','c3ed72','baea5e'],
-    question22:['b4cd1f','cedf6e','cbdc62','c3d74c','bcd236 ']
+    question22:['b4cd1f','cedf6e','cbdc62','c3d74c','bcd236 '],
+    com:['333333']
 }
  
 
