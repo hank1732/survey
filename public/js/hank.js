@@ -243,6 +243,7 @@ function afterFirstTap() {
             }
             var selectedLi = wrapperLi.nextAll('.wrapper-li');
             selectedLi.removeClass('js-answered')
+                .attr('data-tapCount', undefined)
                 .find('img').hide().end()
                 .find('.option-list-title').removeClass('active')
                     .css('background', '')
