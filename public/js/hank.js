@@ -95,7 +95,7 @@ function afterFirstTap() {
             img.fadeIn('fast');
             fold.apply(this);
             wrapperLi.addClass('js-answered');
-            otherInput.blur();
+            wrapperLi.find('input').blur();
         }
         if($(this).hasClass('js-mutiple')){
             // use count to trigger able or disable
@@ -245,7 +245,6 @@ function afterFirstTap() {
                     .css('background', '')
                 .find('.text-vcenter').removeClass('underline');
         }
-        
     };
 
     function unfold() {
