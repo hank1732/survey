@@ -71,6 +71,7 @@ $(function () {
 
 function afterFirstTap() {
     var scroll = 0;
+    var questionNum = 0; 
     // dom prepare
     $('.option-list-title').first().addClass('active')
             .find('.text-vcenter').first().addClass('underline');
@@ -372,6 +373,12 @@ function afterFirstTap() {
             }
 
             wrapperLi.find('.option-list-title').hammer().unbind("tap").bind("tap", unfold);
+
+            if(questionNum%4 === 3){
+                $('body').stop().animate({scrollTop: 3 * 260 + scroll}, '500', 'swing');
+            }
+            questionNum++;
+
         }, 1400);
     }
 
