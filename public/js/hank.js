@@ -186,7 +186,7 @@ function afterFirstTap() {
             }
             wrapperLi.find('img').hide();
             img.fadeIn('fast',function () {
-                otherInput.focus();
+                // otherInput.focus();
             });
         }
         if($(this).hasClass('js-other-mutiple')){
@@ -210,7 +210,7 @@ function afterFirstTap() {
             }
             if(img.css("display") === 'none'){
                 img.fadeIn('fast',function () {
-                    otherInput.focus();
+                    // otherInput.focus();
                 });
                 wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
             }else{
@@ -237,7 +237,10 @@ function afterFirstTap() {
         }
 
         //  reset all following selected questions
-        if(wrapperLi.hasClass('question3') || wrapperLi.hasClass('question15') || wrapperLi.hasClass('question21')){
+        if(wrapperLi.hasClass('question3') || wrapperLi.hasClass('question15') || wrapperLi.hasClass('question21')){   
+            if(wrapperLi.hasClass('question3')){
+                questionNum = 0;
+            }
             var selectedLi = wrapperLi.nextAll('.wrapper-li');
             selectedLi.removeClass('js-answered')
                 .find('img').hide().end()
