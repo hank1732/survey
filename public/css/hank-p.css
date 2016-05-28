@@ -253,13 +253,7 @@ span.disable{
 
 .enter-button{
     position: absolute;
-        /* bottom: 25%; */
     top: 65%;
-    /* left: 50%; */
-    /* margin-left: -100px;
-    width: 200px;
-    height: 70px;
-    border: solid 3px #fff; */
 }
 .person-inform{
     background:#fa2a76;
@@ -310,19 +304,13 @@ span.disable{
     display:none;
 }
 
-.option-title{
+.wrapper-li{
     position:relative;
     height:260px;
-    /* box-shadow:  0 5px 2px #bbb inset; */
-    /* border-top:1px solid rgba(255,255,255,0.8); */
-    /* border-bottom:1px solid rgba(0,0,0,0.8); */
 }
-.option-title.full{
+.wrapper-li.full{
     position:absolute;
     height:auto;
-}
-.option-ul.full{
-    /* top:4px; */
 }
 .option-ul.flex{
     display: -webkit-box;
@@ -338,10 +326,7 @@ span.disable{
 .option-list-title{
     position:relative;
     height:260px;
-    /* padding:0 16%; */
     text-align:center;
-    -webkit-transition: background 555ms cubic-bezier(0.4, 0, 0.22, 1);
-    transition: background 555ms cubic-bezier(0.4, 0, 0.22, 1);
 }
 .option-list-title.active{
     background:#FCB3B9;
@@ -353,7 +338,6 @@ span.disable{
 .option-item{
     position:relative;
     color:#fff;
-    /* padding: 0 0 0 16%; */
     -webkit-box-flex:1;
     -webkit-flex:1;
         -ms-flex:1;
@@ -361,13 +345,13 @@ span.disable{
     -webkit-transform: translateY(-1800px);
             transform: translateY(-1800px);
 }
-.option-title:nth-child(odd) .option-list-title{
+.wrapper-li:nth-child(odd) .option-list-title{
     background:#e6e6e6;
 }
-.option-title:nth-child(even) .option-list-title{
+.wrapper-li:nth-child(even) .option-list-title{
     background:#f2f2f2;
 }
-#question3 .option-list-title{
+li.wrapper-li.question3 .option-list-title{
     background:#fb5f9d;
 }
 
@@ -403,7 +387,9 @@ span.disable{
     -webkit-transform: translateY(0);
     transform: translateY(0);
 }
-
+.flex.full{
+    min-width:auto;
+}
 
 
 

@@ -48,9 +48,12 @@ $(function () {
         $('.person-inform').fadeIn('400');
         afterFirstTap();
     });
+
+    //restore personel infomation
     $('.user-name').val(localStorage.getItem('name'));
     $('.user-account').val(localStorage.getItem('account'));
-     userInfoConfirm();
+    userInfoConfirm();
+
     $('.person-inform').keyup(userInfoConfirm);
     function userInfoConfirm() {
         if($('.user-name').val() !== '' && $('.user-account').val() !== ''){
@@ -67,29 +70,33 @@ $(function () {
 
 
 function afterFirstTap() {
-    var isTapped = false;
     var scroll = 0;
     // dom prepare
-    $('.selection .text-vcenter').first().addClass('underline');
-    $('.option-list-title').first().addClass('active');
+    $('.option-list-title').first().addClass('active')
+            .find('.text-vcenter').first().addClass('underline');
     $('.option-ul li').prepend('<div class="lineTop"></div>')
         .append('<div class="lineBottom"></div>');
     // question tap
     $('.active').hammer().bind("tap", unfold);
 
     // tap option and show tick
-    // $('.option-item').hammer().bind("tap", function () {
     function optionTap() {
         var wrapperLi = $(this).parents('.wrapper-li');
         var img = $(this).find('img');
         var userConfirm = wrapperLi.find('.user-confirm');
+        var otherInput = $(this).find('.other-input');
+        var confirmButton = wrapperLi.find('.user-other-confirm');
+
         if($(this).hasClass('js-single')){
+            // hide all
             wrapperLi.find('img').hide();
+            // show clicked
             img.fadeIn('fast');
             fold.apply(this);
             wrapperLi.addClass('js-answered');
         }
         if($(this).hasClass('js-mutiple')){
+            // use count to trigger able or disable
             if(wrapperLi.attr('data-tapCount') === undefined ){
                 wrapperLi.attr('data-tapCount', 0);
             }
@@ -100,6 +107,7 @@ function afterFirstTap() {
                 img.fadeOut('fast');
                 wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
             }
+            mutipleAble();
         }
         if($(this).hasClass('js-mutiple2')){
             if(wrapperLi.attr('data-tapCount') === undefined ){
@@ -117,6 +125,7 @@ function afterFirstTap() {
                 img.fadeOut('fast');
                 wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
             }
+            mutipleAble();
         }
         if($(this).hasClass('js-mutiple3')){
             if(wrapperLi.attr('data-tapCount') === undefined ){
@@ -134,14 +143,23 @@ function afterFirstTap() {
                 img.fadeOut('fast');
                 wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
             }
+            mutipleAble();
         }
-        if($(this).hasClass('js-other')){
-            wrapperLi.find('img').hide();
-            img.fadeIn('fast');
+        function mutipleAble() {  
+            if(userConfirm.length > 0){
+                if(wrapperLi.attr('data-tapCount') == 0){
+                    userConfirm.hammer().unbind("tap");
+                    wrapperLi.find('.user-confirm').addClass('disable');
+                }
+                if(wrapperLi.attr('data-tapCount') > 0){
+                    userConfirm.hammer().unbind('tap').bind("tap", fold);
+                    userConfirm.removeClass('disable');
+                }
+            }     
+        }
 
-            var otherInput = $(this).find('.other-input');
-            var confirmButton = wrapperLi.find('.user-other-confirm');
-            otherInput.focus();
+        // other-input
+        if($(this).hasClass('js-other')){
             if(otherInput.val() === ''){
                 confirmButton.addClass('disable')
                     .hammer().unbind('tap');
@@ -151,43 +169,76 @@ function afterFirstTap() {
                         .hammer().unbind('tap').bind("tap", fold);
                     wrapperLi.addClass('js-answered');
             }
+            if(otherInput.length > 0){
+                wrapperLi.keyup(function(event) {
+                    if(otherInput.val() !== ''){
+                        confirmButton.removeClass('disable')
+                            .hammer().unbind('tap').bind("tap", fold);
+                        wrapperLi.addClass('js-answered');
+                    }else{
+                        confirmButton.addClass('disable')
+                            .hammer().unbind('tap');
+                        wrapperLi.removeClass('js-answered');
+                    }
+                });
+            }
+            wrapperLi.find('img').hide();
+            img.fadeIn('fast',function () {
+                otherInput.focus();
+            });
         }
         if($(this).hasClass('js-other-mutiple')){
+            if(otherInput.length > 0){
+                wrapperLi.keyup(function(event) {
+                    if(otherInput.val() !== ''){
+                        confirmButton.removeClass('disable')
+                            .hammer().unbind('tap').bind("tap", fold);
+                        wrapperLi.addClass('js-answered');
+                    }else{
+                        if(wrapperLi.find('img:visible').length < 2){
+                            confirmButton.addClass('disable')
+                                .hammer().unbind('tap');
+                            wrapperLi.removeClass('js-answered');
+                        }                        
+                    }
+                });
+            }
+            if(wrapperLi.attr('data-tapCount') === undefined ){
+                wrapperLi.attr('data-tapCount', 0);
+            }
             if(img.css("display") === 'none'){
-                img.fadeIn('fast');
+                img.fadeIn('fast',function () {
+                    otherInput.focus();
+                });
+                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
             }else{
                 img.fadeOut('fast');
+                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
             }
-            var otherInput = $(this).find('.other-input');
-            var confirmButton = wrapperLi.find('.user-other-confirm');
-            otherInput.focus();
-            if(otherInput.val() === ''){
-                confirmButton.addClass('disable')
-                    .hammer().unbind('tap');
-                wrapperLi.removeClass('js-answered');
-            }else{
-                confirmButton.removeClass('disable')
-                        .hammer().unbind('tap').bind("tap", fold);
-                    wrapperLi.addClass('js-answered');
+            if(userConfirm.length > 0){
+                if(wrapperLi.attr('data-tapCount') == 0 && otherInput.val() === ''){
+                    userConfirm.hammer().unbind("tap");
+                    userConfirm.addClass('disable');
+                }
+                if(wrapperLi.attr('data-tapCount') > 0 && otherInput.val() !== ''){
+                    userConfirm.hammer().unbind('tap').bind("tap", fold);
+                    userConfirm.removeClass('disable');
+                }
             }
         }
+
+        // hurt
         if($(this).hasClass('js-hurt')){
             $(this).find('.hurt-mask').hide();
             $(this).find('.hurt-ul').css('visibility', 'visible');
             $(this).hammer().unbind('tap');
         }
-        if(wrapperLi.attr('data-tapCount') == 0){
-            userConfirm.hammer().unbind("tap");
-            wrapperLi.find('.user-confirm').addClass('disable');
-        }
-        if(wrapperLi.attr('data-tapCount') > 0){
-            userConfirm.hammer().unbind('tap').bind("tap", fold);
-            userConfirm.removeClass('disable');
-        }
+
+        //  reset all following selected questions
         if(wrapperLi.hasClass('question3') || wrapperLi.hasClass('question15') || wrapperLi.hasClass('question21')){
-            //  reset all following selected questions
             var selectedLi = wrapperLi.nextAll('.wrapper-li');
-            selectedLi.find('img').hide().end()
+            selectedLi.removeClass('js-answered')
+                .find('img').hide().end()
                 .find('.option-list-title').removeClass('active')
                     .css('background', '')
                 .find('.text-vcenter').removeClass('underline');
@@ -195,7 +246,6 @@ function afterFirstTap() {
         
     };
 
-    // $('.js-single').hammer().bind("tap", fold);
     function unfold() {
         if(!$(this).hasClass('active')){
             return false;
@@ -208,41 +258,21 @@ function afterFirstTap() {
         wrapperLi.find('.option-ul').children('.option-item').each(function(index, el) {
             $(el).css('background', '#' + color[wrapperLi.attr('data-id')][index + 1] );
         });
-
         $('.survey-question').addClass('full');
-
         wrapperLi.addClass('full').height('atuo')
             .find('.option-ul').addClass('flex')
             .find('.back-tip').show()
-            .end().find('.option-item').hammer().unbind('tap').bind("tap", optionTap);          
-
+            .end().find('.option-item').hammer().unbind('tap').bind("tap", optionTap);
          wrapperLi.nextAll().hide()
             .end().prevAll().hide();
 
-        temp.hammer().unbind("tap", unfold)
+        temp.hammer().unbind("tap")
             .transition({ height: '24%' }, 666)
             .nextAll('.option-item').each(function(index, el) {
                 setTimeout(function () {
                     $(el).show().transition({ y: 0 }, 888, 'ease');
                 }, index * 50);
             });
-
-        // other input
-        var otherInput = wrapperLi.find('.other-input');
-        var confirmButton = wrapperLi.find('.user-other-confirm');
-        if(otherInput.length > 0){
-            wrapperLi.keyup(function(event) {
-                if(otherInput.val() !== ''){
-                    confirmButton.removeClass('disable')
-                        .hammer().unbind('tap').bind("tap", fold);
-                    wrapperLi.addClass('js-answered');
-                }else{
-                    confirmButton.addClass('disable')
-                        .hammer().unbind('tap');
-                    wrapperLi.removeClass('js-answered');
-                }
-            });
-        }
     };
     function fold() {
         var self = this;
