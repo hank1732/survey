@@ -99,61 +99,61 @@ function afterFirstTap() {
         }
         if($(this).hasClass('js-mutiple')){
             // use count to trigger able or disable
-            if(wrapperLi.attr('data-tapCount') === undefined ){
-                wrapperLi.attr('data-tapCount', 0);
+            if(wrapperLi.attr('data-tap-count') === undefined ){
+                wrapperLi.attr('data-tap-count', 0);
             }
             if(img.css("display") === 'none'){
                 img.fadeIn('fast');
-                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
+                wrapperLi.attr('data-tap-count', wrapperLi.attr('data-tap-count') - 0 + 1);
             }else{
                 img.fadeOut('fast');
-                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
+                wrapperLi.attr('data-tap-count', wrapperLi.attr('data-tap-count') - 1);
             }
             mutipleAble();
         }
         if($(this).hasClass('js-mutiple2')){
-            if(wrapperLi.attr('data-tapCount') === undefined ){
-                wrapperLi.attr('data-tapCount', 0);
+            if(wrapperLi.attr('data-tap-count') === undefined ){
+                wrapperLi.attr('data-tap-count', 0);
             }
             if(img.css("display") === 'none'){
-                if(wrapperLi.attr('data-tapCount') < 2){
+                if(wrapperLi.attr('data-tap-count') < 2){
                     img.fadeIn('fast');
-                    wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
-                    if(wrapperLi.attr('data-tapCount') == 2 ){
+                    wrapperLi.attr('data-tap-count', wrapperLi.attr('data-tap-count') - 0 + 1);
+                    if(wrapperLi.attr('data-tap-count') == 2 ){
                         fold.apply(this);
                     }
                 }
             }else{
                 img.fadeOut('fast');
-                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
+                wrapperLi.attr('data-tap-count', wrapperLi.attr('data-tap-count') - 1);
             }
             mutipleAble();
         }
         if($(this).hasClass('js-mutiple3')){
-            if(wrapperLi.attr('data-tapCount') === undefined ){
-                wrapperLi.attr('data-tapCount', 0);
+            if(wrapperLi.attr('data-tap-count') === undefined ){
+                wrapperLi.attr('data-tap-count', 0);
             }
             if(img.css("display") === 'none'){
-                if(wrapperLi.attr('data-tapCount') < 3){
+                if(wrapperLi.attr('data-tap-count') < 3){
                     img.fadeIn('fast');
-                    wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
-                    if(wrapperLi.attr('data-tapCount') == 3 ){
+                    wrapperLi.attr('data-tap-count', wrapperLi.attr('data-tap-count') - 0 + 1);
+                    if(wrapperLi.attr('data-tap-count') == 3 ){
                         fold.apply(this);
                     }
                 }
             }else{
                 img.fadeOut('fast');
-                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
+                wrapperLi.attr('data-tap-count', wrapperLi.attr('data-tap-count') - 1);
             }
             mutipleAble();
         }
         function mutipleAble() {  
             if(userConfirm.length > 0){
-                if(wrapperLi.attr('data-tapCount') == 0){
+                if(wrapperLi.attr('data-tap-count') == 0){
                     userConfirm.hammer().unbind("tap");
                     wrapperLi.find('.user-confirm').addClass('disable');
                 }
-                if(wrapperLi.attr('data-tapCount') > 0){
+                if(wrapperLi.attr('data-tap-count') > 0){
                     userConfirm.hammer().unbind('tap').bind("tap", fold);
                     userConfirm.removeClass('disable');
                 }
@@ -205,24 +205,24 @@ function afterFirstTap() {
                     }
                 });
             }
-            if(wrapperLi.attr('data-tapCount') === undefined ){
-                wrapperLi.attr('data-tapCount', 0);
+            if(wrapperLi.attr('data-tap-count') === undefined ){
+                wrapperLi.attr('data-tap-count', 0);
             }
             if(img.css("display") === 'none'){
                 img.fadeIn('fast',function () {
                     // otherInput.focus();
                 });
-                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 0 + 1);
+                wrapperLi.attr('data-tap-count', wrapperLi.attr('data-tap-count') - 0 + 1);
             }else{
                 img.fadeOut('fast');
-                wrapperLi.attr('data-tapCount', wrapperLi.attr('data-tapCount') - 1);
+                wrapperLi.attr('data-tap-count', wrapperLi.attr('data-tap-count') - 1);
             }
             if(userConfirm.length > 0){
-                if(wrapperLi.attr('data-tapCount') == 0 && otherInput.val() === ''){
+                if(wrapperLi.attr('data-tap-count') == 0 && otherInput.val() === ''){
                     userConfirm.hammer().unbind("tap");
                     userConfirm.addClass('disable');
                 }
-                if(wrapperLi.attr('data-tapCount') > 0 && otherInput.val() !== ''){
+                if(wrapperLi.attr('data-tap-count') > 0 && otherInput.val() !== ''){
                     userConfirm.hammer().unbind('tap').bind("tap", fold);
                     userConfirm.removeClass('disable');
                 }
@@ -243,7 +243,7 @@ function afterFirstTap() {
             }
             var selectedLi = wrapperLi.nextAll('.wrapper-li');
             selectedLi.removeClass('js-answered')
-                .attr('data-tapCount', undefined)
+                .attr('data-tap-count', 0)
                 .find('img').hide().end()
                 .find('.option-list-title').removeClass('active')
                     .css('background', '')
