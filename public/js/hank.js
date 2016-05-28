@@ -276,9 +276,14 @@ function afterFirstTap() {
     };
     function fold() {
         var self = this;
-        // var index = $('.wrapper-li').index($(this).parents('.wrapper-li'));
         var temp = [];
         var count = 0;
+        var wrapperLi = $(this).parents('.wrapper-li');        
+        var tickStaytime = 444;
+
+        if ($(this).hasClass('user-confirm')) {
+            tickStaytime = 10;
+        }
         while(temp.length == 0 && count < 6){
             switch(count){
                 case 0:temp = $(this).closest('.option-list-title');break;
@@ -288,33 +293,8 @@ function afterFirstTap() {
             }
             count++;
         };
-        // $(this).closest('.option-list-title').length ?  : 
-        //                 $(this).siblings('.option-list-title').length ? $(this).siblings('.option-list-title') : $(this).closest('.option-item').siblings('.option-list-title');
-        var wrapperLi = $(this).parents('.wrapper-li');
-        var inputsFields = wrapperLi.find('.option-item').filter(function(index, el) {
-                        return $(el).find('img').css("display") !== 'none';
-                    }).find('input');
-        var isInputEmpty = inputsFields.filter(function(index, el) {
-            return $(el).val() === '' ;
-        });
-        var tickStaytime = 444;
-        if ($(this).hasClass('user-confirm')) {
-            tickStaytime = 10;
-        }
 
-        // no field left empty
-        if(inputsFields.length === 0 || isInputEmpty.length === 0){
-            // answer poll
-            var liSelect = wrapperLi.find('.check-icon');
-            if(liSelect.length === 0){
-                wrapperLi.addClass('js-answered');
-            }else{
-                if(liSelect.filter(':visible').length > 0){
-                    wrapperLi.addClass('js-answered');
-                }
-            }
-        };
-
+        wrapperLi.addClass('js-answered');
         $('.survey-question').removeClass('full');
 
         // this question
@@ -335,65 +315,61 @@ function afterFirstTap() {
                 }, index * 50);
             });            
         }, tickStaytime);
-
         
         // next question
         setTimeout(function () {
-            if(wrapperLi.hasClass('js-answered')){
-                // question branch
-                if(wrapperLi.hasClass('question3')){
-                    if($(self).find('.omit89').length > 0){
-                        $('.question8').addClass('omit').hide();
-                        $('.question9').addClass('omit').hide();
-                    }else{
-                        $('.question8').removeClass('omit').show();
-                        $('.question9').removeClass('omit').show();
-                    }
+            if(wrapperLi.hasClass('question3')){
+                if($(self).find('.omit89').length > 0){
+                    $('.question8').addClass('omit').hide();
+                    $('.question9').addClass('omit').hide();
+                }else{
+                    $('.question8').removeClass('omit').show();
+                    $('.question9').removeClass('omit').show();
                 }
-                if(wrapperLi.hasClass('question15')){
-                    $('.Q15').hide().addClass('omit');
-                    $('.Q21').hide().addClass('omit');
-                    if($(self).hasClass('OP15A')){
-                        $('.Q15A').not('.Q21').show().removeClass('omit');
-                    }
-                    if($(self).hasClass('OP15B')){
-                        $('.Q15B').show().removeClass('omit');
-                    }
-                    if($(self).hasClass('OP15C')){
-                        $('.Q15C').show().removeClass('omit');
-                    }
-                    if($(self).hasClass('OP15D')){
-                        $('.Q15D').show().removeClass('omit');
-                    }
+            }
+            if(wrapperLi.hasClass('question15')){
+                $('.Q15').hide().addClass('omit');
+                $('.Q21').hide().addClass('omit');
+                if($(self).hasClass('OP15A')){
+                    $('.Q15A').not('.Q21').show().removeClass('omit');
                 }
-                if(wrapperLi.hasClass('question21')){
-                    if($(self).hasClass('OP21A')){
-                        $('.Q21A').show().removeClass('omit');
-                    }
-                    if($(self).hasClass('OP21B')){
-                        $('.Q21B').show().removeClass('omit');
-                    }
-                    if($(self).hasClass('OP21C')){
-                        $('.Q21C').show().removeClass('omit');
-                    }
+                if($(self).hasClass('OP15B')){
+                    $('.Q15B').show().removeClass('omit');
                 }
-                // next question
-                var nextActive = wrapperLi.next();
-                while((nextActive && nextActive.hasClass('omit')) || nextActive.hasClass('js-answered')){
-                    nextActive = nextActive.next();
-                };
-                wrapperLi.find('.text-vcenter').removeClass('underline');
-                nextActive.find('.option-list-title').addClass('active')
-                    .css('background', '#' + color[nextActive.attr('data-id')][0])
-                    .find('.text-vcenter').addClass('underline')
-                    .end().hammer().unbind("tap").bind("tap", unfold);
-
-                // complete button
-                if(nextActive.hasClass('complete')){
-                    nextActive.addClass('active')
-                        .find('.text-vcenter').addClass('underline');
+                if($(self).hasClass('OP15C')){
+                    $('.Q15C').show().removeClass('omit');
                 }
+                if($(self).hasClass('OP15D')){
+                    $('.Q15D').show().removeClass('omit');
+                }
+            }
+            if(wrapperLi.hasClass('question21')){
+                if($(self).hasClass('OP21A')){
+                    $('.Q21A').show().removeClass('omit');
+                }
+                if($(self).hasClass('OP21B')){
+                    $('.Q21B').show().removeClass('omit');
+                }
+                if($(self).hasClass('OP21C')){
+                    $('.Q21C').show().removeClass('omit');
+                }
+            }
+            // next question
+            var nextActive = wrapperLi.next();
+            while((nextActive && nextActive.hasClass('omit')) || nextActive.hasClass('js-answered')){
+                nextActive = nextActive.next();
             };
+            wrapperLi.find('.text-vcenter').removeClass('underline');
+            nextActive.find('.option-list-title').addClass('active')
+                .css('background', '#' + color[nextActive.attr('data-id')][0])
+                .find('.text-vcenter').addClass('underline')
+                .end().hammer().unbind("tap").bind("tap", unfold);
+
+            // complete button
+            if(nextActive.hasClass('complete')){
+                nextActive.addClass('active')
+                    .find('.text-vcenter').addClass('underline');
+            }
 
             wrapperLi.find('.option-list-title').hammer().unbind("tap").bind("tap", unfold);
         }, 1400);
