@@ -95,6 +95,7 @@ function afterFirstTap() {
             img.fadeIn('fast');
             fold.apply(this);
             wrapperLi.addClass('js-answered');
+            otherInput.blur();
         }
         if($(this).hasClass('js-mutiple')){
             // use count to trigger able or disable
