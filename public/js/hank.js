@@ -297,6 +297,7 @@ function afterFirstTap() {
 
         wrapperLi.addClass('js-answered');
         $('.survey-question').removeClass('full');
+        wrapperLi.find('.option-item').hammer().unbind('tap');
 
         // this question
         setTimeout(function () {
