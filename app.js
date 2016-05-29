@@ -20,7 +20,7 @@ var server = app.listen(port, function() {
     console.log('App listening at http://%s:%s', host, port);
 });
 
-app.get('/', function(req, res, next) {
+app.get('/rs', function(req, res, next) {
     console.log('sendFile');
     var options = {
         root: __dirname + 'public',
