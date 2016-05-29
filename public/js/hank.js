@@ -197,6 +197,7 @@ function afterFirstTap() {
             img.fadeIn('fast');
             fold.apply(this);
             wrapperLi.addClass('js-answered');
+            wrapperLi.find('.back-tip').addClass('disable');
             // wrapperLi.find('input').blur();
         }
         if($(this).hasClass('js-mutiple')){
