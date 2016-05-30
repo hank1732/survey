@@ -70,7 +70,7 @@ app.all('/write', jsonParser, function(req, res, next) {
     for(var name in req.body){
         message += req.body[name] + '\n';
     }
-    message = '\n' + new Date() + message + '\n';
+    message = '\n' + new Date() + '\n' + message + '\n\n';
     console.log('message', message);
     fs.appendFile('data.txt', message, function (err) {
         if (err) return console.log(err);
