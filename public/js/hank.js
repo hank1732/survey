@@ -158,8 +158,8 @@ $(function () {
                         while((nextActive && nextActive.hasClass('omit')) || nextActive.hasClass('js-answered')){
                             nextActive = nextActive.next();
                         };
-                        nextActive.css('background', '#' + color[nextActive.attr('data-id')][0])
-                            .find('.option-list-title').addClass('active')
+                        nextActive.find('.option-list-title').addClass('active')
+                            .css('background', '#' + color[nextActive.attr('data-id')][0])
                             .find('.text-vcenter').addClass('underline');
 
                         // complete button
