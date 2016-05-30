@@ -97,6 +97,9 @@ $(function () {
                                             $(el).find('input').val(poll[elClass][i + 1]);
                                             thisEl.find('.user-other-confirm').removeClass('disable');
                                         }
+                                        // if($(el).hasClass('hurt')){
+                                        //     $('.hurt-mask').hide();
+                                        // }
                                         return true;
                                     }
                                 }
@@ -154,9 +157,15 @@ $(function () {
                     while((nextActive && nextActive.hasClass('omit')) || nextActive.hasClass('js-answered')){
                         nextActive = nextActive.next();
                     };
-                    nextActive.find('.option-list-title').addClass('active')
-                        .css('background', '#' + color[nextActive.attr('data-id')][0])
+                    nextActive.css('background', '#' + color[nextActive.attr('data-id')][0])
+                        .find('.option-list-title').addClass('active')
                         .find('.text-vcenter').addClass('underline');
+
+                    // complete button
+                    if(nextActive.hasClass('complete')){
+                        nextActive.addClass('active')
+                            .find('.text-vcenter').addClass('underline');
+                    }
 
                 }else{
                     // just keep the name and account
