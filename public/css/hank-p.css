@@ -290,6 +290,7 @@ span.disable{
         #d7f904 95%, #d7f904 100%);
 }
 .end-text-all{
+    display:none;
     text-align: center;
     top: 45%;
     -webkit-transform: translateY(-50%);

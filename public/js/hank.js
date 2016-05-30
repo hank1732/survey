@@ -537,14 +537,15 @@ function afterFirstTap() {
             return false;
         }
         console.log(poll);
+        $('.selection').fadeOut('slow');
+        $('.end').fadeIn('fast');
+        $('.end-text-all').show();
         $.ajax({
             url: '/write', 
             type: 'POST', 
             contentType: 'application/json', 
             data: JSON.stringify(poll)}
         ).success(function () {
-            $('.selection').fadeOut('slow');
-            $('.end').fadeIn('fast');
         });
     });
 };
