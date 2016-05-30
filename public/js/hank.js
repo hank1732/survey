@@ -153,19 +153,29 @@ $(function () {
                     });
                     
                     // next question
-                    var nextActive = maxWrapperLi.next();
-                    while((nextActive && nextActive.hasClass('omit')) || nextActive.hasClass('js-answered')){
-                        nextActive = nextActive.next();
-                    };
-                    nextActive.css('background', '#' + color[nextActive.attr('data-id')][0])
-                        .find('.option-list-title').addClass('active')
-                        .find('.text-vcenter').addClass('underline');
-
-                    // complete button
-                    if(nextActive.hasClass('complete')){
-                        nextActive.addClass('active')
+                    if(maxWrapperLi){
+                        var nextActive = maxWrapperLi.next();
+                        while((nextActive && nextActive.hasClass('omit')) || nextActive.hasClass('js-answered')){
+                            nextActive = nextActive.next();
+                        };
+                        nextActive.css('background', '#' + color[nextActive.attr('data-id')][0])
+                            .find('.option-list-title').addClass('active')
                             .find('.text-vcenter').addClass('underline');
-                    }
+
+                        // complete button
+                        if(nextActive.hasClass('complete')){
+                            nextActive.addClass('active')
+                                .find('.text-vcenter').addClass('underline');
+                        }
+                    }else{
+                        // just keep the name and account
+                        poll['user-name'] = ['姓名', uname];
+                        poll['user-account'] = ['Nike账号', uaccount];
+                        localStorage.setItem('nike', JSON.stringify(poll));
+                        // dom prepare
+                        $('.option-list-title').first().addClass('active')
+                                .find('.text-vcenter').first().addClass('underline');
+                    }                   
 
                 }else{
                     // just keep the name and account
