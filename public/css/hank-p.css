@@ -310,7 +310,7 @@ span.disable{
     font-size: 60px;
 }
 .end img{
-   transform: scale(1.75);
+   transform: scale(1.45);
 }
 
 .option-panel{
@@ -400,7 +400,9 @@ li.wrapper-li.question3 .option-list-title{
     -webkit-transform: translateY(0);
     transform: translateY(0);
 }
-
+.end-text-all .text-vcenter{
+    padding:0;
+}
 
 
 
