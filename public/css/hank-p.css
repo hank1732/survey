@@ -213,7 +213,7 @@ span.disable{
     position: absolute;
     top: 20%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -45px;
     width: 160px;
 }
 .logo-text{    
@@ -222,8 +222,7 @@ span.disable{
     font-size: 80px; */
     color: #fff;
     top: 26%;
-    left: 0;
-    right: 0;
+    width:100%;
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
 }
