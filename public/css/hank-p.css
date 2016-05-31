@@ -125,6 +125,7 @@ a{
 .div-user-name input, .div-user-account input{
     margin-top: 30px;
     padding-bottom: 30px;
+    outline:none;
 }
 .text-vcenter.sign{
     top:55%;
