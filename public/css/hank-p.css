@@ -171,7 +171,8 @@ span.sign-text{
 .input-frame-left, .input-frame-right{
     position: relative;
     font-size: 90px;
-    top: 15px;
+    top: 9px;
+    font-family:"Courier New", Courier, monospace;
 }
 .input-frame-left{
     left:-20px;
@@ -222,7 +223,7 @@ span.disable{
     position: absolute;
     top: 20%;
     left: 50%;
-    margin-left: -55px;
+    margin-left: -60px;
     width: 160px;
 }
 .logo-text{    
