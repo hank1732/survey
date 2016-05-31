@@ -122,13 +122,17 @@ a{
     top:45%;
     margin-bottom:5%;
 }
+.div-user-name input, .div-user-account input{
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
 .text-vcenter.sign{
     top:55%;
 }
 .sign span{
-    border: 4px solid #fff;
+    /* border: 4px solid #fff;
     border-radius: 5px;
-    padding: 10px 30px;
+    padding: 10px 30px; */
 }
 .check-icon{
     display:none;
@@ -159,13 +163,16 @@ input:focus{
     border-bottom:2px solid;
     outline: none;
 }
+span.sign-text{
+    line-height:2;
+}
 .input-frame-left, .input-frame-right{
     position: relative;
-    font-size: 50px;
-    top: 10px;
+    font-size: 90px;
+    top: 15px;
 }
 .input-frame-left{
-    left:-5px;
+    left:-20px;
 }
 .input-frame-right{
     right:-15px;
@@ -213,7 +220,7 @@ span.disable{
     position: absolute;
     top: 20%;
     left: 50%;
-    margin-left: -45px;
+    margin-left: -55px;
     width: 160px;
 }
 .logo-text{    
