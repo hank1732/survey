@@ -310,7 +310,8 @@ span.disable{
     font-size: 60px;
 }
 .end img{
-   transform: scale(1.45);
+       width: 100%;
+    /* transform: scale(1.45); */
 }
 
 .option-panel{
