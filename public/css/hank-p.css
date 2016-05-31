@@ -214,7 +214,7 @@ span.disable{
     top: 20%;
     left: 50%;
     margin-left: -30px;
-    width: 80px;
+    width: 160px;
 }
 .logo-text{    
     position: absolute;
@@ -276,7 +276,7 @@ span.disable{
 .selection.full{
     position:relative;
 }
-.end{
+/* .end{
     display:none;
     background:linear-gradient(#fb5f9d 5%, #fb5f9d 10%, #ca2d63 10%, #ca2d63 15%,
         #fa81a1 15%, #fa81a1 20%, #f3455e 20%, #f3455e 25%,
@@ -288,6 +288,16 @@ span.disable{
         #ddcc1b 75%, #ddcc1b 80%, #c5be2c 80%, #c5be2c 85%,
         #d9e50d 85%, #d9e50d 90%, #c4da0e 90%, #c4da0e 95%,
         #d7f904 95%, #d7f904 100%);
+} */
+.end{
+    display:none;
+    height:100%;
+    width:100%;
+    background: -webkit-linear-gradient(323deg, #fc0c78, #d4fc2f);
+    background: linear-gradient(127deg, #fc0c78, #d4fc2f);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 12s ease infinite;
+    animation: AnimationName 12s ease infinite;
 }
 .end-text-all{
     display:none;

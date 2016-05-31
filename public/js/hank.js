@@ -422,7 +422,7 @@ function afterFirstTap() {
         var count = 0;
         var wrapperLi = $(this).parents('.wrapper-li');        
         var tickStaytime = 444;
-        var index = $('.wrapper-li').index(wrapperLi);
+        var index = $('.wrapper-li:not(.omit)').index(wrapperLi);
 
         if ($(this).hasClass('user-confirm')) {
             tickStaytime = 10;
@@ -517,8 +517,12 @@ function afterFirstTap() {
 
             wrapperLi.find('.option-list-title').hammer().unbind("tap").bind("tap", unfold);
 
-            if(index > 2 && scroll < 150){
-                $('body').stop().animate({scrollTop: 3 * 260 + scroll}, '500', 'swing');
+            // if(index > 2 && scroll < 150){
+            //     $('body').stop().animate({scrollTop: 3 * 260 + scroll}, '500', 'swing');
+            // }
+            
+            if(index > 2 && index%3 === 0){
+                $('body').stop().animate({scrollTop: (index - 1) * 260 }, '500', 'swing');
             }
 
             var key = [];
