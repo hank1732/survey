@@ -106,7 +106,7 @@ $(function () {
                                 return false;
                             });
                             selected.find('img').show();
-                            if(selected.length > 1){
+                            if(selected.length > 0){
                                 thisEl.attr('data-tap-count', selected.length);
                                 thisEl.find('.user-confirm').removeClass('disable');
                             }
