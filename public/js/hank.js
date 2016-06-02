@@ -367,8 +367,9 @@ function afterFirstTap() {
                     var selectedLi = wrapperLi.nextAll('.wrapper-li');
                     selectedLi.removeClass('js-answered')
                         .attr('data-tap-count', 0)
-                        .find('img').hide().end()
-                        .find('.option-list-title').removeClass('active')
+                        .find('img').hide()
+                        .end().find('input').val('')
+                        .end().find('.option-list-title').removeClass('active')
                             .css('background', '')
                         .find('.text-vcenter').removeClass('underline');
                     selectedLi.each(function(index, el) {
