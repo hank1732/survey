@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var util = require('util');
+var url  = require('url');
 
 var http = require("http");
 var fs = require("fs");
@@ -21,7 +22,7 @@ var server = app.listen(port, function() {
 });
 
 app.get('/', function(req, res, next) {
-    console.log('sendFile');
+    console.log('sendFile', req.get('host'));
     var options = {
         root: __dirname + '/public',
         dotfiles: 'deny',
@@ -31,7 +32,16 @@ app.get('/', function(req, res, next) {
         }
     };
 
-    var fileName = 'index.html';
+    var fileName = 'mainLand.html';
+    var host = req.get('host');
+    var firstDomainName = host.split('.')[0];
+    if(firstDomainName === 'tw'){
+        fileName = 'tw.html';
+    }
+    if(firstDomainName === 'hk'){
+        fileName = 'hk.html';
+    }
+
     res.sendFile(fileName, options, function(err) {
         if (err) {
             console.log("sendIle err! it is ",err);
@@ -45,62 +55,6 @@ app.get('/', function(req, res, next) {
             // res.status(err.status).end();
         } else {
             console.log('start survey main');
-        }
-    });
-});
-app.get('/hk', function(req, res, next) {
-    console.log('sendFile');
-    var options = {
-        root: __dirname + '/public',
-        dotfiles: 'deny',
-        headers: {
-            'x-timestamp': Date.now(),
-            'x-sent': true
-        }
-    };
-
-    var fileName = 'hk.html';
-    res.sendFile(fileName, options, function(err) {
-        if (err) {
-            console.log("sendIle err! it is ",err);
-            console.log("err.code ", err.code);
-            console.log("res.statusCode ", res.statusCode);
-            if (err.code === "ECONNABORTED" && (res.statusCode === 304 || res.statusCode == 200)) {
-                // No problem, 304 means client cache hit, so no data sent.
-                console.log('304 cache hit for ' + fileName);
-                return;
-            }
-            // res.status(err.status).end();
-        } else {
-            console.log('start survey hk');
-        }
-    });
-});
-app.get('/tw', function(req, res, next) {
-    console.log('sendFile');
-    var options = {
-        root: __dirname + '/public',
-        dotfiles: 'deny',
-        headers: {
-            'x-timestamp': Date.now(),
-            'x-sent': true
-        }
-    };
-
-    var fileName = 'tw.html';
-    res.sendFile(fileName, options, function(err) {
-        if (err) {
-            console.log("sendIle err! it is ",err);
-            console.log("err.code ", err.code);
-            console.log("res.statusCode ", res.statusCode);
-            if (err.code === "ECONNABORTED" && (res.statusCode === 304 || res.statusCode == 200)) {
-                // No problem, 304 means client cache hit, so no data sent.
-                console.log('304 cache hit for ' + fileName);
-                return;
-            }
-            // res.status(err.status).end();
-        } else {
-            console.log('start survey tw');
         }
     });
 });
