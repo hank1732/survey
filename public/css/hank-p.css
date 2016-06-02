@@ -175,10 +175,10 @@ span.sign-text{
     font-family:"Courier New", Courier, monospace;
 }
 .input-frame-left{
-    left:-20px;
+    left:-10px;
 }
 .input-frame-right{
-    right:-15px;
+    right:-10px;
 }
 .back-tip-wrap{
     position:absolute;
