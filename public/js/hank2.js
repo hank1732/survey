@@ -493,9 +493,9 @@ function afterFirstTap() {
                 }
             }
             if(wrapperLi.hasClass('question21')){
-                $('.Q21A').hide();
-                $('.Q21B').hide();
-                $('.Q21C').hide();
+                $('.Q21A').hide().addClass('omit');
+                $('.Q21B').hide().addClass('omit');
+                $('.Q21C').hide().addClass('omit');
                 if($(self).hasClass('OP21A')){
                     $('.Q21A').show().removeClass('omit');
                 }
