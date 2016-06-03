@@ -138,6 +138,9 @@ $(function () {
                                 }
                             }
                             if(thisEl.hasClass('question21')){
+                                $('Q21A').hide();
+                                $('Q21B').hide();
+                                $('Q21C').hide();
                                 if(selected.hasClass('OP21A')){
                                     $('.Q21A').show().removeClass('omit');
                                 }
@@ -493,6 +496,9 @@ function afterFirstTap() {
                 }
             }
             if(wrapperLi.hasClass('question21')){
+                $('Q21A').hide();
+                $('Q21B').hide();
+                $('Q21C').hide();
                 if($(self).hasClass('OP21A')){
                     $('.Q21A').show().removeClass('omit');
                 }
