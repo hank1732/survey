@@ -46,15 +46,15 @@ $('.sec1').hammer().bind("tap", function () {
 });
 $('img.rotate').hammer().bind("tap", function () {
     var that = $(this);
-    that.parent().transition({ y: '-2500' }, 600, 'ease', function () {
-        
-    });
     if(that.hasClass('arrow-sec2')){
             $('.sec3').show();
         }
     if(that.hasClass('arrow-sec3')){
         $('.sec4').show();
     }
+    that.parent().transition({ y: '-2500' }, 600, 'ease', function () {
+        
+    });
 });
 // var hammertime = new Hammer($('.sec2')[0]);
 // hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
