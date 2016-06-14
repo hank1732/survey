@@ -92,8 +92,9 @@ li span{
     max-width:62%;
     height:100%;
     padding:25px 30px;
-    background:#FCCCD3;
+    background:#fff;
     border-radius: 15px;
+    opacity:0.6;
 }
 li:nth-child(odd) span{
     margin-left:45px;
@@ -111,7 +112,7 @@ li:nth-child(odd) span:before{
     height:0px;
     border-top:solid 20px transparent;
     border-bottom:solid 20px transparent;
-    border-right:solid 40px #FCCCD3;
+    border-right:solid 40px #fff;
 }
 li:nth-child(even) span:after{
     display:inline-block;
@@ -123,7 +124,7 @@ li:nth-child(even) span:after{
     height:0px;
     border-top:solid 20px transparent;
     border-bottom:solid 20px transparent;
-    border-left:solid 40px #FCCCD3;
+    border-left:solid 40px #fff;
 }
 /* sec2 */
 
