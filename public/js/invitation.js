@@ -43,6 +43,7 @@ $.fn.extend({
 
 $('.sec1').hammer().bind("tap", function () {
     $(this).fadeOut('slow');
+    $('.sec2').show();
 });
 $('img.rotate').hammer().bind("tap", function () {
     var that = $(this);
