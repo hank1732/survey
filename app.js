@@ -41,6 +41,9 @@ app.get('/', function(req, res, next) {
     if(firstDomainName === 'hk'){
         fileName = 'hk.html';
     }
+    if(firstDomainName === 'invitation'){
+        fileName = 'invitation.html';
+    }
 
     res.sendFile(fileName, options, function(err) {
         if (err) {
