@@ -27,7 +27,7 @@ img{
     z-index:2000;
 }
 .sec3{
-    display:none;
+    /* display:none; */
     z-index:1000;
 }
 .sec4{
@@ -62,16 +62,24 @@ img{
 
 /* sec2 */
 .sec2{
+    min-height:100%;
+    width:100%;
     border:solid 1px transparent;
 }
-ul{
+.sec2>ul{
     list-style:none;
     padding:0;
     margin:5% 5%;
     padding-bottom: 100px;
 }
+ul ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
 li{
     display:block;
+    display:none;
     max-width:100%;
     margin-bottom: 35px;
 }
@@ -81,10 +89,6 @@ li:nth-child(even) img, li:nth-child(even) span{
 }
 li:nth-child(odd) img, li:nth-child(odd) span{
     float:left;
-}
-ul img{
-    width:91px;
-    height:91px;
 }
 li span{
     display:inline-block;
@@ -126,6 +130,13 @@ li:nth-child(even) span:after{
     border-bottom:solid 20px transparent;
     border-left:solid 40px #fff;
 }
+.line{
+    border-top:5px dotted #fff;
+}
+ul img{
+    width:91px;
+    height:91px;
+}
 /* sec2 */
 
 
@@ -139,6 +150,18 @@ img.rotate{
     bottom:50px;
     width:100px;
     margin-left:-50px;
+    -webkit-animation: ArrowAnimation 1.5s ease infinite;
+    animation: ArrowAnimation 1.5s ease infinite;
+}
+@-webkit-keyframes ArrowAnimation {
+    0%{bottom:50px;}
+    50%{bottom:30px;}
+    100%{bottom:50px;}
+}
+@keyframes ArrowAnimation { 
+    0%{bottom:50px;}
+    50%{bottom:30px;}
+    100%{bottom:50px;}
 }
 .sec4{
     background:#000;

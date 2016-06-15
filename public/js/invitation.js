@@ -44,8 +44,26 @@ $.fn.extend({
 $('.sec1').hammer().bind("tap", function () {
     $(this).fadeOut('slow');
     $('.sec2').show();
+    $('.arrow-sec2').hide();
+    var lis = $('li');
+    for (var i = 0 ; i <= lis.length - 1; i++) {
+        (function (j) {
+            setTimeout(function () {
+                $(lis[j]).show();
+            }, j * 2000 + 200); 
+        })(i);
+    }
+    setTimeout(function () {
+        $('body').animate({scrollTop: 500 }, '500', 'swing');
+    }, 10 * 2000 + 250);
+    setTimeout(function () {
+        $('.arrow-sec2').show();
+        swipeSection();
+    }, 10 * 2000 + 1000);
 });
-$('img.rotate').hammer().bind("tap", function () {
+
+function swipeSection() {
+    $('img.rotate').hammer().bind("tap", function () {
     var that = $(this);
     if(that.hasClass('arrow-sec2')){
             $('.sec3').show();
@@ -56,20 +74,20 @@ $('img.rotate').hammer().bind("tap", function () {
     that.parent().transition({ y: '-2500' }, 600, 'ease', function () {
         
     });
-});
-// var hammertime = new Hammer($('.sec2')[0]);
-// hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-// hammertime.on("swipeup", function () {
-//     $('.sec2').transition({ y: '-1800' }, 600, 'ease');
-// });
-// var hammertime2 = new Hammer($('.sec3')[0]);
-// hammertime2.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-// hammertime2.on("swipeup", function () {
-//     $('.sec3').transition({ y: '-1800' }, 600, 'ease');
-// });
-// $('.sec3').hammer({ direction: Hammer.DIRECTION_ALL }).bind("swipe", function () {
-//     $(this).transition({ y: '-1800' }, 600, 'ease');
-// });
+    });
+    var hammertime = new Hammer($('.sec2')[0]);
+    hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+    hammertime.on("swipeup", function () {
+        $('.sec2').transition({ y: '-2500' }, 600, 'ease');
+        $('.sec3').show();
+    });
+    var hammertime2 = new Hammer($('.sec3')[0]);
+    hammertime2.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+    hammertime2.on("swipeup", function () {
+        $('.sec3').transition({ y: '-2500' }, 600, 'ease');
+        $('.sec4').show();
+    });
+}
 
 
 
