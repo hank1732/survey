@@ -72,20 +72,20 @@ function swipeSection() {
     if(that.hasClass('arrow-sec3')){
         $('.sec4').show();
     }
-    that.parent().transition({ y: '-2500' }, 600, 'ease', function () {
+    that.parent().transition({ y: '-2500' }, 1000, 'ease', function () {
         
     });
     });
     var hammertime = new Hammer($('.sec2')[0]);
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime.on("swipeup", function () {
-        $('.sec2').transition({ y: '-2500' }, 600, 'ease');
+        $('.sec2').transition({ y: '-2500' }, 1000, 'ease');
         $('.sec3').show();
     });
     var hammertime2 = new Hammer($('.sec3')[0]);
     hammertime2.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime2.on("swipeup", function () {
-        $('.sec3').transition({ y: '-2500' }, 600, 'ease');
+        $('.sec3').transition({ y: '-2500' }, 1000, 'ease');
         $('.sec4').show();
     });
 }
