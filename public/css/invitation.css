@@ -158,14 +158,14 @@ div.voice{
     font-size:46px;
 }
 @-webkit-keyframes ArrowAnimationVoice {
-    0%{transform:scale(1.01);}
+    0%{transform:scale(1.1);}
     50%{transform:scale(1);}
-    100%{transform:scale(1.01);}
+    100%{transform:scale(1.1);}
 }
 @keyframes ArrowAnimationVoice { 
-    0%{transform:scale(1.01);}
+    0%{transform:scale(1.1);}
     50%{transform:scale(1);}
-    100%{transform:scale(1.01);}
+    100%{transform:scale(1.1);}
 }
 .voice img{
     /* transform: rotate(180deg); */
