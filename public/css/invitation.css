@@ -57,7 +57,7 @@ img{
 .sec1 img{
     position:absolute;
     top:28%;
-    transform: scale(1.2);
+    transform: scale(1.4);
 }
 
 /* sec2 */
@@ -70,7 +70,6 @@ img{
     list-style:none;
     padding:0;
     margin:5% 5%;
-    padding-bottom: 100px;
 }
 ul ul{
     list-style:none;
@@ -81,7 +80,7 @@ li{
     display:block;
     display:none;
     max-width:100%;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 li:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 li:nth-child(even) img, li:nth-child(even) span{
@@ -95,7 +94,7 @@ li span{
     position:relative;
     max-width:62%;
     height:100%;
-    padding:25px 30px;
+    padding:20px 30px;
     background:#fff;
     border-radius: 15px;
     opacity:0.6;
@@ -137,6 +136,31 @@ ul img{
     width:91px;
     height:91px;
 }
+.arrow-sec2{
+    /* display:none; */
+}
+/* .span-audio{
+    width:40%;
+}
+.span-audio:before{
+    content:'12\'\'';
+    position:relative;
+    left:-100px;
+} */
+div.voice{
+    height:200px;
+    margin:5%;
+    background:#fff;
+    opacity:0.6;
+    border-radius:20px;
+    font-size:46px;
+}
+.voice img{
+    transform: rotate(180deg);
+    width: 50px;
+    margin: 65px 45px 65px 65px;
+    vertical-align: middle;
+}
 /* sec2 */
 
 
@@ -154,14 +178,14 @@ img.rotate{
     animation: ArrowAnimation 1.5s ease infinite;
 }
 @-webkit-keyframes ArrowAnimation {
-    0%{bottom:50px;}
-    50%{bottom:30px;}
-    100%{bottom:50px;}
+    0%{bottom:40px;}
+    50%{bottom:20px;}
+    100%{bottom:40px;}
 }
 @keyframes ArrowAnimation { 
-    0%{bottom:50px;}
-    50%{bottom:30px;}
-    100%{bottom:50px;}
+    0%{bottom:40px;}
+    50%{bottom:20px;}
+    100%{bottom:40px;}
 }
 .sec4{
     background:#000;

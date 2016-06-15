@@ -41,10 +41,30 @@ $.fn.extend({
     }
 });
 
-$('.sec1').hammer().bind("tap", function () {
-    $(this).fadeOut('slow');
-    $('.sec2').show();
-    $('.arrow-sec2').hide();
+$('.sec1 img').hide().delay(500).fadeIn('slow');
+
+var isSlides= false;
+
+var hammertime0 = new Hammer($('.sec1')[0]);
+hammertime0.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+hammertime0.on("swipeup", function () {
+    slide();
+    isSlides = true;
+});
+
+setTimeout(function () {
+    if(isSlides){
+        return;
+    }
+    slide();
+    isSlides = true;
+}, 2500);
+
+function slide() {
+    $('.sec1').transition({ y: '-2500' }, 1000, 'ease');
+    $('.sec2').show();  
+    swipeSection();
+
     var lis = $('li');
     for (var i = 0 ; i <= lis.length - 1; i++) {
         (function (j) {
@@ -54,18 +74,18 @@ $('.sec1').hammer().bind("tap", function () {
                     $('body').animate({scrollTop: 500 }, '500', 'swing');
                 }
                 console.log("$('.sec2').height()" + $('.sec2').height());
-            }, j * 2000 + 200);
+            }, j * 1000 + 1000);
         })(i);
-        // $('body').animate({scrollTop: 500 }, '500', 'swing');
     }
-    // setTimeout(function () {
-        
-    // }, 10 * 2000 + 250);
+    $('.voice').hammer().bind("tap", function () {
+
+        document.getElementById('demo').play();
+    });
+    
     setTimeout(function () {
         $('.arrow-sec2').show();
-        swipeSection();
-    }, 10 * 2000 + 1000);
-});
+    }, 8 * 1000 + 1000);
+}
 
 function swipeSection() {
     $('img.rotate').hammer().bind("tap", function () {
@@ -86,17 +106,30 @@ function swipeSection() {
         $('.sec2').transition({ y: '-2500' }, 1000, 'ease');
         $('.sec3').show();
     });
+    hammertime.on("swipedown", function () {
+        $('.sec1').transition({ y: '0' }, 1000, 'ease');
+    });
     var hammertime2 = new Hammer($('.sec3')[0]);
     hammertime2.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime2.on("swipeup", function () {
         $('.sec3').transition({ y: '-2500' }, 1000, 'ease');
         $('.sec4').show();
     });
+    hammertime2.on("swipedown", function () {
+        $('.sec2').transition({ y: '0' }, 1000, 'ease');
+    });
+
+    var hammertime3 = new Hammer($('.sec4')[0]);
+    hammertime3.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+    hammertime3.on("swipedown", function () {
+        $('.sec3').transition({ y: '0' }, 1000, 'ease');
+    });
 }
 
 document.getElementsByTagName('body')[0].addEventListener('touchmove', function (e) {
   e.preventDefault();
 });
+
 
 
 
