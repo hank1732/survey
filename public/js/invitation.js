@@ -68,7 +68,6 @@ $('.sec1').hammer().bind("tap", function () {
 });
 
 function swipeSection() {
-    $('body').height('100%');
     $('img.rotate').hammer().bind("tap", function () {
     var that = $(this);
     if(that.hasClass('arrow-sec2')){
