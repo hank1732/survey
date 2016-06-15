@@ -110,33 +110,33 @@ function swipeSection() {
         if(that.hasClass('arrow-sec3')){
             $('.sec4').show();
         }
-        that.parent().transition({ y: '-2500' }, 500, 'ease', function () {
+        that.parent().clearQueue().transition({ y: '-2500' }, 500, 'ease', function () {
             
         });
     });
     var hammertime = new Hammer($('.sec2')[0]);
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime.on("swipeup", function () {
-        $('.sec2').transition({ y: '-2500' }, 500, 'ease');
+        $('.sec2').clearQueue().transition({ y: '-2500' }, 500, 'ease');
         $('.sec3').show();
     });
     hammertime.on("swipedown", function () {
-        $('.sec1').transition({ y: '0' }, 500, 'ease');
+        $('.sec1').clearQueue().transition({ y: '0' }, 500, 'ease');
     });
     var hammertime2 = new Hammer($('.sec3')[0]);
     hammertime2.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime2.on("swipeup", function () {
-        $('.sec3').transition({ y: '-2500' }, 500, 'ease');
+        $('.sec3').clearQueue().transition({ y: '-2500' }, 500, 'ease');
         $('.sec4').show();
     });
     hammertime2.on("swipedown", function () {
-        $('.sec2').transition({ y: '0' }, 500, 'ease');
+        $('.sec2').clearQueue().transition({ y: '0' }, 500, 'ease');
     });
 
     var hammertime3 = new Hammer($('.sec4')[0]);
     hammertime3.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime3.on("swipedown", function () {
-        $('.sec3').transition({ y: '0' }, 500, 'ease');
+        $('.sec3').clearQueue().transition({ y: '0' }, 500, 'ease');
     });
 }
 

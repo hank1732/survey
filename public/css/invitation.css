@@ -7,7 +7,7 @@ html,body{
     overflow:hidden;
     font-size:40px;
 }
-.full{
+section{
     position:absolute;
     top:0;
     bottom:0;
@@ -166,7 +166,7 @@ div.voice{
 
 .sec3 img.main-pic{
     height:100%;
-    transform:scale(0.8);
+    transform:scale(1.1);
 }
 img.rotate{
     position:absolute;
