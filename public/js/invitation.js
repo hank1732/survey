@@ -52,6 +52,11 @@ hammertime0.on("swipeup", function () {
     isSlides = true;
 });
 
+$('.sec1').hammer().bind("tap", function () {
+    slide();
+    isSlides = true;
+});
+
 setTimeout(function () {
     if(isSlides){
         return;
@@ -98,16 +103,16 @@ function slide() {
 
 function swipeSection() {
     $('img.rotate').hammer().bind("tap", function () {
-    var that = $(this);
-    if(that.hasClass('arrow-sec2')){
-            $('.sec3').show();
+        var that = $(this);
+        if(that.hasClass('arrow-sec2')){
+                $('.sec3').show();
+            }
+        if(that.hasClass('arrow-sec3')){
+            $('.sec4').show();
         }
-    if(that.hasClass('arrow-sec3')){
-        $('.sec4').show();
-    }
-    that.parent().transition({ y: '-2500' }, 1000, 'ease', function () {
-        
-    });
+        that.parent().transition({ y: '-2500' }, 1000, 'ease', function () {
+            
+        });
     });
     var hammertime = new Hammer($('.sec2')[0]);
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
