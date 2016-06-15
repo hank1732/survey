@@ -62,9 +62,9 @@ img{
 
 /* sec2 */
 .sec2{
-    min-height:100%;
+    height:100%;
     width:100%;
-    border:solid 1px transparent;
+    /* border:solid 1px transparent; */
 }
 .sec2>ul{
     list-style:none;
