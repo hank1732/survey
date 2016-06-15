@@ -79,7 +79,7 @@ function slide() {
                 //     $('body').animate({scrollTop: 500 }, '500', 'swing');
                 // }
                 console.log("$('.sec2').height()" + $('.sec2').height());
-            }, j * 1000 + 1000);
+            }, j * 444 + 666);
         })(i);
     }
     $('.voice').hammer().bind("tap", function () {
@@ -89,16 +89,16 @@ function slide() {
         var id = setInterval(function () {
             i++;
             $('.voice img').attr('src', 'imgg/voice' + (i%3 + 1) + '.svg');
-            if(i === 28){
+            if(i === 56){
                 clearInterval(id);
                 $('.voice img').attr('src', 'imgg/voice.svg');
             }            
-        },500);
+        },250);
     });
     
     setTimeout(function () {
         $('.arrow-sec2').show();
-    }, 8 * 1000 + 1000);
+    }, 8 * 444 + 666);
 }
 
 function swipeSection() {
