@@ -50,12 +50,13 @@ $('.sec1').hammer().bind("tap", function () {
         (function (j) {
             setTimeout(function () {
                 $(lis[j]).show();
-            }, j * 2000 + 200); 
+                $('body').animate({scrollTop: 500 }, '500', 'swing');
+            }, j * 2000 + 200);
         })(i);
     }
-    setTimeout(function () {
-        $('body').animate({scrollTop: 500 }, '500', 'swing');
-    }, 10 * 2000 + 250);
+    // setTimeout(function () {
+        
+    // }, 10 * 2000 + 250);
     setTimeout(function () {
         $('.arrow-sec2').show();
         swipeSection();
