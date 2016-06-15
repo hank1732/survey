@@ -94,6 +94,10 @@ function swipeSection() {
     });
 }
 
+document.getElementsByTagName('body')[0].addEventListener('touchmove', function (e) {
+  e.preventDefault();
+});
+
 
 
 
