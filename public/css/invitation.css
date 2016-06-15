@@ -156,8 +156,6 @@ div.voice{
     opacity:0.6;
     border-radius:20px;
     font-size:46px;
-    -webkit-animation: ArrowAnimationVoice 4s ease infinite;
-    animation: ArrowAnimationVoice 4s ease infinite;
 }
 @-webkit-keyframes ArrowAnimationVoice {
     0%{transform:scale(1.01);}
@@ -175,6 +173,8 @@ div.voice{
     margin: 25px 35px 25px 65px;
     vertical-align: middle;
     float:right;
+    -webkit-animation: ArrowAnimationVoice 4s ease infinite;
+    animation: ArrowAnimationVoice 4s ease infinite;
 }
 .voice span{
     float:right;

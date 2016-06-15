@@ -44,6 +44,7 @@ $.fn.extend({
 $('.sec1 img').hide().delay(500).fadeIn('slow');
 
 var isSlides= false;
+var isSec3= false;
 
 var hammertime0 = new Hammer($('.sec1')[0]);
 hammertime0.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
@@ -114,15 +115,28 @@ function swipeSection() {
             
         });
     });
+
+
     var hammertime = new Hammer($('.sec2')[0]);
     hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime.on("swipeup", function () {
         $('.sec2').clearQueue().transition({ y: '-2500' }, 500, 'ease');
         $('.sec3').show();
+        isSec3 = false;
+        setTimeout(function () {
+            if(isSec3){
+                return;
+            }
+            $('.sec3').clearQueue().transition({ y: '-2500' }, 500, 'ease');
+            $('.sec4').show();
+            isSec3 = true;
+        }, 2500);
     });
     hammertime.on("swipedown", function () {
         $('.sec1').clearQueue().transition({ y: '0' }, 500, 'ease');
     });
+
+
     var hammertime2 = new Hammer($('.sec3')[0]);
     hammertime2.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime2.on("swipeup", function () {
@@ -131,12 +145,23 @@ function swipeSection() {
     });
     hammertime2.on("swipedown", function () {
         $('.sec2').clearQueue().transition({ y: '0' }, 500, 'ease');
+        isSec3 = true;
     });
+
 
     var hammertime3 = new Hammer($('.sec4')[0]);
     hammertime3.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammertime3.on("swipedown", function () {
         $('.sec3').clearQueue().transition({ y: '0' }, 500, 'ease');
+        // isSec3 = false;
+        // setTimeout(function () {
+        //     if(isSec3){
+        //         return;
+        //     }
+        //     $('.sec3').clearQueue().transition({ y: '-2500' }, 500, 'ease');
+        //     $('.sec4').show();
+        //     isSec3 = true;
+        // }, 2500);
     });
 }
 
