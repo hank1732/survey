@@ -78,8 +78,17 @@ function slide() {
         })(i);
     }
     $('.voice').hammer().bind("tap", function () {
-
         document.getElementById('demo').play();
+
+        var i = 0;
+        var id = setInterval(function () {
+            i++;
+            $('.voice img').attr('src', 'imgg/voice' + (i%3 + 1) + '.svg');
+            if(i === 28){
+                clearInterval(id);
+                $('.voice img').attr('src', 'imgg/voice.svg');
+            }            
+        },500);
     });
     
     setTimeout(function () {
