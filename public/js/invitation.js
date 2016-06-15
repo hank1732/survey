@@ -70,9 +70,9 @@ function slide() {
         (function (j) {
             setTimeout(function () {
                 $(lis[j]).show();
-                if($('.sec2').height() > $('body').height()){
-                    $('body').animate({scrollTop: 500 }, '500', 'swing');
-                }
+                // if($('.sec2').height() > $('body').height()){
+                //     $('body').animate({scrollTop: 500 }, '500', 'swing');
+                // }
                 console.log("$('.sec2').height()" + $('.sec2').height());
             }, j * 1000 + 1000);
         })(i);

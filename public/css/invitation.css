@@ -80,7 +80,7 @@ li{
     display:block;
     display:none;
     max-width:100%;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 li:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 li:nth-child(even) img, li:nth-child(even) span{
