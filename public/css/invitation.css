@@ -94,7 +94,7 @@ li span{
     position:relative;
     max-width:62%;
     height:100%;
-    padding:20px 30px;
+    padding:2.5% 30px;
     background:#fff;
     border-radius: 15px;
     opacity:0.6;
@@ -148,7 +148,7 @@ ul img{
     left:-100px;
 } */
 div.voice{
-    height:200px;
+    height:120px;
     margin:5%;
     background:#fff;
     opacity:0.6;
@@ -158,7 +158,7 @@ div.voice{
 .voice img{
     transform: rotate(180deg);
     width: 50px;
-    margin: 65px 45px 65px 65px;
+    margin: 25px 35px 25px 65px;
     vertical-align: middle;
 }
 /* sec2 */
