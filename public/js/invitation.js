@@ -50,9 +50,13 @@ $('.sec1').hammer().bind("tap", function () {
         (function (j) {
             setTimeout(function () {
                 $(lis[j]).show();
-                $('body').animate({scrollTop: 500 }, '500', 'swing');
+                if($('.sec2').height() > $('body').height()){
+                    $('body').animate({scrollTop: 500 }, '500', 'swing');
+                }
+                console.log("$('.sec2').height()" + $('.sec2').height());
             }, j * 2000 + 200);
         })(i);
+        // $('body').animate({scrollTop: 500 }, '500', 'swing');
     }
     // setTimeout(function () {
         
@@ -64,6 +68,7 @@ $('.sec1').hammer().bind("tap", function () {
 });
 
 function swipeSection() {
+    $('body').height('100%');
     $('img.rotate').hammer().bind("tap", function () {
     var that = $(this);
     if(that.hasClass('arrow-sec2')){
