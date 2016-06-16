@@ -46,15 +46,19 @@ $('.sec1 img').hide().delay(500).fadeIn('slow');
 var isSlides= false;
 var isSec3= false;
 
-var hammertime0 = new Hammer($('.sec1')[0]);
-hammertime0.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-hammertime0.on("swipeup", function () {
-    slide();
-    isSlides = true;
-});
+// var hammertime0 = new Hammer($('.sec1')[0]);
+// hammertime0.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+// hammertime0.on("swipeup", function () {
+//     slide();
+//     isSlides = true;
+// });
 
 $('.sec1').hammer().bind("tap", function () {
-    slide();
+    $('.sec1').fadeOut('slow');
+    setTimeout( function () {
+        slide();
+    }, 500);
+    $('.sec2').show(); 
     isSlides = true;
 });
 
@@ -62,12 +66,16 @@ setTimeout(function () {
     if(isSlides){
         return;
     }
-    slide();
+    $('.sec1').fadeOut('slow');
+    setTimeout( function () {
+        slide();
+    }, 500);
+    $('.sec2').show(); 
     isSlides = true;
 }, 2500);
 
 function slide() {
-    $('.sec1').transition({ y: '-2500' }, 500, 'ease');
+    // $('.sec1').transition({ y: '-2500' }, 500, 'ease');
     $('.sec2').show();  
     swipeSection();
 
@@ -80,7 +88,7 @@ function slide() {
                 //     $('body').animate({scrollTop: 500 }, '500', 'swing');
                 // }
                 console.log("$('.sec2').height()" + $('.sec2').height());
-            }, j * 444 + 666);
+            }, j * 666 + 666);
         })(i);
     }
     $('.voice').hammer().bind("tap", function () {
@@ -99,7 +107,7 @@ function slide() {
     
     setTimeout(function () {
         $('.arrow-sec2').show();
-    }, 8 * 444 + 666);
+    }, 8 * 666 + 666);
 }
 
 function swipeSection() {

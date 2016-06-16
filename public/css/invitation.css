@@ -137,6 +137,7 @@ li:nth-child(even) span:after{
 ul img{
     width:91px;
     height:91px;
+    transform:scale(1.2);
 }
 .arrow-sec2{
     /* display:none; */
@@ -150,12 +151,25 @@ ul img{
     left:-100px;
 } */
 div.voice{
-    height:120px;
-    margin:2% 5%;
-    background:#fff;
-    opacity:0.6;
-    border-radius:20px;
-    font-size:46px;
+    height: 92px;
+    width: 63%;
+    margin: 2% 18%;
+    background: #fff;
+    opacity: 0.6;
+    border-radius: 20px;
+    font-size: 46px;
+}
+div.voice:after {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    top: 35px;
+    right: 155px;
+    width: 0px;
+    height: 0px;
+    border-top: solid 20px transparent;
+    border-bottom: solid 20px transparent;
+    border-left: solid 40px #fff;
 }
 @-webkit-keyframes ArrowAnimationVoice {
     0%{transform:scale(1.1);}
@@ -167,10 +181,10 @@ div.voice{
     50%{transform:scale(1);}
     100%{transform:scale(1.1);}
 }
-.voice img{
+.voice img.breath{
     /* transform: rotate(180deg); */
     width: 50px;
-    margin: 25px 35px 25px 65px;
+    margin: 10px 35px 25px 35px;
     vertical-align: middle;
     float:right;
     -webkit-animation: ArrowAnimationVoice 4s ease infinite;
@@ -179,8 +193,16 @@ div.voice{
 .voice span{
     float:right;
     position:relative;
-    top: 32px;
+    top: 20px;
     right: -10px;
+}
+.breath-tou{
+    position: absolute;
+    top:15px;
+    right: 45px;
+    width:91px;
+    height:91px;
+    transform:scale(1.2);
 }
 /* sec2 */
 
