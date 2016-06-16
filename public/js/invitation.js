@@ -68,6 +68,7 @@ setTimeout(function () {
     }
     $('.sec1').fadeOut('slow');
     setTimeout( function () {
+        $('.show-jump').show();
         slide();
     }, 500);
     $('.sec2').show(); 
@@ -92,18 +93,18 @@ function slide() {
         })(i);
     }
     $('.voice').hammer().bind("tap", function () {
-        document.getElementById('demo').play();
-
-        var i = 0;
-        var id = setInterval(function () {
-            i++;
-            $('.voice img').attr('src', 'imgg/voice' + (i%3 + 1) + '.svg');
-            if(i === 56){
-                clearInterval(id);
-                $('.voice img').attr('src', 'imgg/voice.svg');
-            }            
-        },250);
+        document.getElementById('demo').play();        
     });
+
+    var i = 0;
+    setInterval(function () {
+        i++;
+        $('.voice img').attr('src', 'imgg/voice' + (i%3 + 1) + '.svg');
+        // if(i === 1){
+            // clearInterval(id);
+            // $('.voice img').attr('src', 'imgg/voice.svg');
+        // }            
+    },400);
     
     setTimeout(function () {
         $('.arrow-sec2').show();
@@ -138,7 +139,7 @@ function swipeSection() {
             $('.sec3').clearQueue().transition({ y: '-2500' }, 500, 'ease');
             $('.sec4').show();
             isSec3 = true;
-        }, 2500);
+        }, 4500);
     });
     hammertime.on("swipedown", function () {
         $('.sec1').clearQueue().transition({ y: '0' }, 500, 'ease');

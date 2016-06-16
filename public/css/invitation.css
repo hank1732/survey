@@ -204,6 +204,9 @@ div.voice:after {
     height:91px;
     transform:scale(1.2);
 }
+.show-jump{
+    display:none;
+}
 /* sec2 */
 
 
