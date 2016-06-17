@@ -45,6 +45,7 @@ $('.sec1 img').hide().delay(500).fadeIn('slow');
 
 var isSlides= false;
 var isSec3= false;
+var loopId = 0;
 
 // var hammertime0 = new Hammer($('.sec1')[0]);
 // hammertime0.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
@@ -57,9 +58,16 @@ $('.sec1').hammer().bind("tap", function () {
     $('.sec1').fadeOut('slow');
     setTimeout( function () {
         slide();
-    }, 500);
+    }, 1000);
+    $('.show-jump').show();
     $('.sec2').show(); 
     isSlides = true;
+    document.getElementById('demo').play();
+    // $('.voice').hammer().bind("tap", function () {
+        loopId = setInterval(function () {
+            document.getElementById('demo').play();
+        },12100);         
+    // });
 });
 
 setTimeout(function () {
@@ -73,6 +81,12 @@ setTimeout(function () {
     }, 500);
     $('.sec2').show(); 
     isSlides = true;
+    document.getElementById('demo').play();
+    // $('.voice').hammer().bind("tap", function () {
+        loopId = setInterval(function () {
+            document.getElementById('demo').play();
+        },16100);         
+    // });
 }, 2500);
 
 function slide() {
@@ -89,12 +103,9 @@ function slide() {
                 //     $('body').animate({scrollTop: 500 }, '500', 'swing');
                 // }
                 console.log("$('.sec2').height()" + $('.sec2').height());
-            }, j * 666 + 666);
+            }, j * 1111 + 666);
         })(i);
     }
-    $('.voice').hammer().bind("tap", function () {
-        document.getElementById('demo').play();        
-    });
 
     var i = 0;
     setInterval(function () {
@@ -108,7 +119,7 @@ function slide() {
     
     setTimeout(function () {
         $('.arrow-sec2').show();
-    }, 8 * 666 + 666);
+    }, 8 * 1111 + 666);
 }
 
 function swipeSection() {
@@ -120,9 +131,9 @@ function swipeSection() {
         if(that.hasClass('arrow-sec3')){
             $('.sec4').show();
         }
-        that.parent().clearQueue().transition({ y: '-2500' }, 500, 'ease', function () {
-            
-        });
+        that.parent().clearQueue().transition({ y: '-2500' }, 500, 'ease');
+
+        videoStop();
     });
 
 
@@ -136,32 +147,34 @@ function swipeSection() {
             if(isSec3){
                 return;
             }
-            $('.sec3').clearQueue().transition({ y: '-2500' }, 500, 'ease');
+            $('.sec3').fadeOut('slow');
+             //.clearQueue().transition({ y: '-2500' }, 500, 'ease');
             $('.sec4').show();
             isSec3 = true;
-        }, 4500);
+        }, 3000);
+        videoStop();
     });
-    hammertime.on("swipedown", function () {
-        $('.sec1').clearQueue().transition({ y: '0' }, 500, 'ease');
-    });
+    // hammertime.on("swipedown", function () {
+    //     $('.sec1').clearQueue().transition({ y: '0' }, 500, 'ease');
+    // });
 
 
-    var hammertime2 = new Hammer($('.sec3')[0]);
-    hammertime2.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-    hammertime2.on("swipeup", function () {
-        $('.sec3').clearQueue().transition({ y: '-2500' }, 500, 'ease');
-        $('.sec4').show();
-    });
-    hammertime2.on("swipedown", function () {
-        $('.sec2').clearQueue().transition({ y: '0' }, 500, 'ease');
-        isSec3 = true;
-    });
+    // var hammertime2 = new Hammer($('.sec3')[0]);
+    // hammertime2.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+    // hammertime2.on("swipeup", function () {
+    //     $('.sec3').clearQueue().transition({ y: '-2500' }, 500, 'ease');
+    //     $('.sec4').show();
+    // });
+    // hammertime2.on("swipedown", function () {
+    //     // $('.sec2').clearQueue().transition({ y: '0' }, 500, 'ease');
+    //     isSec3 = true;
+    // });
 
 
-    var hammertime3 = new Hammer($('.sec4')[0]);
-    hammertime3.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-    hammertime3.on("swipedown", function () {
-        $('.sec3').clearQueue().transition({ y: '0' }, 500, 'ease');
+    // var hammertime3 = new Hammer($('.sec4')[0]);
+    // hammertime3.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+    // hammertime3.on("swipedown", function () {
+    //     $('.sec3').clearQueue().transition({ y: '0' }, 500, 'ease');
         // isSec3 = false;
         // setTimeout(function () {
         //     if(isSec3){
@@ -171,12 +184,17 @@ function swipeSection() {
         //     $('.sec4').show();
         //     isSec3 = true;
         // }, 2500);
-    });
+    // });
 }
 
 document.getElementsByTagName('body')[0].addEventListener('touchmove', function (e) {
   e.preventDefault();
 });
+
+function videoStop() {
+    clearInterval(loopId);
+    document.getElementById('demo').pause();
+}
 
 
 

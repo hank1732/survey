@@ -242,6 +242,7 @@ img.rotate{
     top:28%;
     width:600px;
     margin:58% auto;
+    transform: scale(1.6);
 }
 
 
