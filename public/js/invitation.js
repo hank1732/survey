@@ -51,7 +51,7 @@ var isSec3= false;
 var loopId = 0;
 var loopIdProgress = 0;
 var progress = 0;
-    $('.sec1 img').delay(1000).fadeIn('slow');
+    $('.sec1 img').delay(1600).fadeIn('slow');
 
 // var hammertime0 = new Hammer($('.sec1')[0]);
 // hammertime0.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
