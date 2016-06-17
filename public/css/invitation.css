@@ -22,7 +22,6 @@ img{
 .sec1{
     z-index:3000;
     overflow:hidden;
-    display:none;
 }
 .sec2{
     display:none;
@@ -61,6 +60,7 @@ img{
     position:absolute;
     top:28%;
     transform: scale(1.4);
+    display:none;
 }
 
 /* sec2 */
