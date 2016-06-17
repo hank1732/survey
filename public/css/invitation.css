@@ -22,6 +22,7 @@ img{
 .sec1{
     z-index:3000;
     overflow:hidden;
+    display:none;
 }
 .sec2{
     display:none;
