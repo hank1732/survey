@@ -152,20 +152,21 @@ ul img{
     left:-100px;
 } */
 div.voice{
+    position:relative;
     height: 92px;
     width: 63%;
     margin: 2% 18%;
     background: #fff;
     opacity: 0.6;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
     font-size: 46px;
 }
 div.voice:after {
     display: inline-block;
     content: '';
     position: absolute;
-    top: 35px;
-    right: 155px;
+    top: 22px;
+    right: -30px;
     width: 0px;
     height: 0px;
     border-top: solid 20px transparent;
@@ -244,6 +245,16 @@ img.rotate{
     width:600px;
     margin:58% auto;
     transform: scale(1.6);
+}
+
+
+.progress{
+    position:absolute;
+    width:0%;
+    bottom:0;
+    left:0;
+    height:5px;
+    background:#0cf;
 }
 
 

@@ -42,11 +42,16 @@ $.fn.extend({
 });
 
 $(function () {
-    $('.sec1 img').hide().delay(500).fadeIn('slow');
 
 var isSlides= false;
 var isSec3= false;
 var loopId = 0;
+var time = 28;
+    $('.sec1 img').hide().delay(1000).fadeIn('slow',function () {
+        setInterval(function () {
+            $('.progress').widht(100/(time * 2) + '%');
+        }, 500);
+    });
 
 // var hammertime0 = new Hammer($('.sec1')[0]);
 // hammertime0.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
@@ -67,7 +72,7 @@ $('.sec1').hammer().bind("tap", function () {
     // $('.voice').hammer().bind("tap", function () {
         loopId = setInterval(function () {
             document.getElementById('demo').play();
-        },28100);         
+        },time * 10000 + 100);         
     // });
 });
 
@@ -86,7 +91,7 @@ setTimeout(function () {
     // $('.voice').hammer().bind("tap", function () {
         loopId = setInterval(function () {
             document.getElementById('demo').play();
-        },28100);         
+        },time * 10000 + 100);         
     // });
 }, 2500);
 
