@@ -41,7 +41,9 @@ $.fn.extend({
     }
 });
 
-$(function () {
+window.onload = init;
+
+function init() {
 
 var isSlides= false;
 var isSec3= false;
@@ -226,7 +228,7 @@ function loopProgress() {
 }
 
 
-})
+};
 
 
 
