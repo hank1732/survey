@@ -41,7 +41,8 @@ $.fn.extend({
     }
 });
 
-window.onload = init;
+// window.onload = init;
+$('.sec1 img').ready(init);
 
 function init() {
 
@@ -50,9 +51,7 @@ var isSec3= false;
 var loopId = 0;
 var loopIdProgress = 0;
 var progress = 0;
-    $('.sec1 img').hide().delay(1000).fadeIn('slow',function () {
-        
-    });
+    $('.sec1 img').delay(1000).fadeIn('slow');
 
 // var hammertime0 = new Hammer($('.sec1')[0]);
 // hammertime0.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
