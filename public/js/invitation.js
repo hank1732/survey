@@ -41,7 +41,8 @@ $.fn.extend({
     }
 });
 
-$('.sec1 img').hide().delay(500).fadeIn('slow');
+$(function () {
+    $('.sec1 img').hide().delay(500).fadeIn('slow');
 
 var isSlides= false;
 var isSec3= false;
@@ -195,6 +196,9 @@ function videoStop() {
     clearInterval(loopId);
     document.getElementById('demo').pause();
 }
+
+
+})
 
 
 
