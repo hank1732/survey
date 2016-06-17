@@ -66,7 +66,7 @@ $('.sec1').hammer().bind("tap", function () {
     // $('.voice').hammer().bind("tap", function () {
         loopId = setInterval(function () {
             document.getElementById('demo').play();
-        },12100);         
+        },16100);         
     // });
 });
 
