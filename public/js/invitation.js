@@ -96,7 +96,7 @@ setTimeout(function () {
         // },time * 10000 + 100);         
         loopProgress();
     });
-}, 3000);
+}, 3700);
 
 function slide() {
     // $('.sec1').transition({ y: '-2500' }, 500, 'ease');
