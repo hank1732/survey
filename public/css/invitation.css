@@ -256,5 +256,8 @@ img.rotate{
     height:5px;
     background:#444;
 }
+.breath-moving{
+    display:none;
+}
 
 

@@ -211,14 +211,18 @@ function loopProgress() {
             $('.progress').width('100%');
             clearInterval(loopIdProgress);
             clearInterval(id);
-            $('.voice img').attr('src', 'imgg/voice.svg');
+            $('.breath-moving').hide();
+            $('.breat-static').show();
+            // $('.voice img').attr('src', 'imgg/voice.svg');
         }else{
             $('.progress').width(progress + '%');
         }        
     }, 500);
     id = setInterval(function () {
         i++;
-        $('.voice img').attr('src', 'imgg/voice' + (i%3 + 1) + '.svg');
+        $('.breat-static').hide();
+        $('.breath-moving').hide();
+        $('.breath' + (i%3 + 1)).show();
         // if(i === 1){
             // clearInterval(id);
             // $('.voice img').attr('src', 'imgg/voice.svg');
