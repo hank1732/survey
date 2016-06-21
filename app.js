@@ -51,6 +51,7 @@ app.get('/', function(req, res, next) {
         fileName = 'S01/index.html';
     // }
 
+    console.log('fileName', fileName);
     res.sendFile(fileName, options, function(err) {
         if (err) {
             console.log("sendIle err! it is ",err);
