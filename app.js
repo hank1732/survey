@@ -47,9 +47,9 @@ app.get('/', function(req, res, next) {
     if(firstDomainName === 'invitation-w'){
         fileName = 'invitation-w.html';
     }
-    if(firstDomainName === 'chart'){
+    // if(firstDomainName === 'chart'){
         fileName = 'S01/index.html';
-    }
+    // }
 
     res.sendFile(fileName, options, function(err) {
         if (err) {
